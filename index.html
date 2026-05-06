@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LoanCalcHub – Free Loan & Interest Calculator</title>
+<meta name="description" content="Free loan calculator: monthly payments, total interest, amortization schedule and loan comparison. Instant results, no signup needed."/>
+<meta name="keywords" content="loan calculator, interest calculator, monthly payment calculator, amortization calculator, mortgage calculator"/>
+<link rel="canonical" href="https://loancalchub.net/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+
+<style>
+:root {
+  --bg: #F5F3EE;
+  --surface: #FFFFFF;
+  --surface2: #F0EDE6;
+  --border: #DDD9D0;
+  --text: #1C1917;
+  --muted: #78716C;
+  --hint: #A8A29E;
+  --accent: #15803D;
+  --accent2: #166534;
+  --accent-light: #DCFCE7;
+  --accent-mid: #4ADE80;
+  --red: #DC2626;
+  --red-light: #FEE2E2;
+  --blue: #1D4ED8;
+  --blue-light: #DBEAFE;
+  --shadow: 0 1px 2px rgba(0,0,0,.04), 0 4px 12px rgba(0,0,0,.06);
+  --shadow-lg: 0 2px 4px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.08);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --transition: 0.18s ease;
+}
+[data-theme="dark"] {
+  --bg: #0F0F0E;
+  --surface: #1C1917;
+  --surface2: #252320;
+  --border: #2E2B28;
+  --text: #F5F0EB;
+  --muted: #A8A29E;
+  --hint: #57534E;
+  --accent: #4ADE80;
+  --accent2: #22C55E;
+  --accent-light: #052E16;
+  --accent-mid: #16A34A;
+  --red: #F87171;
+  --red-light: #450A0A;
+  --blue: #60A5FA;
+  --blue-light: #1E3A5F;
+  --shadow: 0 1px 2px rgba(0,0,0,.2), 0 4px 12px rgba(0,0,0,.3);
+  --shadow-lg: 0 2px 4px rgba(0,0,0,.2), 0 8px 24px rgba(0,0,0,.4);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Instrument Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.6;
+  transition: background var(--transition), color var(--transition);
+}
+
+/* HEADER */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 1.5rem;
+  height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  box-shadow: var(--shadow);
+  transition: background var(--transition), border-color var(--transition);
+}
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.2rem; font-weight: 700;
+  color: var(--text); text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.header-right { display: flex; align-items: center; gap: 8px; }
+nav { display: flex; gap: 4px; }
+nav a {
+  color: var(--muted); text-decoration: none;
+  font-size: 13px; font-weight: 500;
+  padding: 5px 10px; border-radius: var(--radius-sm);
+  transition: all var(--transition);
+}
+nav a:hover { color: var(--text); background: var(--surface2); }
+
+/* DARK MODE TOGGLE */
+.theme-btn {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--text); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; transition: all var(--transition);
+}
+.theme-btn:hover { background: var(--border); }
+
+/* HERO */
+.hero {
+  background: var(--accent);
+  padding: 3rem 1.5rem 4rem;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    45deg, transparent, transparent 40px,
+    rgba(255,255,255,.03) 40px, rgba(255,255,255,.03) 80px
+  );
+}
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700; color: #fff;
+  margin-bottom: .5rem; position: relative;
+  line-height: 1.15;
+}
+.hero p { color: rgba(255,255,255,.8); font-size: 1rem; position: relative; }
+.hero-badges {
+  display: flex; gap: 8px; justify-content: center;
+  flex-wrap: wrap; margin-top: 1rem; position: relative;
+}
+.hero-badge {
+  background: rgba(255,255,255,.15);
+  color: rgba(255,255,255,.9);
+  font-size: 12px; font-weight: 500;
+  padding: 4px 12px; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.2);
+}
+
+/* LAYOUT */
+.page { max-width: 1120px; margin: 0 auto; padding: 0 1.25rem; }
+.main-wrap {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 1.5rem;
+  margin-top: -2.5rem;
+}
+@media(max-width:800px) {
+  .main-wrap { grid-template-columns: 1fr; }
+  nav { display: none; }
+}
+
+/* CARD */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: background var(--transition), border-color var(--transition);
+}
+.card + .card { margin-top: 1.25rem; }
+.card-head {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  font-family: 'Syne', sans-serif;
+  font-size: .9rem; font-weight: 600;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: border-color var(--transition);
+}
+.card-body { padding: 1.25rem; }
+
+/* TABS */
+.tabs { display: flex; gap: 4px; padding: 1rem 1.25rem .5rem; }
+.tab {
+  padding: 6px 14px; border-radius: 20px;
+  font-size: 13px; font-weight: 500; cursor: pointer;
+  border: 1px solid var(--border);
+  background: transparent; color: var(--muted);
+  transition: all var(--transition);
+}
+.tab.active {
+  background: var(--accent); color: #fff;
+  border-color: var(--accent);
+}
+
+/* FORM */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media(max-width:500px) { .form-grid { grid-template-columns: 1fr; } }
+
+.field { display: flex; flex-direction: column; gap: 5px; }
+label {
+  font-size: 11px; font-weight: 600;
+  color: var(--muted); letter-spacing: .05em; text-transform: uppercase;
+}
+.input-wrap { position: relative; }
+.pfx, .sfx {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  color: var(--hint); font-size: 13px; pointer-events: none;
+}
+.pfx { left: 11px; }
+.sfx { right: 11px; }
+
+input[type="number"], select {
+  width: 100%; padding: 10px 36px 10px 28px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: inherit; font-size: 15px; font-weight: 500;
+  background: var(--surface2); color: var(--text);
+  outline: none; transition: border-color var(--transition), background var(--transition);
+  -moz-appearance: textfield;
+}
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+input[type="number"]:focus, select:focus { border-color: var(--accent); }
+select { padding: 10px 12px; }
+
+/* SLIDER */
+.slider-wrap { margin-top: 4px; }
+input[type="range"] {
+  width: 100%; height: 3px;
+  background: var(--border);
+  border: none; padding: 0; cursor: pointer;
+  outline: none; -webkit-appearance: none; border-radius: 2px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--accent); border: 2px solid var(--surface);
+  box-shadow: 0 1px 4px rgba(0,0,0,.2); cursor: pointer;
+}
+.slider-labels {
+  display: flex; justify-content: space-between;
+  font-size: 10px; color: var(--hint); margin-top: 2px;
+}
+
+/* CALCULATE BTN */
+.btn {
+  width: 100%; margin-top: 1.1rem;
+  padding: 13px;
+  background: var(--accent); color: #fff;
+  border: none; border-radius: var(--radius-sm);
+  font-family: 'Syne', sans-serif;
+  font-size: 15px; font-weight: 600; cursor: pointer;
+  letter-spacing: .02em;
+  transition: background var(--transition), transform .1s;
+  position: relative; overflow: hidden;
+}
+.btn:hover { background: var(--accent2); }
+.btn:active { transform: scale(.99); }
+.btn-sm {
+  padding: 7px 14px; font-size: 12px;
+  border-radius: 20px; width: auto;
+  margin-top: 0; font-family: inherit;
+}
+.btn-outline {
+  background: transparent; color: var(--accent);
+  border: 1px solid var(--accent);
+}
+.btn-outline:hover { background: var(--accent-light); }
+.btn-ghost {
+  background: var(--surface2); color: var(--muted);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover { color: var(--text); }
+
+/* LIVE BADGE */
+.live-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11px; color: var(--accent); font-weight: 600;
+}
+.live-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .5; transform: scale(.8); }
+}
+
+/* RESULTS */
+.result-strip {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 10px; margin-bottom: 1.25rem;
+}
+@media(max-width:480px) { .result-strip { grid-template-columns: 1fr; } }
+
+.result-box {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: .9rem 1rem; text-align: center;
+  transition: all var(--transition);
+}
+.result-box.primary {
+  background: var(--accent); border-color: var(--accent);
+}
+.result-box.primary .r-label { color: rgba(255,255,255,.7); }
+.result-box.primary .r-val { color: #fff; }
+.r-label {
+  font-size: 10px; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 4px;
+}
+.r-val {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.5rem; font-weight: 700; color: var(--text);
+  transition: all .3s;
+}
+.r-sub { font-size: 10px; color: var(--hint); margin-top: 2px; }
+
+/* COPY TOAST */
+.toast {
+  position: fixed; bottom: 1.5rem; right: 1.5rem;
+  background: var(--text); color: var(--bg);
+  padding: 10px 18px; border-radius: 30px;
+  font-size: 13px; font-weight: 500;
+  opacity: 0; transform: translateY(10px);
+  transition: all .25s; pointer-events: none; z-index: 999;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* CHART */
+.chart-wrap {
+  position: relative;
+  height: 220px; margin: 1rem 0;
+}
+
+/* DONUT */
+.donut-section {
+  display: flex; align-items: center; gap: 1.5rem;
+  margin-bottom: 1.25rem; flex-wrap: wrap;
+}
+.legend { display: flex; flex-direction: column; gap: 8px; }
+.legend-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--text);
+}
+.leg-dot {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+}
+
+/* WHAT IF TIPS */
+.tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+@media(max-width:480px) { .tips-grid { grid-template-columns: 1fr; } }
+.tip-box {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: .75rem .9rem; font-size: 13px;
+  transition: all var(--transition);
+}
+.tip-label { font-size: 10px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 2px; }
+.tip-val { font-weight: 600; color: var(--accent); font-size: 15px; }
+
+/* COMPARE */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media(max-width:600px) { .compare-grid { grid-template-columns: 1fr; } }
+.compare-col { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem; }
+.compare-col h4 { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 600; margin-bottom: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.compare-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+.compare-row:last-child { border-bottom: none; font-weight: 600; }
+.better { color: var(--accent); }
+.worse { color: var(--red); }
+
+/* AMORTIZATION TABLE */
+.table-scroll { overflow-x: auto; max-height: 320px; overflow-y: auto; }
+.table-scroll::-webkit-scrollbar { width: 4px; height: 4px; }
+.table-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead { position: sticky; top: 0; background: var(--surface); z-index: 1; }
+thead th {
+  padding: 8px 10px; text-align: right;
+  font-size: 10px; font-weight: 600; letter-spacing: .05em;
+  text-transform: uppercase; color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+thead th:first-child { text-align: left; }
+tbody tr { transition: background var(--transition); }
+tbody tr:hover { background: var(--surface2); }
+tbody td { padding: 7px 10px; text-align: right; }
+tbody td:first-child { text-align: left; font-weight: 500; }
+.td-int { color: var(--red); }
+.td-pri { color: var(--accent); font-weight: 500; }
+tfoot td {
+  padding: 9px 10px; text-align: right;
+  font-weight: 600; border-top: 2px solid var(--border);
+  font-size: 13px;
+}
+tfoot td:first-child { text-align: left; }
+
+/* ACTION BUTTONS ROW */
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 1rem; }
+
+/* FAQ */
+details {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 6px;
+  background: var(--surface);
+  transition: all var(--transition);
+}
+summary {
+  padding: .8rem 1rem; font-weight: 600; font-size: 14px;
+  cursor: pointer; list-style: none;
+  display: flex; justify-content: space-between; align-items: center;
+  color: var(--text);
+}
+summary::after { content: '+'; font-size: 18px; color: var(--muted); }
+details[open] summary::after { content: '−'; }
+.faq-body { padding: 0 1rem .9rem; font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* SIDEBAR */
+.sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+.ad-slot {
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  min-height: 250px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  color: var(--hint); font-size: 12px; gap: 4px;
+}
+.ad-label { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; }
+
+/* SEO */
+.seo-section { margin: 2rem 0; }
+.seo-section h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.4rem; margin-bottom: .6rem;
+}
+.seo-section h3 { font-size: 14px; font-weight: 600; margin: 1rem 0 .3rem; }
+.seo-section p { color: var(--muted); line-height: 1.7; margin-bottom: .6rem; font-size: 14px; }
+.formula {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: .9rem 1rem;
+  font-family: monospace; font-size: 13px;
+  color: var(--text); margin: .75rem 0;
+}
+
+/* FOOTER */
+footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  text-align: center; padding: 1.5rem;
+  font-size: 12px; color: var(--muted);
+  margin-top: 3rem;
+}
+footer a { color: var(--muted); text-decoration: none; margin: 0 .5rem; }
+footer a:hover { color: var(--text); }
+
+/* SHARE MODAL */
+.modal-bg {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 200; display: none;
+  align-items: center; justify-content: center;
+  padding: 1rem;
+}
+.modal-bg.open { display: flex; }
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  width: 100%; max-width: 420px;
+  box-shadow: var(--shadow-lg);
+}
+.modal h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; margin-bottom: .75rem; }
+.share-url {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 12px; color: var(--muted);
+  word-break: break-all; margin-bottom: 1rem;
+  font-family: monospace;
+}
+.modal-actions { display: flex; gap: 8px; }
+
+/* PRINT */
+@media print {
+  header, .theme-btn, .actions, .sidebar, .hero-badges, .ad-slot, .tabs, footer { display: none !important; }
+  .main-wrap { grid-template-columns: 1fr !important; }
+  .card { box-shadow: none !important; border: 1px solid #ccc !important; }
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp .35s ease forwards; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="/" class="logo">
+    <span class="logo-dot"></span>
+    LoanCalcHub
+  </a>
+  <div class="header-right">
+    <nav>
+      <a href="#calculator">Calculator</a>
+      <a href="#compare">Compare</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle dark mode">🌙</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Loan Calculator</h1>
+  <p>Instant monthly payments, interest breakdown & full amortization schedule</p>
+  <div class="hero-badges">
+    <span class="hero-badge">✓ Free forever</span>
+    <span class="hero-badge">✓ No signup</span>
+    <span class="hero-badge">✓ Instant results</span>
+    <span class="hero-badge">✓ Mobile friendly</span>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="page">
+<div class="main-wrap">
+
+  <!-- LEFT -->
+  <div id="calculator">
+
+    <!-- CALCULATOR CARD -->
+    <div class="card">
+      <div class="card-head">
+        <span>Loan details</span>
+        <span class="live-badge"><span class="live-dot"></span>Live</span>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" onclick="setType('personal',this)">Personal</button>
+        <button class="tab" onclick="setType('mortgage',this)">Mortgage</button>
+        <button class="tab" onclick="setType('car',this)">Car loan</button>
+        <button class="tab" onclick="setType('student',this)">Student</button>
+      </div>
+
+      <div class="card-body">
+        <div class="form-grid">
+          <div class="field">
+            <label>Loan amount</label>
+            <div class="input-wrap">
+              <span class="pfx">$</span>
+              <input type="number" id="amount" value="10000" min="100" oninput="liveCalc()"/>
+            </div>
+            <div class="slider-wrap">
+              <input type="range" id="amtSlider" min="1000" max="500000" step="500" value="10000" oninput="syncSlider('amount','amtSlider',this.value);liveCalc()"/>
+              <div class="slider-labels"><span>$1k</span><span>$500k</span></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Interest rate</label>
+            <div class="input-wrap">
+              <input type="number" id="rate" value="7.5" min="0.1" max="50" step="0.1" style="padding-left:12px" oninput="liveCalc()"/>
+              <span class="sfx">%/yr</span>
+            </div>
+            <div class="slider-wrap">
+              <input type="range" id="rateSlider" min="0.5" max="30" step="0.1" value="7.5" oninput="syncSlider('rate','rateSlider',this.value);liveCalc()"/>
+              <div class="slider-labels"><span>0.5%</span><span>30%</span></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Loan term</label>
+            <div class="input-wrap">
+              <input type="number" id="term" value="5" min="1" max="30" style="padding-left:12px" oninput="liveCalc()"/>
+              <span class="sfx">years</span>
+            </div>
+            <div class="slider-wrap">
+              <input type="range" id="termSlider" min="1" max="30" step="1" value="5" oninput="syncSlider('term','termSlider',this.value);liveCalc()"/>
+              <div class="slider-labels"><span>1 yr</span><span>30 yrs</span></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Loan type</label>
+            <select id="loanType" onchange="liveCalc()">
+              <option value="amortizing">Amortizing (standard)</option>
+              <option value="interest">Interest-only</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULTS CARD -->
+    <div class="card" id="resultsCard">
+      <div class="card-head">
+        <span>Results</span>
+        <button class="btn btn-sm btn-ghost" onclick="copyResults()">📋 Copy</button>
+      </div>
+      <div class="card-body">
+
+        <div class="result-strip">
+          <div class="result-box primary">
+            <div class="r-label">Monthly payment</div>
+            <div class="r-val" id="rMonthly">–</div>
+          </div>
+          <div class="result-box">
+            <div class="r-label">Total interest</div>
+            <div class="r-val" id="rInterest">–</div>
+          </div>
+          <div class="result-box">
+            <div class="r-label">Total repaid</div>
+            <div class="r-val" id="rTotal">–</div>
+          </div>
+        </div>
+
+        <!-- DONUT -->
+        <div class="donut-section">
+          <canvas id="donutChart" width="110" height="110" style="flex-shrink:0;width:110px;height:110px;"></canvas>
+          <div class="legend">
+            <div class="legend-item"><span class="leg-dot" style="background:#15803D"></span>Principal: <strong id="legP">–</strong></div>
+            <div class="legend-item"><span class="leg-dot" style="background:#DC2626"></span>Interest: <strong id="legI">–</strong></div>
+            <div class="legend-item"><span class="leg-dot" style="background:#1D4ED8"></span>Interest rate: <strong id="legR">–</strong></div>
+          </div>
+        </div>
+
+        <!-- LINE CHART -->
+        <div style="font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Balance over time</div>
+        <div class="chart-wrap">
+          <canvas id="lineChart"></canvas>
+        </div>
+
+        <!-- WHAT IF TIPS -->
+        <div style="font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:1rem 0 8px;">What if you...</div>
+        <div class="tips-grid" id="tipsGrid"></div>
+
+        <!-- ACTIONS -->
+        <div class="actions">
+          <button class="btn btn-sm btn-outline" onclick="shareResult()">🔗 Share</button>
+          <button class="btn btn-sm btn-ghost" onclick="window.print()">🖨️ Print</button>
+          <button class="btn btn-sm btn-ghost" onclick="resetForm()">↺ Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AMORTIZATION -->
+    <div class="card">
+      <div class="card-head">
+        <span>Amortization schedule</span>
+        <button class="btn btn-sm btn-ghost" onclick="copyTable()">📋 Copy table</button>
+      </div>
+      <div class="card-body" style="padding:0">
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Payment</th>
+                <th>Principal</th>
+                <th>Interest</th>
+                <th>Balance</th>
+              </tr>
+            </thead>
+            <tbody id="amortBody"></tbody>
+            <tfoot id="amortFoot"></tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPARE -->
+    <div class="card" id="compare">
+      <div class="card-head">Scenario comparison</div>
+      <div class="card-body">
+        <p style="font-size:13px;color:var(--muted);margin-bottom:1rem;">Compare your current loan against an alternative scenario.</p>
+        <div class="compare-grid">
+          <div>
+            <div class="field" style="margin-bottom:.75rem">
+              <label>Alt. interest rate</label>
+              <div class="input-wrap">
+                <input type="number" id="altRate" value="5.0" min="0.1" max="50" step="0.1" style="padding-left:12px" oninput="renderCompare()"/>
+                <span class="sfx">%/yr</span>
+              </div>
+            </div>
+            <div class="field">
+              <label>Alt. term</label>
+              <div class="input-wrap">
+                <input type="number" id="altTerm" value="3" min="1" max="30" style="padding-left:12px" oninput="renderCompare()"/>
+                <span class="sfx">years</span>
+              </div>
+            </div>
+          </div>
+          <div id="compareResult"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO CONTENT -->
+    <div class="seo-section">
+      <h2>How to use this calculator</h2>
+      <p>Enter your loan amount, annual interest rate, and term in years. Results update instantly as you type or drag the sliders. The amortization table shows a full month-by-month breakdown of principal and interest payments.</p>
+      <h3>The loan payment formula</h3>
+      <div class="formula">M = P × [r(1+r)ⁿ] / [(1+r)ⁿ − 1]<br><br>M = monthly payment &nbsp;|&nbsp; P = principal &nbsp;|&nbsp; r = monthly rate &nbsp;|&nbsp; n = payments</div>
+      <h3>Tips for a lower rate</h3>
+      <p>Your credit score is the biggest driver of the rate you're offered. A score above 750 typically unlocks the best rates. Shopping at least 3 lenders and paying down existing debt before applying can meaningfully reduce your cost of borrowing.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div id="faq" style="margin-bottom:2rem;">
+      <h2 style="font-family:'Syne',sans-serif;font-size:1.4rem;margin-bottom:1rem;">FAQ</h2>
+      <details><summary>What is APR vs interest rate?</summary><div class="faq-body">The interest rate is the cost of borrowing the principal. APR (Annual Percentage Rate) includes the rate plus fees like origination costs, giving a truer picture of the annual cost.</div></details>
+      <details><summary>How do I lower my monthly payment?</summary><div class="faq-body">Choose a longer term, secure a lower rate (improve your credit score or shop around), or borrow less. A longer term reduces monthly payments but increases total interest paid.</div></details>
+      <details><summary>Can I pay off my loan early?</summary><div class="faq-body">Most personal loans allow early repayment. Some lenders charge a prepayment penalty — check your agreement. Extra principal payments each month reduce total interest significantly.</div></details>
+      <details><summary>What credit score do I need?</summary><div class="faq-body">Most lenders require 580–600 minimum. The best rates go to borrowers above 720–740. Credit unions often offer better rates than traditional banks for fair-credit borrowers.</div></details>
+      <details><summary>Is this calculator accurate?</summary><div class="faq-body">This uses the standard amortization formula with fixed rate and no fees. For exact figures including origination fees and APR, always confirm with your lender directly.</div></details>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="ad-slot">
+      <!-- AdSense 300x250 -->
+      <!-- <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-XXXX" data-ad-slot="YYYY"></ins> -->
+      <span style="font-size:20px;opacity:.3">📢</span>
+      <span>Ad (300×250)</span>
+      <span class="ad-label">Advertisement</span>
+    </div>
+
+    <div class="card">
+      <div class="card-head">Quick tips</div>
+      <div class="card-body" style="font-size:13px;display:flex;flex-direction:column;gap:10px;color:var(--muted)">
+        <p>🏦 Compare at least 3 lenders — rates can vary by 2–5%.</p>
+        <p>📉 Check your score first via a soft inquiry before applying.</p>
+        <p>📆 Shorter term = less total interest, higher monthly payment.</p>
+        <p>💳 Watch out for origination fees of 1–6% added upfront.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">Other calculators</div>
+      <div class="card-body" style="display:flex;flex-direction:column;gap:8px;font-size:14px;">
+        <a href="#" style="color:var(--accent);text-decoration:none;">→ Mortgage Calculator</a>
+        <a href="#" style="color:var(--accent);text-decoration:none;">→ Car Loan Calculator</a>
+        <a href="#" style="color:var(--accent);text-decoration:none;">→ Interest Rate Calculator</a>
+        <a href="#" style="color:var(--accent);text-decoration:none;">→ Debt Payoff Calculator</a>
+        <a href="#" style="color:var(--accent);text-decoration:none;">→ Refinance Calculator</a>
+      </div>
+    </div>
+
+    <div class="ad-slot">
+      <!-- AdSense 300x250 -->
+      <span style="font-size:20px;opacity:.3">📢</span>
+      <span>Ad (300×250)</span>
+      <span class="ad-label">Advertisement</span>
+    </div>
+  </div>
+
+</div><!-- /main-wrap -->
+</div><!-- /page -->
+
+<!-- SHARE MODAL -->
+<div class="modal-bg" id="shareModal" onclick="closeModal(event)">
+  <div class="modal">
+    <h3>Share this result</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:.75rem;">Anyone with this link will see the same loan parameters.</p>
+    <div class="share-url" id="shareUrl"></div>
+    <div class="modal-actions">
+      <button class="btn btn-sm" style="flex:1" onclick="copyShareUrl()">📋 Copy link</button>
+      <button class="btn btn-sm btn-ghost" onclick="document.getElementById('shareModal').classList.remove('open')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 LoanCalcHub — For informational purposes only. Not financial advice.</p>
+  <p style="margin-top:6px;">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Use</a>
+    <a href="#">Contact</a>
+  </p>
+</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const fmt = v => '$' + v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmtK = v => v >= 1000 ? '$' + (v/1000).toFixed(1)+'k' : '$' + Math.round(v);
+
+// THEME
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  $('themeBtn').textContent = isDark ? '🌙' : '☀️';
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  if (lineChartInst) updateCharts();
+}
+const savedTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+$('themeBtn').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+// SLIDER SYNC
+function syncSlider(inputId, sliderId, val) {
+  $(inputId).value = val;
+}
+['amount','rate','term'].forEach(id => {
+  $(id).addEventListener('input', function() {
+    const sid = id === 'amount' ? 'amtSlider' : id === 'rate' ? 'rateSlider' : 'termSlider';
+    $(sid).value = this.value;
+  });
+});
+
+// LOAN TYPE PRESETS
+const presets = {
+  personal: {amount:10000, rate:7.5, term:5},
+  mortgage: {amount:250000, rate:6.5, term:30},
+  car:      {amount:25000, rate:5.9, term:5},
+  student:  {amount:30000, rate:4.5, term:10},
+};
+function setType(type, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  const p = presets[type];
+  $('amount').value = p.amount; $('amtSlider').value = p.amount;
+  $('rate').value = p.rate; $('rateSlider').value = p.rate;
+  $('term').value = p.term; $('termSlider').value = p.term;
+  liveCalc();
+}
+
+// CALCULATE
+let donutInst = null, lineChartInst = null;
+
+function calcLoan(P, annualRate, years, type) {
+  const r = annualRate / 100 / 12;
+  const n = Math.round(years * 12);
+  let monthly;
+  if (type === 'interest') { monthly = P * r; }
+  else { monthly = r === 0 ? P/n : P * (r * Math.pow(1+r,n)) / (Math.pow(1+r,n) - 1); }
+  const totalPaid = type === 'interest' ? monthly * n + P : monthly * n;
+  const totalInterest = totalPaid - P;
+  return { monthly, totalPaid, totalInterest, n, r, P };
+}
+
+function buildAmort(P, r, n, monthly, type) {
+  const rows = [];
+  let bal = P;
+  for (let i = 1; i <= n; i++) {
+    const intPmt = bal * r;
+    let prinPmt = type === 'interest' ? (i === n ? bal : 0) : Math.min(monthly - intPmt, bal);
+    if (i === n && type !== 'interest') prinPmt = bal;
+    const pmt = type === 'interest' ? (i === n ? monthly + bal : monthly) : monthly;
+    bal = Math.max(0, bal - prinPmt);
+    rows.push({ i, pmt, prin: prinPmt, int: intPmt, bal });
+  }
+  return rows;
+}
+
+function liveCalc() {
+  const P = parseFloat($('amount').value) || 0;
+  const annualRate = parseFloat($('rate').value) || 0;
+  const years = parseFloat($('term').value) || 0;
+  const type = $('loanType').value;
+  if (!P || !years) return;
+
+  const { monthly, totalPaid, totalInterest, n, r } = calcLoan(P, annualRate, years, type);
+
+  // Results
+  $('rMonthly').textContent = fmt(monthly);
+  $('rInterest').textContent = fmtK(totalInterest);
+  $('rTotal').textContent = fmtK(totalPaid);
+  $('legP').textContent = fmtK(P);
+  $('legI').textContent = fmtK(totalInterest);
+  $('legR').textContent = annualRate.toFixed(1) + '%';
+
+  // Amort table
+  const rows = buildAmort(P, r, n, monthly, type);
+  let tTot = 0, tPrin = 0, tInt = 0;
+  $('amortBody').innerHTML = rows.map(row => {
+    tTot += row.pmt; tPrin += row.prin; tInt += row.int;
+    return `<tr>
+      <td>${row.i}</td>
+      <td>${fmt(row.pmt)}</td>
+      <td class="td-pri">${fmt(row.prin)}</td>
+      <td class="td-int">${fmt(row.int)}</td>
+      <td>${fmt(row.bal)}</td>
+    </tr>`;
+  }).join('');
+  $('amortFoot').innerHTML = `<tr>
+    <td>Total</td><td>${fmt(tTot)}</td>
+    <td class="td-pri">${fmt(tPrin)}</td>
+    <td class="td-int">${fmt(tInt)}</td><td>–</td>
+  </tr>`;
+
+  // Donut
+  updateDonut(P, totalInterest);
+
+  // Line chart
+  updateLine(rows);
+
+  // What if tips
+  renderTips(P, annualRate, years, monthly, totalInterest, type);
+
+  // Compare
+  renderCompare();
+
+  // Save to localStorage
+  localStorage.setItem('lc_amount', $('amount').value);
+  localStorage.setItem('lc_rate', $('rate').value);
+  localStorage.setItem('lc_term', $('term').value);
+}
+
+// DONUT CHART
+function updateDonut(principal, interest) {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const ctx = $('donutChart').getContext('2d');
+  if (donutInst) donutInst.destroy();
+  donutInst = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      datasets: [{
+        data: [principal, interest],
+        backgroundColor: ['#15803D','#DC2626'],
+        borderWidth: 0,
+        hoverOffset: 4,
+      }]
+    },
+    options: {
+      cutout: '72%', responsive: false,
+      plugins: { legend: { display: false }, tooltip: {
+        callbacks: { label: ctx => ' ' + fmtK(ctx.raw) }
+      }}
+    }
+  });
+}
+
+// LINE CHART
+function updateLine(rows) {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const textColor = isDark ? '#A8A29E' : '#78716C';
+  const gridColor = isDark ? '#2E2B28' : '#E5E1D8';
+
+  // Sample every N months for performance
+  const step = Math.max(1, Math.floor(rows.length / 60));
+  const labels = [], balData = [], cumInt = [];
+  let ci = 0;
+  rows.filter((_,i) => i % step === 0 || i === rows.length-1).forEach(r => {
+    ci += r.int;
+    labels.push('M' + r.i);
+    balData.push(parseFloat(r.bal.toFixed(2)));
+    cumInt.push(parseFloat(ci.toFixed(2)));
+  });
+
+  const ctx = $('lineChart').getContext('2d');
+  if (lineChartInst) lineChartInst.destroy();
+  lineChartInst = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'Balance',
+          data: balData,
+          borderColor: '#15803D',
+          backgroundColor: 'rgba(21,128,61,.08)',
+          fill: true, tension: .4, pointRadius: 0, borderWidth: 2,
+        },
+        {
+          label: 'Cumul. interest',
+          data: cumInt,
+          borderColor: '#DC2626',
+          backgroundColor: 'rgba(220,38,38,.05)',
+          fill: true, tension: .4, pointRadius: 0, borderWidth: 2,
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { labels: { color: textColor, font: { size: 12 }, boxWidth: 10 }},
+        tooltip: { callbacks: { label: ctx => ' ' + fmtK(ctx.raw) }}
+      },
+      scales: {
+        x: { ticks: { color: textColor, maxTicksLimit: 8, font: { size: 11 } }, grid: { color: gridColor }},
+        y: { ticks: { color: textColor, font: { size: 11 }, callback: v => fmtK(v) }, grid: { color: gridColor }}
+      }
+    }
+  });
+}
+
+// WHAT IF TIPS
+function renderTips(P, rate, years, monthly, totalInt, type) {
+  const tips = [];
+  // Pay $100 extra
+  const extra = 100;
+  const r = rate/100/12;
+  const n = Math.round(years*12);
+  if (r > 0 && type === 'amortizing') {
+    const newMonthly = monthly + extra;
+    let bal = P, months = 0;
+    while (bal > 0 && months < 1000) {
+      bal = bal * (1+r) - newMonthly;
+      months++;
+    }
+    const saved = totalInt - (newMonthly * months - P);
+    const monthsSaved = n - months;
+    if (saved > 0) tips.push({ label: '+$100/month extra', val: 'Save ' + fmtK(Math.max(0,saved)) + ' · ' + monthsSaved + ' mo. faster' });
+  }
+  // 1% less rate
+  if (rate > 1) {
+    const { monthly: m2, totalInterest: ti2 } = calcLoan(P, rate-1, years, type);
+    tips.push({ label: '1% lower rate', val: fmt(monthly - m2) + '/mo less · Save ' + fmtK(totalInt - ti2) });
+  }
+  // 5 yr shorter
+  if (years > 5 && type === 'amortizing') {
+    const { monthly: m3, totalInterest: ti3 } = calcLoan(P, rate, years-5, type);
+    tips.push({ label: '5 yr shorter term', val: fmt(m3 - monthly) + '/mo more · Save ' + fmtK(totalInt - ti3) });
+  }
+  // 20% down
+  const down = P * 0.2;
+  if (down > 0) {
+    const { monthly: m4, totalInterest: ti4 } = calcLoan(P - down, rate, years, type);
+    tips.push({ label: '20% down payment', val: fmt(monthly - m4) + '/mo less · Save ' + fmtK(totalInt - ti4) });
+  }
+  $('tipsGrid').innerHTML = tips.map(t => `
+    <div class="tip-box">
+      <div class="tip-label">${t.label}</div>
+      <div class="tip-val">${t.val}</div>
+    </div>`).join('');
+}
+
+// COMPARE
+function renderCompare() {
+  const P = parseFloat($('amount').value) || 0;
+  const rate = parseFloat($('rate').value) || 0;
+  const years = parseFloat($('term').value) || 0;
+  const altRate = parseFloat($('altRate').value) || 0;
+  const altTerm = parseFloat($('altTerm').value) || 0;
+  const type = $('loanType').value;
+  if (!P || !years || !altRate || !altTerm) return;
+
+  const a = calcLoan(P, rate, years, type);
+  const b = calcLoan(P, altRate, altTerm, type);
+
+  const diff = (val, lowerIsBetter = true) => {
+    const better = lowerIsBetter ? val < 0 : val > 0;
+    const cls = better ? 'better' : 'worse';
+    const sign = val > 0 ? '+' : '';
+    return `<span class="${cls}">${sign}${fmt(Math.abs(val))}</span>`;
+  };
+
+  $('compareResult').innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div class="compare-col">
+        <h4>Current</h4>
+        <div class="compare-row"><span>Monthly</span><span>${fmt(a.monthly)}</span></div>
+        <div class="compare-row"><span>Interest</span><span>${fmtK(a.totalInterest)}</span></div>
+        <div class="compare-row"><span>Total paid</span><span>${fmtK(a.totalPaid)}</span></div>
+      </div>
+      <div class="compare-col">
+        <h4>Alternative</h4>
+        <div class="compare-row"><span>Monthly</span><span>${fmt(b.monthly)}</span></div>
+        <div class="compare-row"><span>Interest</span><span>${fmtK(b.totalInterest)}</span></div>
+        <div class="compare-row"><span>Total paid</span><span>${fmtK(b.totalPaid)}</span></div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:10px;background:var(--surface2);border-radius:var(--radius-sm);font-size:13px;">
+      <strong>Difference:</strong> ${b.monthly < a.monthly ? '✅ Alt. saves' : '⚠️ Alt. costs'} 
+      <strong>${fmt(Math.abs(a.monthly - b.monthly))}/mo</strong> and 
+      ${b.totalInterest < a.totalInterest ? 'saves' : 'costs'} 
+      <strong>${fmtK(Math.abs(a.totalInterest - b.totalInterest))}</strong> total interest.
+    </div>`;
+}
+
+// SHARE
+function shareResult() {
+  const params = new URLSearchParams({
+    a: $('amount').value,
+    r: $('rate').value,
+    t: $('term').value,
+    type: $('loanType').value,
+  });
+  const url = window.location.origin + window.location.pathname + '?' + params.toString();
+  $('shareUrl').textContent = url;
+  $('shareModal').classList.add('open');
+}
+function copyShareUrl() {
+  navigator.clipboard.writeText($('shareUrl').textContent);
+  showToast('Link copied!');
+}
+function closeModal(e) {
+  if (e.target === $('shareModal')) $('shareModal').classList.remove('open');
+}
+
+// COPY RESULTS
+function copyResults() {
+  const text = `Loan Calculator Results\nMonthly Payment: ${$('rMonthly').textContent}\nTotal Interest: ${$('rInterest').textContent}\nTotal Repaid: ${$('rTotal').textContent}`;
+  navigator.clipboard.writeText(text);
+  showToast('Results copied!');
+}
+
+// COPY TABLE
+function copyTable() {
+  const rows = Array.from(document.querySelectorAll('#amortBody tr')).map(r =>
+    Array.from(r.querySelectorAll('td')).map(td => td.textContent).join('\t')
+  );
+  navigator.clipboard.writeText('Month\tPayment\tPrincipal\tInterest\tBalance\n' + rows.join('\n'));
+  showToast('Table copied to clipboard!');
+}
+
+// RESET
+function resetForm() {
+  $('amount').value = 10000; $('amtSlider').value = 10000;
+  $('rate').value = 7.5; $('rateSlider').value = 7.5;
+  $('term').value = 5; $('termSlider').value = 5;
+  $('loanType').value = 'amortizing';
+  localStorage.removeItem('lc_amount');
+  localStorage.removeItem('lc_rate');
+  localStorage.removeItem('lc_term');
+  liveCalc();
+  showToast('Reset to defaults');
+}
+
+// TOAST
+function showToast(msg) {
+  const t = $('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// LOAD FROM URL PARAMS OR LOCALSTORAGE
+window.addEventListener('load', () => {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('a')) {
+    $('amount').value = params.get('a'); $('amtSlider').value = params.get('a');
+    $('rate').value = params.get('r'); $('rateSlider').value = params.get('r');
+    $('term').value = params.get('t'); $('termSlider').value = params.get('t');
+    if (params.get('type')) $('loanType').value = params.get('type');
+  } else {
+    const saved = { amount: localStorage.getItem('lc_amount'), rate: localStorage.getItem('lc_rate'), term: localStorage.getItem('lc_term') };
+    if (saved.amount) { $('amount').value = saved.amount; $('amtSlider').value = saved.amount; }
+    if (saved.rate) { $('rate').value = saved.rate; $('rateSlider').value = saved.rate; }
+    if (saved.term) { $('term').value = saved.term; $('termSlider').value = saved.term; }
+  }
+  liveCalc();
+});
+</script>
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"LoanCalcHub","description":"Free loan calculator with monthly payments, interest breakdown and amortization schedule.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"url":"https://loancalchub.net"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is APR vs interest rate?","acceptedAnswer":{"@type":"Answer","text":"The interest rate is the cost of borrowing the principal. APR includes the rate plus fees, giving a truer picture of annual cost."}},{"@type":"Question","name":"How do I lower my monthly payment?","acceptedAnswer":{"@type":"Answer","text":"Choose a longer term, secure a lower rate, or borrow less. Longer term reduces monthly payments but increases total interest."}}]}
+</script>
+</body>
+</html>
