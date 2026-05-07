@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Kalkulačka Pôžičky – Výpočet Mesačnej Splátky Zadarmo | LoanCalcHub</title>
+<meta name="description" content="Kalkulačka pôžičky – vypočítajte mesačnú splátku, celkový úrok a amortizačný plán okamžite. Zadarmo, bez registrácie. Hypotéka, auto úver, refinancovanie."/>
+<meta name="keywords" content="kalkulačka pôžičky, výpočet mesačnej splátky, úverová kalkulačka, kalkulačka hypotéky, amortizačný plán, RPMN kalkulačka"/>
+<meta name="robots" content="index, follow"/>
+<meta name="google-site-verification" content="PTa07iq9_YwK1W9uu42S9b_vqOnCGgEjgVTiPhvzjx0"/>
+<meta name="impact-site-verification" value="c3f4a7b7-7ad7-4cea-9393-90bcba8b614e"/>
+<link rel="canonical" href="https://loancalchub.net/kalkulacka-pozicky"/>
+<link rel="alternate" hreflang="sk" href="https://loancalchub.net/kalkulacka-pozicky"/>
+<link rel="alternate" hreflang="en" href="https://loancalchub.net/"/>
+<link rel="alternate" hreflang="cs" href="https://loancalchub.net/kalkulacka-pujcky"/>
+<link rel="alternate" hreflang="x-default" href="https://loancalchub.net/"/>
+<meta property="og:title" content="Kalkulačka Pôžičky – Výpočet Mesačnej Splátky | LoanCalcHub"/>
+<meta property="og:description" content="Vypočítajte mesačnú splátku, celkový úrok a amortizačný plán okamžite. Zadarmo, bez registrácie."/>
+<meta property="og:url" content="https://loancalchub.net/kalkulacka-pozicky"/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="https://loancalchub.net/og.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Kalkulačka Pôžičky Zadarmo | LoanCalcHub"/>
+<meta name="twitter:description" content="Výpočet mesačnej splátky, úrokov a amortizačného plánu okamžite."/>
+<meta name="twitter:image" content="https://loancalchub.net/og.png"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Kalkulačka Pôžičky","url":"https://loancalchub.net/kalkulacka-pozicky","description":"Bezplatná kalkulačka pôžičky s výpočtom mesačnej splátky, amortizačným plánom a predčasným splatením.","inLanguage":"sk","isPartOf":{"@type":"WebSite","name":"LoanCalcHub","url":"https://loancalchub.net"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Ako vypočítam mesačnú splátku pôžičky?","acceptedAnswer":{"@type":"Answer","text":"Mesačná splátka sa vypočíta podľa vzorca: M = P × [r(1+r)ⁿ] / [(1+r)ⁿ − 1], kde P je výška pôžičky, r je mesačná úroková sadzba a n je počet splátok. Naša kalkulačka to vypočíta okamžite po zadaní hodnôt."}},{"@type":"Question","name":"Čo je RPMN?","acceptedAnswer":{"@type":"Answer","text":"RPMN (ročná percentuálna miera nákladov) zahŕňa nielen úrokovú sadzbu, ale aj všetky poplatky spojené s pôžičkou. Je lepším ukazovateľom skutočných nákladov ako samotná úroková sadzba."}},{"@type":"Question","name":"Oplatí sa predčasné splatenie pôžičky?","acceptedAnswer":{"@type":"Answer","text":"Áno, predčasné splatenie môže ušetriť značnú sumu na úrokoch. Naša kalkulačka predčasného splatenia ukáže presne koľko ušetríte a o koľko sa skráti doba splácania."}},{"@type":"Question","name":"Aká úroková sadzba je dobrá na pôžičku?","acceptedAnswer":{"@type":"Answer","text":"Na Slovensku sa úrokové sadzby spotrebiteľských pôžičiek pohybujú od 5% do 15% ročne. Sadzba závisí od vašej bonity, výšky pôžičky a doby splácania. Porovnajte aspoň 3 banky."}},{"@type":"Question","name":"Koľko môžem splácať mesačne?","acceptedAnswer":{"@type":"Answer","text":"Banky odporúčajú aby mesačné splátky nepresahovali 35-40% čistého mesačného príjmu. Pomocou našej kalkulačky DTI (pomer dlhu k príjmu) si môžete vypočítať optimálnu výšku splátky."}}]}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.7;color:#1A1714;background:#F6F3ED}
+.header{background:#15803D;color:#fff;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:1.2rem;font-weight:700;text-decoration:none;color:#fff}
+.header nav{display:flex;gap:1.5rem}
+.header nav a{color:rgba(255,255,255,.85);text-decoration:none;font-size:14px}
+.header nav a:hover{color:#fff}
+.hero{background:linear-gradient(135deg,#15803D 0%,#166534 100%);color:#fff;padding:3rem 1.5rem;text-align:center}
+.hero h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;margin-bottom:.75rem;line-height:1.2}
+.hero p{font-size:1.05rem;opacity:.88;max-width:560px;margin:0 auto 1.5rem}
+.hero-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
+.chip{background:rgba(255,255,255,.15);color:#fff;padding:5px 14px;border-radius:20px;font-size:13px;border:1px solid rgba(255,255,255,.25)}
+.cta-btn{display:inline-block;background:#fff;color:#15803D;font-weight:700;font-size:1rem;padding:12px 28px;border-radius:30px;text-decoration:none;transition:opacity .15s}
+.cta-btn:hover{opacity:.9}
+.page{max-width:860px;margin:0 auto;padding:2rem 1.5rem}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:2rem;margin-bottom:2rem}
+h2{font-size:1.5rem;font-weight:700;color:#15803D;margin-bottom:1rem;margin-top:1.5rem}
+h2:first-child{margin-top:0}
+h3{font-size:1.15rem;font-weight:600;margin-bottom:.5rem;margin-top:1.25rem;color:#1A1714}
+p{color:#4B4845;margin-bottom:1rem}
+ul,ol{padding-left:1.5rem;margin-bottom:1rem;color:#4B4845}
+li{margin-bottom:.4rem}
+.formula-box{background:#F6F3ED;border:1px solid #DDD8CE;border-radius:8px;padding:1rem 1.25rem;font-family:monospace;font-size:15px;margin:1rem 0;color:#1A1714}
+.faq-item{border-bottom:1px solid #DDD8CE;padding:1rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:600;color:#1A1714;margin-bottom:.4rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-a{color:#4B4845;font-size:15px}
+.comparison-table{width:100%;border-collapse:collapse;margin:1rem 0}
+.comparison-table th{background:#15803D;color:#fff;padding:10px 14px;text-align:left;font-size:14px}
+.comparison-table td{padding:10px 14px;border-bottom:1px solid #DDD8CE;font-size:14px;color:#1A1714}
+.comparison-table tr:nth-child(even) td{background:#F6F3ED}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:1.5rem 0}
+.stat-card{background:#F6F3ED;border-radius:8px;padding:1rem;text-align:center}
+.stat-num{font-size:1.6rem;font-weight:700;color:#15803D}
+.stat-label{font-size:12px;color:#6B6460;margin-top:4px}
+.breadcrumb{font-size:13px;color:#6B6460;margin-bottom:1.5rem}
+.breadcrumb a{color:#15803D;text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.internal-links{display:flex;gap:8px;flex-wrap:wrap;margin:1.5rem 0}
+.int-link{padding:8px 16px;background:#F6F3ED;border:1px solid #DDD8CE;border-radius:20px;font-size:13px;color:#15803D;text-decoration:none;font-weight:500}
+.int-link:hover{background:#DCFCE7;border-color:#15803D}
+footer{background:#1A1714;color:rgba(255,255,255,.7);text-align:center;padding:2rem;font-size:13px;margin-top:3rem}
+footer a{color:rgba(255,255,255,.7);text-decoration:none;margin:0 .5rem}
+@media(max-width:600px){.hero{padding:2rem 1rem}.page{padding:1.5rem 1rem}.card{padding:1.25rem}}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a href="https://loancalchub.net/" class="logo">🧮 LoanCalcHub</a>
+  <nav>
+    <a href="https://loancalchub.net/">Kalkulačka</a>
+    <a href="https://loancalchub.net/kalkulacka-pozicky">SK</a>
+    <a href="https://loancalchub.net/kalkulacka-pujcky">CZ</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Kalkulačka Pôžičky – Výpočet Mesačnej Splátky</h1>
+  <p>Okamžitý výpočet mesačnej splátky, celkového úroku a amortizačného plánu. Zadarmo, bez registrácie, bez reklám.</p>
+  <div class="hero-chips">
+    <span class="chip">✓ Zadarmo</span>
+    <span class="chip">✓ Bez registrácie</span>
+    <span class="chip">✓ Okamžité výsledky</span>
+    <span class="chip">✓ Amortizačný plán</span>
+    <span class="chip">✓ Predčasné splatenie</span>
+  </div>
+  <a href="https://loancalchub.net/?lang=sk" class="cta-btn">Spustiť kalkulačku →</a>
+</div>
+
+<div class="page">
+  <nav class="breadcrumb" aria-label="breadcrumb">
+    <a href="https://loancalchub.net/">LoanCalcHub</a> › <span>Kalkulačka pôžičky (SK)</span>
+  </nav>
+
+  <div class="internal-links">
+    <a href="https://loancalchub.net/?lang=sk#calculator" class="int-link">🏦 Osobná pôžička</a>
+    <a href="https://loancalchub.net/?lang=sk" class="int-link">🏠 Hypotéka</a>
+    <a href="https://loancalchub.net/?lang=sk" class="int-link">🚗 Auto úver</a>
+    <a href="https://loancalchub.net/?lang=sk" class="int-link">🔄 Refinancovanie</a>
+    <a href="https://loancalchub.net/?lang=sk" class="int-link">📉 DTI kalkulačka</a>
+  </div>
+
+  <div class="card">
+    <h2>Ako vypočítať mesačnú splátku pôžičky</h2>
+    <p>Mesačná splátka pôžičky závisí od troch základných faktorov: výšky pôžičky (istiny), úrokovej sadzby a doby splácania. Čím dlhšia doba splácania, tým nižšia mesačná splátka – ale celkovo zaplatíte viac na úrokoch.</p>
+
+    <h3>Vzorec pre výpočet mesačnej splátky</h3>
+    <div class="formula-box">M = P × [r(1+r)ⁿ] / [(1+r)ⁿ − 1]
+
+M = mesačná splátka
+P = výška pôžičky (istina)
+r = mesačná úroková sadzba (ročná sadzba ÷ 12)
+n = celkový počet splátok (roky × 12)</div>
+
+    <h3>Príklad výpočtu</h3>
+    <p>Pôžička 10 000 € pri 8% ročnej sadzbe na 5 rokov (60 mesiacov):</p>
+    <ul>
+      <li>Mesačná úroková sadzba: 8% ÷ 12 = 0,667%</li>
+      <li>Mesačná splátka: <strong>203,00 €</strong></li>
+      <li>Celkovo zaplatíte: 12 180 €</li>
+      <li>Z toho úroky: 2 180 €</li>
+    </ul>
+
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-num">203 €</div><div class="stat-label">Mesačná splátka</div></div>
+      <div class="stat-card"><div class="stat-num">2 180 €</div><div class="stat-label">Celkové úroky</div></div>
+      <div class="stat-card"><div class="stat-num">12 180 €</div><div class="stat-label">Celková platba</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Typy pôžičiek na Slovensku</h2>
+    <table class="comparison-table">
+      <thead>
+        <tr><th>Typ pôžičky</th><th>Typická sadzba</th><th>Doba</th><th>Najlepšie pre</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Spotrebiteľský úver</strong></td><td>6–15%</td><td>1–8 rokov</td><td>Nákupy, rekonštrukcia, splácanie dlhov</td></tr>
+        <tr><td><strong>Hypotéka</strong></td><td>4–6%</td><td>10–30 rokov</td><td>Kúpa nehnuteľnosti</td></tr>
+        <tr><td><strong>Auto úver</strong></td><td>5–12%</td><td>2–7 rokov</td><td>Kúpa vozidla</td></tr>
+        <tr><td><strong>Konsolidácia</strong></td><td>7–14%</td><td>1–10 rokov</td><td>Zlúčenie viacerých dlhov</td></tr>
+        <tr><td><strong>Americká hypotéka</strong></td><td>5–9%</td><td>5–20 rokov</td><td>Keď potrebujete väčšiu sumu bez účelu</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Tipy na nižšiu mesačnú splátku</h2>
+    <ul>
+      <li><strong>Porovnajte aspoň 3 banky</strong> – úrokové sadzby sa môžu líšiť o 2–5 percentuálnych bodov pri rovnakej pôžičke</li>
+      <li><strong>Zlepšite svoj kreditný skóre</strong> – splaťte existujúce dlhy pred žiadosťou o novú pôžičku</li>
+      <li><strong>Vyberte správnu dobu splácania</strong> – dlhšia doba znižuje mesačnú splátku, ale zvyšuje celkové úroky</li>
+      <li><strong>Sledujte RPMN, nie len úrokovú sadzbu</strong> – RPMN zahŕňa všetky poplatky a dáva reálnejší obraz</li>
+      <li><strong>Zvážte predčasné splatenie</strong> – aj malé extra platby každý mesiac môžu ušetriť stovky eur</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Amortizačný plán – čo to je a prečo ho potrebujete</h2>
+    <p>Amortizačný plán (splátkový kalendár) je tabuľka, ktorá zobrazuje každú splátku počas celej doby splácania pôžičky. Pre každý mesiac ukazuje koľko ide na splátku istiny (samotnej pôžičky) a koľko na úroky.</p>
+    <p>Na začiatku splácania väčšina splátky pokrýva úroky. Postupne sa pomer mení – stále viac ide na istinu a menej na úroky. Naša kalkulačka generuje úplný amortizačný plán pre celú dobu splácania, ktorý si môžete aj exportovať do CSV súboru.</p>
+
+    <h3>Predčasné splatenie</h3>
+    <p>Platbou extra sumy každý mesiac môžete výrazne skrátiť dobu splácania a ušetriť na úrokoch. Príklad: pri pôžičke 10 000 € na 5 rokov pri 8% – extra platba 50 € mesačne ušetrí asi 280 € na úrokoch a skráti splácanie o 8 mesiacov. Použite našu kalkulačku predčasného splatenia pre presný výpočet.</p>
+  </div>
+
+  <div class="card">
+    <h2>Najčastejšie otázky (FAQ)</h2>
+    <div class="faq-item">
+      <div class="faq-q">Ako vypočítam mesačnú splátku pôžičky?</div>
+      <div class="faq-a">Zadajte do kalkulačky výšku pôžičky, ročnú úrokovú sadzbu a dobu splácania v rokoch. Výsledok sa zobrazí okamžite – mesačná splátka, celkový úrok aj amortizačný plán.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Čo je RPMN a prečo je dôležitejšia ako úroková sadzba?</div>
+      <div class="faq-a">RPMN (ročná percentuálna miera nákladov) zahŕňa nielen úrokovú sadzbu, ale aj všetky poplatky – za poskytnutie úveru, vedenie účtu a iné. Je preto lepším ukazovateľom skutočných nákladov na pôžičku.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Oplatí sa predčasné splatenie pôžičky?</div>
+      <div class="faq-a">Vo väčšine prípadov áno – ušetríte na úrokoch a zbavíte sa dlhu skôr. Niektoré banky si však účtujú poplatky za predčasné splatenie. Vždy si to overte priamo s bankou a použite našu kalkulačku predčasného splatenia pre výpočet úspor.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Koľko pôžičky si môžem dovoliť?</div>
+      <div class="faq-a">Banky odporúčajú aby mesačné splátky všetkých dlhov nepresahovali 35–40% čistého mesačného príjmu. Naša DTI kalkulačka (pomer dlhu k príjmu) vám pomôže zistiť optimálnu výšku pôžičky vzhľadom na vaše príjmy.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Je táto kalkulačka presná?</div>
+      <div class="faq-a">Kalkulačka používa štandardný vzorec anuitného splácania s fixnou úrokovou sadzbou. Výsledky sú orientačné – skutočná splátka sa môže líšiť podľa poplatkov, spôsobu úročenia a ďalších podmienok konkrétnej banky.</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin:2rem 0">
+    <a href="https://loancalchub.net/?lang=sk" class="cta-btn" style="background:#15803D;color:#fff;font-size:1.1rem;padding:14px 32px">
+      Spustiť kalkulačku pôžičky →
+    </a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 LoanCalcHub – Len na informačné účely. Nie je finančným poradenstvom.</p>
+  <p style="margin-top:.5rem">
+    <a href="https://loancalchub.net/">EN</a>
+    <a href="https://loancalchub.net/kalkulacka-pozicky">SK</a>
+    <a href="https://loancalchub.net/kalkulacka-pujcky">CZ</a>
+    <a href="https://loancalchub.net/?lang=de">DE</a>
+    <a href="https://loancalchub.net/?lang=pl">PL</a>
+  </p>
+</footer>
+
+</body>
+</html>

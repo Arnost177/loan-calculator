@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Free Loan Calculator with Amortization Schedule – No Signup | LoanCalcHub</title>
+<meta name="description" content="Free loan calculator with full amortization schedule. Calculate monthly payments, total interest and early payoff instantly — no signup needed. Mortgage, car loan, refinance, DTI. 8 languages."/>
+<meta name="keywords" content="loan calculator, loan calculator with amortization, free loan calculator no signup, monthly payment calculator, mortgage calculator with taxes and insurance, debt to income ratio calculator, early payoff calculator"/>
+<meta name="robots" content="index, follow"/>
+<meta name="google-site-verification" content="PTa07iq9_YwK1W9uu42S9b_vqOnCGgEjgVTiPhvzjx0"/>
+<meta name="impact-site-verification" value="c3f4a7b7-7ad7-4cea-9393-90bcba8b614e"/>
+<link rel="canonical" href="https://loancalchub.net/loan-calculator"/>
+<link rel="alternate" hreflang="en" href="https://loancalchub.net/loan-calculator"/>
+<link rel="alternate" hreflang="sk" href="https://loancalchub.net/kalkulacka-pozicky"/>
+<link rel="alternate" hreflang="cs" href="https://loancalchub.net/kalkulacka-pujcky"/>
+<link rel="alternate" hreflang="x-default" href="https://loancalchub.net/"/>
+<meta property="og:title" content="Free Loan Calculator with Amortization – No Signup | LoanCalcHub"/>
+<meta property="og:description" content="Calculate monthly payments, total interest and full amortization schedule. Free, no signup required. Mortgage, car, refinance, DTI. 8 languages."/>
+<meta property="og:url" content="https://loancalchub.net/loan-calculator"/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="https://loancalchub.net/og.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Free Loan Calculator with Amortization | LoanCalcHub"/>
+<meta name="twitter:description" content="Monthly payments, amortization schedule, early payoff — instant, free, no signup."/>
+<meta name="twitter:image" content="https://loancalchub.net/og.png"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Free Loan Calculator with Amortization Schedule","url":"https://loancalchub.net/loan-calculator","description":"Free loan calculator with amortization schedule, mortgage calculator, car loan calculator, refinance calculator and DTI calculator. No signup required. 8 languages.","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"LoanCalcHub","url":"https://loancalchub.net"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a loan amortization schedule?","acceptedAnswer":{"@type":"Answer","text":"An amortization schedule is a complete table of loan payments, showing each payment's breakdown into principal and interest over the life of the loan. In early payments, most goes to interest. Over time, more goes to principal. LoanCalcHub generates a full amortization table for any loan."}},{"@type":"Question","name":"How do I calculate my monthly loan payment?","acceptedAnswer":{"@type":"Answer","text":"Monthly payment = P × [r(1+r)ⁿ] / [(1+r)ⁿ − 1], where P is the loan amount, r is the monthly interest rate (annual rate ÷ 12), and n is the number of payments. Enter your figures in the calculator for instant results."}},{"@type":"Question","name":"What is a debt-to-income ratio (DTI)?","acceptedAnswer":{"@type":"Answer","text":"DTI is the percentage of your gross monthly income that goes toward debt payments. Most lenders require DTI below 43%. Calculate yours with the DTI calculator on LoanCalcHub."}},{"@type":"Question","name":"Does this loan calculator require signup?","acceptedAnswer":{"@type":"Answer","text":"No. LoanCalcHub is 100% free with no account required. All calculators — loan, mortgage, car, refinance, DTI, compound interest — work instantly without registration."}},{"@type":"Question","name":"Can I calculate early payoff savings?","acceptedAnswer":{"@type":"Answer","text":"Yes. The early payoff calculator shows exactly how much interest you save and how much faster you pay off the loan by making extra monthly payments."}}]}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.7;color:#1A1714;background:#F6F3ED}
+.header{background:#15803D;color:#fff;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:1.2rem;font-weight:700;text-decoration:none;color:#fff}
+.header nav{display:flex;gap:1.5rem;flex-wrap:wrap}
+.header nav a{color:rgba(255,255,255,.85);text-decoration:none;font-size:14px}
+.hero{background:linear-gradient(135deg,#15803D 0%,#166534 100%);color:#fff;padding:3rem 1.5rem;text-align:center}
+.hero h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:800;margin-bottom:.75rem;line-height:1.2}
+.hero p{font-size:1.05rem;opacity:.88;max-width:580px;margin:0 auto 1.5rem}
+.hero-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
+.chip{background:rgba(255,255,255,.15);color:#fff;padding:5px 14px;border-radius:20px;font-size:13px;border:1px solid rgba(255,255,255,.25)}
+.cta-btn{display:inline-block;background:#fff;color:#15803D;font-weight:700;font-size:1rem;padding:12px 28px;border-radius:30px;text-decoration:none}
+.cta-btn:hover{opacity:.9}
+.page{max-width:860px;margin:0 auto;padding:2rem 1.5rem}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:2rem;margin-bottom:2rem}
+h2{font-size:1.5rem;font-weight:700;color:#15803D;margin-bottom:1rem;margin-top:1.5rem}
+h2:first-child{margin-top:0}
+h3{font-size:1.15rem;font-weight:600;margin-bottom:.5rem;margin-top:1.25rem}
+p{color:#4B4845;margin-bottom:1rem}
+ul,ol{padding-left:1.5rem;margin-bottom:1rem;color:#4B4845}
+li{margin-bottom:.4rem}
+.formula-box{background:#F6F3ED;border:1px solid #DDD8CE;border-radius:8px;padding:1rem 1.25rem;font-family:monospace;font-size:15px;margin:1rem 0}
+.faq-item{border-bottom:1px solid #DDD8CE;padding:1rem 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-weight:600;margin-bottom:.4rem}
+.faq-a{color:#4B4845;font-size:15px}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:1.5rem 0}
+.feature-card{background:#F6F3ED;border-radius:8px;padding:1.25rem;border-left:3px solid #15803D}
+.feature-icon{font-size:24px;margin-bottom:.5rem}
+.feature-title{font-weight:600;font-size:15px;margin-bottom:.3rem}
+.feature-desc{font-size:13px;color:#6B6460}
+.comparison-table{width:100%;border-collapse:collapse;margin:1rem 0}
+.comparison-table th{background:#15803D;color:#fff;padding:10px 14px;text-align:left;font-size:14px}
+.comparison-table td{padding:10px 14px;border-bottom:1px solid #DDD8CE;font-size:14px}
+.comparison-table tr:nth-child(even) td{background:#F6F3ED}
+.check{color:#15803D;font-weight:700}
+.cross{color:#DC2626}
+.breadcrumb{font-size:13px;color:#6B6460;margin-bottom:1.5rem}
+.breadcrumb a{color:#15803D;text-decoration:none}
+.internal-links{display:flex;gap:8px;flex-wrap:wrap;margin:1.5rem 0}
+.int-link{padding:8px 16px;background:#F6F3ED;border:1px solid #DDD8CE;border-radius:20px;font-size:13px;color:#15803D;text-decoration:none;font-weight:500}
+.int-link:hover{background:#DCFCE7;border-color:#15803D}
+.lang-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:1rem 0}
+.lang-link{display:block;padding:.6rem;background:#F6F3ED;border-radius:8px;text-align:center;font-size:13px;color:#15803D;text-decoration:none;border:1px solid #DDD8CE}
+.lang-link:hover{background:#DCFCE7}
+footer{background:#1A1714;color:rgba(255,255,255,.7);text-align:center;padding:2rem;font-size:13px;margin-top:3rem}
+footer a{color:rgba(255,255,255,.7);text-decoration:none;margin:0 .5rem}
+@media(max-width:600px){.hero{padding:2rem 1rem}.page{padding:1.5rem 1rem}.card{padding:1.25rem}}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a href="https://loancalchub.net/" class="logo">🧮 LoanCalcHub</a>
+  <nav>
+    <a href="https://loancalchub.net/">Calculator</a>
+    <a href="https://loancalchub.net/kalkulacka-pozicky">SK</a>
+    <a href="https://loancalchub.net/kalkulacka-pujcky">CZ</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Free Loan Calculator with Amortization Schedule</h1>
+  <p>Calculate monthly payments, total interest and full amortization schedule instantly. No signup, no ads, no fluff. Mortgage, car loan, refinance and DTI calculators included.</p>
+  <div class="hero-chips">
+    <span class="chip">✓ No signup required</span>
+    <span class="chip">✓ Full amortization table</span>
+    <span class="chip">✓ Instant results</span>
+    <span class="chip">✓ 8 languages</span>
+    <span class="chip">✓ Early payoff calculator</span>
+  </div>
+  <a href="https://loancalchub.net/" class="cta-btn">Open Calculator →</a>
+</div>
+
+<div class="page">
+  <nav class="breadcrumb" aria-label="breadcrumb">
+    <a href="https://loancalchub.net/">LoanCalcHub</a> › <span>Loan Calculator</span>
+  </nav>
+
+  <div class="internal-links">
+    <a href="https://loancalchub.net/" class="int-link">🏦 Personal Loan</a>
+    <a href="https://loancalchub.net/" class="int-link">🏠 Mortgage Calculator</a>
+    <a href="https://loancalchub.net/" class="int-link">🚗 Car Loan Calculator</a>
+    <a href="https://loancalchub.net/" class="int-link">🔄 Refinance Calculator</a>
+    <a href="https://loancalchub.net/" class="int-link">📉 DTI Calculator</a>
+    <a href="https://loancalchub.net/" class="int-link">📈 Compound Interest</a>
+  </div>
+
+  <div class="card">
+    <h2>What Makes LoanCalcHub Different</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <div class="feature-title">Full amortization schedule</div>
+        <div class="feature-desc">See every payment broken down into principal and interest for the entire loan term. Export to CSV.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚫</div>
+        <div class="feature-title">Zero signup required</div>
+        <div class="feature-desc">No account, no email, no cookies wall. Open and calculate immediately.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Instant live results</div>
+        <div class="feature-desc">Results update as you type or drag sliders. No calculate button to click.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <div class="feature-title">8 languages</div>
+        <div class="feature-desc">EN, SK, CS, DE, PL, HU, RU, ES — auto-detected by your location. Currency-aware.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <div class="feature-title">Early payoff calculator</div>
+        <div class="feature-desc">See exactly how much interest you save with extra monthly payments.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚖️</div>
+        <div class="feature-title">Scenario comparison</div>
+        <div class="feature-desc">Compare two loan scenarios side by side — different rates, terms or amounts.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>How to Calculate Loan Payments</h2>
+    <p>A loan payment is calculated using the standard amortization formula. The three inputs that determine your monthly payment are:</p>
+    <ol>
+      <li><strong>Principal (P)</strong> — the amount you're borrowing</li>
+      <li><strong>Interest rate (r)</strong> — the annual rate divided by 12 to get the monthly rate</li>
+      <li><strong>Term (n)</strong> — the number of monthly payments (years × 12)</li>
+    </ol>
+
+    <h3>The loan payment formula</h3>
+    <div class="formula-box">M = P × [r(1+r)ⁿ] / [(1+r)ⁿ − 1]
+
+Example: $20,000 at 7% for 5 years (60 months)
+Monthly rate r = 7% ÷ 12 = 0.5833%
+Monthly payment M = $396.02
+Total repaid = $23,761
+Total interest = $3,761</div>
+
+    <h3>How to lower your monthly payment</h3>
+    <ul>
+      <li>Choose a longer repayment term (raises total interest paid)</li>
+      <li>Secure a lower interest rate (improve credit score, compare lenders)</li>
+      <li>Borrow less by increasing your down payment</li>
+      <li>Refinance an existing loan when rates drop</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>All Calculators</h2>
+    <table class="comparison-table">
+      <thead><tr><th>Calculator</th><th>What it calculates</th><th>Key feature</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Personal loan</strong></td><td>Monthly payment, total interest, amortization</td><td>Full schedule + early payoff</td></tr>
+        <tr><td><strong>Mortgage (PITI)</strong></td><td>Payment including tax and insurance</td><td>Live FRED rate data</td></tr>
+        <tr><td><strong>Car loan</strong></td><td>Auto payment with trade-in and tax</td><td>Trade-in value deduction</td></tr>
+        <tr><td><strong>Refinance</strong></td><td>Monthly savings and break-even point</td><td>Break-even analysis</td></tr>
+        <tr><td><strong>DTI calculator</strong></td><td>Debt-to-income ratio</td><td>Lender approval likelihood</td></tr>
+        <tr><td><strong>Compound interest</strong></td><td>Investment growth with contributions</td><td>Monthly contribution impact</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>LoanCalcHub vs Other Calculators</h2>
+    <table class="comparison-table">
+      <thead><tr><th>Feature</th><th>LoanCalcHub</th><th>NerdWallet</th><th>Bankrate</th></tr></thead>
+      <tbody>
+        <tr><td>No signup required</td><td class="check">✓</td><td class="cross">✗</td><td class="check">✓</td></tr>
+        <tr><td>Full amortization table</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Early payoff calculator</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Scenario comparison</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+        <tr><td>8 language support</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+        <tr><td>Currency auto-conversion</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+        <tr><td>CSV export</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+        <tr><td>Ad-free</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Available in 8 Languages</h2>
+    <p>LoanCalcHub automatically detects your country and switches language. Or pick manually:</p>
+    <div class="lang-grid">
+      <a href="https://loancalchub.net/" class="lang-link">🇺🇸 English</a>
+      <a href="https://loancalchub.net/kalkulacka-pozicky" class="lang-link">🇸🇰 Slovenčina</a>
+      <a href="https://loancalchub.net/kalkulacka-pujcky" class="lang-link">🇨🇿 Čeština</a>
+      <a href="https://loancalchub.net/?lang=de" class="lang-link">🇩🇪 Deutsch</a>
+      <a href="https://loancalchub.net/?lang=pl" class="lang-link">🇵🇱 Polski</a>
+      <a href="https://loancalchub.net/?lang=hu" class="lang-link">🇭🇺 Magyar</a>
+      <a href="https://loancalchub.net/?lang=ru" class="lang-link">🇷🇺 Русский</a>
+      <a href="https://loancalchub.net/?lang=es" class="lang-link">🇪🇸 Español</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Does this loan calculator require a signup or account?</div>
+      <div class="faq-a">No. LoanCalcHub is completely free with no account required. All calculators work instantly without registration — unlike many competitors that require you to create an account to see full results.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is a loan amortization schedule?</div>
+      <div class="faq-a">An amortization schedule shows every payment over the loan's life, broken down into principal and interest. In early payments, more goes to interest. Over time, the balance shifts toward principal. LoanCalcHub generates the full table and lets you export it to CSV.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How accurate is this calculator?</div>
+      <div class="faq-a">The calculator uses the standard amortization formula with a fixed interest rate, which is how most installment loans work. Results are accurate for standard amortizing loans. Actual payments may differ slightly due to lender fees, rounding, or variable rates.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I compare two different loan scenarios?</div>
+      <div class="faq-a">Yes. The scenario comparison tool lets you compare your current loan parameters against an alternative — different rate, different term, or different amount — and shows the difference in monthly payment and total interest.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I calculate how much interest I'll save by paying extra each month?</div>
+      <div class="faq-a">Use the early payoff calculator tab. Enter your extra monthly payment amount and it instantly shows how much interest you save and how many months earlier you'll be debt-free.</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin:2rem 0">
+    <a href="https://loancalchub.net/" class="cta-btn" style="background:#15803D;color:#fff;font-size:1.1rem;padding:14px 32px">
+      Open Free Calculator →
+    </a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 LoanCalcHub — For informational purposes only. Not financial advice.</p>
+  <p style="margin-top:.5rem">
+    <a href="https://loancalchub.net/">Home</a>
+    <a href="https://loancalchub.net/kalkulacka-pozicky">SK</a>
+    <a href="https://loancalchub.net/kalkulacka-pujcky">CZ</a>
+    <a href="https://loancalchub.net/?lang=de">DE</a>
+    <a href="https://loancalchub.net/?lang=pl">PL</a>
+  </p>
+</footer>
+</body>
+</html>
