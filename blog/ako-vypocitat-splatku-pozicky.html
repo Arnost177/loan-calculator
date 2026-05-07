@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ako Vypočítať Splátku Pôžičky: Vzorec, Príklady & Kalkulačka | LoanCalcHub</title>
+<meta name="description" content="Ako vypočítať mesačnú splátku pôžičky krok za krokom. Vzorec, príklady výpočtu a bezplatná kalkulačka pre okamžité overenie."/>
+<meta name="keywords" content="ako vypočítať splátku pôžičky, výpočet mesačnej splátky, vzorec pôžičky, kalkulačka pôžičky, koľko zaplatím na pôžičke"/>
+<meta name="robots" content="index, follow"/>
+<meta name="google-site-verification" content="PTa07iq9_YwK1W9uu42S9b_vqOnCGgEjgVTiPhvzjx0"/>
+<meta name="impact-site-verification" value="c3f4a7b7-7ad7-4cea-9393-90bcba8b614e"/>
+<link rel="canonical" href="https://loancalchub.net/blog/ako-vypocitat-splatku-pozicky"/>
+<link rel="alternate" hreflang="sk" href="https://loancalchub.net/blog/ako-vypocitat-splatku-pozicky"/>
+<link rel="alternate" hreflang="en" href="https://loancalchub.net/blog/how-to-calculate-loan-interest"/>
+<link rel="alternate" hreflang="x-default" href="https://loancalchub.net/blog/how-to-calculate-loan-interest"/>
+<meta property="og:title" content="Ako Vypočítať Splátku Pôžičky – Vzorec & Príklady"/>
+<meta property="og:description" content="Krok za krokom: ako vypočítať mesačnú splátku pôžičky. S vzorcom, príkladmi a bezplatnou kalkulačkou."/>
+<meta property="og:url" content="https://loancalchub.net/blog/ako-vypocitat-splatku-pozicky"/>
+<meta property="og:type" content="article"/>
+<meta property="og:image" content="https://loancalchub.net/og.png"/>
+<meta property="article:published_time" content="2025-05-07"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Ako Vypočítať Splátku Pôžičky","description":"Krok za krokom výpočet mesačnej splátky pôžičky so vzorcom, príkladmi a bezplatnou kalkulačkou.","url":"https://loancalchub.net/blog/ako-vypocitat-splatku-pozicky","datePublished":"2025-05-07","inLanguage":"sk","author":{"@type":"Organization","name":"LoanCalcHub","url":"https://loancalchub.net"},"publisher":{"@type":"Organization","name":"LoanCalcHub","logo":{"@type":"ImageObject","url":"https://loancalchub.net/og.png"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Ako vypočítam mesačnú splátku pôžičky?","acceptedAnswer":{"@type":"Answer","text":"Mesačná splátka = P × [r(1+r)ⁿ] / [(1+r)ⁿ − 1], kde P je výška pôžičky, r je mesačná úroková sadzba (ročná ÷ 12) a n je počet splátok. Príklad: 10 000 € pri 8% na 5 rokov = mesačná splátka 202,76 €."}},{"@type":"Question","name":"Koľko zaplatím na pôžičke celkovo?","acceptedAnswer":{"@type":"Answer","text":"Celková platba = mesačná splátka × počet mesiacov. Celkové úroky = celková platba − výška pôžičky. Príklad: 10 000 € pri 8% na 5 rokov: celková platba 12 166 €, úroky 2 166 €."}},{"@type":"Question","name":"Čo je anuitná splátka?","acceptedAnswer":{"@type":"Answer","text":"Anuitná splátka je fixná mesačná splátka ktorá sa nemení po celú dobu splácania. Každý mesiac platíte rovnakú sumu, ale pomer istiny a úrokov sa mení – na začiatku platíte viac úrokov, postupne viac istiny."}},{"@type":"Question","name":"Oplatí sa kratšia doba splácania?","acceptedAnswer":{"@type":"Answer","text":"Áno – kratšia doba splácania znamená vyššiu mesačnú splátku ale výrazne menej zaplatených úrokov. Pri 10 000 € a 8%: 3 roky = splátka 313 €, úroky 1 266 €. 5 rokov = splátka 203 €, úroky 2 166 €."}}]}</script>
+<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Helvetica Neue',Arial,sans-serif;font-size:17px;line-height:1.75;color:#1A1714;background:#fff}.header{background:#15803D;color:#fff;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}.logo{font-size:1.1rem;font-weight:700;text-decoration:none;color:#fff}.header nav a{color:rgba(255,255,255,.85);text-decoration:none;font-size:14px;margin-left:1.5rem}.article-wrap{max-width:740px;margin:0 auto;padding:2.5rem 1.5rem}.article-meta{font-size:13px;color:#6B6460;margin-bottom:2rem;display:flex;gap:1rem;flex-wrap:wrap}h1{font-size:clamp(1.7rem,4vw,2.3rem);font-weight:800;line-height:1.2;margin-bottom:1rem}h2{font-size:1.45rem;font-weight:700;color:#15803D;margin:2rem 0 .75rem}h3{font-size:1.15rem;font-weight:600;margin:1.5rem 0 .5rem}p{color:#2C2B29;margin-bottom:1.1rem}ul,ol{padding-left:1.5rem;margin-bottom:1.1rem;color:#2C2B29}li{margin-bottom:.4rem}.formula-box{background:#F6F3ED;border:2px solid #15803D;border-radius:10px;padding:1.25rem 1.5rem;font-family:monospace;font-size:15px;margin:1.25rem 0;line-height:1.8}.formula-box strong{color:#15803D}.example-box{background:#DCFCE7;border-left:4px solid #15803D;border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:1.25rem 0}.example-box h4{font-weight:700;color:#15803D;margin-bottom:.5rem;font-size:15px}.cta-box{background:linear-gradient(135deg,#15803D,#166534);color:#fff;border-radius:12px;padding:1.75rem;margin:2rem 0;text-align:center}.cta-box h3{color:#fff;margin-bottom:.5rem;font-size:1.2rem}.cta-box p{color:rgba(255,255,255,.88);font-size:15px;margin-bottom:1rem}.cta-btn{display:inline-block;background:#fff;color:#15803D;font-weight:700;padding:11px 26px;border-radius:30px;text-decoration:none;font-size:15px}.data-table{width:100%;border-collapse:collapse;margin:1.25rem 0;font-size:15px}.data-table th{background:#15803D;color:#fff;padding:10px 14px;text-align:left}.data-table td{padding:10px 14px;border-bottom:1px solid #DDD8CE}.data-table tr:nth-child(even) td{background:#F6F3ED}.tip-box{background:#FEF3C7;border-left:4px solid #D97706;border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin:1.25rem 0;font-size:15px}.tip-box strong{color:#D97706}.breadcrumb{font-size:13px;color:#6B6460;margin-bottom:1.5rem}.breadcrumb a{color:#15803D;text-decoration:none}.related-posts{margin-top:3rem;padding-top:2rem;border-top:1px solid #DDD8CE}.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1rem}.related-card{background:#F6F3ED;border-radius:8px;padding:1rem;text-decoration:none;color:#1A1714;border:1px solid #DDD8CE;display:block}.related-card:hover{border-color:#15803D;background:#DCFCE7}.related-card-title{font-weight:600;font-size:14px;color:#15803D;margin-bottom:.25rem}.related-card-desc{font-size:13px;color:#6B6460}footer{background:#1A1714;color:rgba(255,255,255,.7);text-align:center;padding:2rem;font-size:13px;margin-top:3rem}footer a{color:rgba(255,255,255,.7);text-decoration:none;margin:0 .5rem}</style>
+</head>
+<body>
+<header class="header"><a href="https://loancalchub.net/" class="logo">🧮 LoanCalcHub</a><nav><a href="https://loancalchub.net/?lang=sk">Kalkulačka</a><a href="https://loancalchub.net/blog/">Blog</a></nav></header>
+<div class="article-wrap">
+  <nav class="breadcrumb"><a href="https://loancalchub.net/?lang=sk">LoanCalcHub</a> › <a href="https://loancalchub.net/blog/">Blog</a> › <span>Ako vypočítať splátku</span></nav>
+  <h1>Ako Vypočítať Splátku Pôžičky: Vzorec, Príklady a Kalkulačka</h1>
+  <div class="article-meta"><span>📅 7. mája 2025</span><span>⏱ 7 min čítania</span><span>🏦 Osobné financie</span></div>
+
+  <p>Vedieť vypočítať mesačnú splátku pôžičky vám pomôže porovnať ponuky rôznych bánk, rozhodnúť sa medzi kratšou a dlhšou dobou splácania, alebo zistiť koľko ušetríte predčasným splatením. Matematika za tým je jednoduchšia, ako sa zdá.</p>
+  <p>V tomto článku vás prevediem presným výpočtom s konkrétnymi príkladmi a bezplatnou kalkulačkou na overenie výsledkov.</p>
+
+  <div class="cta-box"><h3>Preskočte počítanie – použite kalkulačku</h3><p>Zadajte výšku pôžičky, sadzbu a dobu pre okamžitý výsledok a amortizačný plán.</p><a href="https://loancalchub.net/?lang=sk" class="cta-btn">Otvoriť kalkulačku →</a></div>
+
+  <h2>Vzorec pre výpočet mesačnej splátky</h2>
+  <p>Väčšina pôžičiek (spotrebiteľské úvery, hypotéky, auto úvery) používa anuitné splácanie. To znamená fixnú mesačnú splátku po celú dobu, pričom pomer istiny a úrokov sa každý mesiac mení.</p>
+
+  <div class="formula-box"><strong>M = P × [r(1+r)ⁿ] / [(1+r)ⁿ − 1]</strong>
+
+Kde:
+  M = mesačná splátka
+  P = výška pôžičky (istina)
+  r = mesačná úroková sadzba = ročná sadzba ÷ 12
+  n = celkový počet splátok = roky × 12</div>
+
+  <h2>Príklad výpočtu krok za krokom</h2>
+  <div class="example-box">
+    <h4>Pôžička 10 000 € pri 8% ročnej sadzbe na 5 rokov</h4>
+    <p><strong>Krok 1:</strong> Mesačná úroková sadzba: r = 8% ÷ 12 = 0,667% = 0,00667</p>
+    <p><strong>Krok 2:</strong> Počet splátok: n = 5 × 12 = 60</p>
+    <p><strong>Krok 3:</strong> Dosadenie do vzorca:<br/>
+    M = 10 000 × [0,00667 × (1,00667)⁶⁰] / [(1,00667)⁶⁰ − 1]<br/>
+    M = 10 000 × [0,00667 × 1,4898] / [1,4898 − 1]<br/>
+    M = 10 000 × 0,009936 / 0,4898<br/>
+    <strong>M = 202,76 €/mesiac</strong></p>
+    <p><strong>Celková platba:</strong> 202,76 × 60 = 12 166 €<br/>
+    <strong>Celkové úroky:</strong> 12 166 − 10 000 = <strong>2 166 €</strong></p>
+  </div>
+
+  <h2>Ako doba splácania ovplyvňuje celkové náklady</h2>
+  <p>Dlhšia doba splácania znižuje mesačnú splátku, ale výrazne zvyšuje celkové zaplatené úroky. Tu je porovnanie pre tú istú pôžičku 10 000 € pri 8%:</p>
+
+  <table class="data-table">
+    <thead><tr><th>Doba splácania</th><th>Mesačná splátka</th><th>Celkové úroky</th><th>Celková platba</th></tr></thead>
+    <tbody>
+      <tr><td>2 roky</td><td>452 €</td><td>851 €</td><td>10 851 €</td></tr>
+      <tr><td>3 roky</td><td>313 €</td><td>1 266 €</td><td>11 266 €</td></tr>
+      <tr><td>5 rokov</td><td>203 €</td><td>2 166 €</td><td>12 166 €</td></tr>
+      <tr><td>8 rokov</td><td>140 €</td><td>3 428 €</td><td>13 428 €</td></tr>
+    </tbody>
+  </table>
+
+  <p>Skrátením doby splácania z 8 na 3 roky ušetríte 2 162 € na úrokoch – aj keď mesačná splátka bude vyššia o 173 €.</p>
+
+  <div class="tip-box"><strong>💡 Tip:</strong> Ak si môžete dovoliť vyššiu splátku, zvoľte kratšiu dobu splácania. Úspory na úrokoch sú značné. Ak potrebujete nižšiu splátku, zvoľte dlhšiu dobu, ale robte extra platby kedykoľvek je to možné.</div>
+
+  <h2>Amortizačný plán – prvých 6 mesiacov</h2>
+  <p>Amortizačný plán zobrazuje každú splátku a jej rozdelenie na istinu a úroky:</p>
+
+  <table class="data-table">
+    <thead><tr><th>Mesiac</th><th>Splátka</th><th>Úroky</th><th>Istina</th><th>Zostatok</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>202,76 €</td><td>66,67 €</td><td>136,09 €</td><td>9 863,91 €</td></tr>
+      <tr><td>2</td><td>202,76 €</td><td>65,76 €</td><td>137,00 €</td><td>9 726,91 €</td></tr>
+      <tr><td>3</td><td>202,76 €</td><td>64,85 €</td><td>137,91 €</td><td>9 589,00 €</td></tr>
+      <tr><td>4</td><td>202,76 €</td><td>63,93 €</td><td>138,83 €</td><td>9 450,17 €</td></tr>
+      <tr><td>5</td><td>202,76 €</td><td>63,00 €</td><td>139,76 €</td><td>9 310,41 €</td></tr>
+      <tr><td>6</td><td>202,76 €</td><td>62,07 €</td><td>140,69 €</td><td>9 169,72 €</td></tr>
+    </tbody>
+  </table>
+
+  <p>Na začiatku tvorí väčšinu splátky úrok (66,67 € z 202,76 €). Postupne sa pomer mení v prospech istiny. Naša kalkulačka generuje úplný amortizačný plán pre celú dobu splácania.</p>
+
+  <h2>Predčasné splatenie – koľko ušetríte?</h2>
+  <p>Platením extra sumy každý mesiac môžete výrazne skrátiť dobu splácania a ušetriť na úrokoch. Príklad pre pôžičku 10 000 € pri 8% na 5 rokov:</p>
+
+  <table class="data-table">
+    <thead><tr><th>Extra platba</th><th>Splatíte za</th><th>Úspora na úrokoch</th></tr></thead>
+    <tbody>
+      <tr><td>Žiadna</td><td>60 mesiacov</td><td>—</td></tr>
+      <tr><td>+30 €/mesiac</td><td>51 mesiacov</td><td>320 €</td></tr>
+      <tr><td>+50 €/mesiac</td><td>46 mesiacov</td><td>504 €</td></tr>
+      <tr><td>+100 €/mesiac</td><td>37 mesiacov</td><td>812 €</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Čo je RPMN a prečo je dôležitejšia ako úroková sadzba?</h2>
+  <p>RPMN (ročná percentuálna miera nákladov) zahŕňa nielen úrokovú sadzbu ale aj všetky poplatky spojené s pôžičkou – za poskytnutie úveru, vedenie účtu a iné. Je preto lepším ukazovateľom skutočných nákladov.</p>
+  <p>Príklad: Pôžička s 8% úrokovou sadzbou a poplatkom 3% za poskytnutie bude mať RPMN okolo 10–11%. Vždy porovnávajte RPMN, nie len úrokovú sadzbu.</p>
+
+  <h2>Tipy pre výber najvýhodnejšej pôžičky</h2>
+  <ul>
+    <li><strong>Porovnajte aspoň 3 banky</strong> – sadzby sa môžu líšiť o 2–5 percentuálnych bodov</li>
+    <li><strong>Porovnávajte RPMN, nie len úrokovú sadzbu</strong> – RPMN zahŕňa všetky poplatky</li>
+    <li><strong>Zlepšite kreditný skóre pred žiadosťou</strong> – splatte existujúce dlhy</li>
+    <li><strong>Zvoľte správnu dobu splácania</strong> – nie príliš dlhú, ale zvládnuteľnú</li>
+    <li><strong>Robte extra platby</strong> – aj malá extra suma každý mesiac šetrí stovky eur</li>
+  </ul>
+
+  <div class="cta-box"><h3>Vyskúšajte kalkulačku predčasného splatenia</h3><p>Zadajte vašu pôžičku a extra mesačnú platbu a zistite presné úspory.</p><a href="https://loancalchub.net/?lang=sk" class="cta-btn">Vypočítať predčasné splatenie →</a></div>
+
+  <div class="related-posts">
+    <h2 style="font-size:1.2rem">Súvisiace články</h2>
+    <div class="related-grid">
+      <a href="https://loancalchub.net/kalkulacka-pozicky" class="related-card"><div class="related-card-title">Kalkulačka pôžičky SK</div><div class="related-card-desc">Typy pôžičiek na Slovensku, príklady a tipy</div></a>
+      <a href="https://loancalchub.net/blog/what-is-debt-to-income-ratio" class="related-card"><div class="related-card-title">Debt-to-Income Ratio</div><div class="related-card-desc">Ako DTI ovplyvňuje schválenie pôžičky</div></a>
+      <a href="https://loancalchub.net/blog/how-to-calculate-loan-interest" class="related-card"><div class="related-card-title">Loan interest (EN)</div><div class="related-card-desc">English version of this article</div></a>
+    </div>
+  </div>
+</div>
+<footer><p>© 2025 LoanCalcHub — Len na informačné účely. Nie je finančným poradenstvom.</p><p style="margin-top:.5rem"><a href="https://loancalchub.net/?lang=sk">Kalkulačka</a><a href="https://loancalchub.net/blog/">Blog</a></p></footer>
+</body>
+</html>

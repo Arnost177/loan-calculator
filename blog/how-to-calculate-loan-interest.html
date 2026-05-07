@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>How to Calculate Loan Interest: Formula, Examples & Calculator | LoanCalcHub</title>
+<meta name="description" content="Learn exactly how to calculate loan interest using the amortization formula. Step-by-step examples, the math explained simply, and a free calculator to check your work."/>
+<meta name="keywords" content="how to calculate loan interest, loan interest formula, amortization formula, calculate monthly payment, loan interest rate calculator"/>
+<meta name="robots" content="index, follow"/>
+<meta name="author" content="LoanCalcHub"/>
+<meta name="google-site-verification" content="PTa07iq9_YwK1W9uu42S9b_vqOnCGgEjgVTiPhvzjx0"/>
+<meta name="impact-site-verification" value="c3f4a7b7-7ad7-4cea-9393-90bcba8b614e"/>
+<link rel="canonical" href="https://loancalchub.net/blog/how-to-calculate-loan-interest"/>
+<meta property="og:title" content="How to Calculate Loan Interest: Formula & Examples"/>
+<meta property="og:description" content="Step-by-step guide to calculating loan interest using the amortization formula. Free calculator included."/>
+<meta property="og:url" content="https://loancalchub.net/blog/how-to-calculate-loan-interest"/>
+<meta property="og:type" content="article"/>
+<meta property="og:image" content="https://loancalchub.net/og.png"/>
+<meta property="article:published_time" content="2025-05-07"/>
+<meta property="article:author" content="LoanCalcHub"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"How to Calculate Loan Interest: Formula, Examples & Calculator","description":"Learn exactly how to calculate loan interest using the amortization formula with step-by-step examples.","url":"https://loancalchub.net/blog/how-to-calculate-loan-interest","datePublished":"2025-05-07","dateModified":"2025-05-07","author":{"@type":"Organization","name":"LoanCalcHub","url":"https://loancalchub.net"},"publisher":{"@type":"Organization","name":"LoanCalcHub","logo":{"@type":"ImageObject","url":"https://loancalchub.net/og.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://loancalchub.net/blog/how-to-calculate-loan-interest"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you calculate loan interest per month?","acceptedAnswer":{"@type":"Answer","text":"Monthly interest = Current balance × (Annual rate ÷ 12). For a $10,000 loan at 8% annual rate: monthly interest = $10,000 × (0.08 ÷ 12) = $66.67 for the first month."}},{"@type":"Question","name":"What is the formula for loan monthly payment?","acceptedAnswer":{"@type":"Answer","text":"M = P × [r(1+r)ⁿ] / [(1+r)ⁿ − 1] where M = monthly payment, P = loan amount, r = monthly interest rate (annual ÷ 12), n = total number of payments."}},{"@type":"Question","name":"How much interest do I pay on a $10,000 loan?","acceptedAnswer":{"@type":"Answer","text":"It depends on rate and term. At 8% for 5 years: $2,166 total interest. At 10% for 5 years: $2,748. At 8% for 3 years: $1,266. Use LoanCalcHub's free calculator for any scenario."}}]}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Helvetica Neue',Arial,sans-serif;font-size:17px;line-height:1.75;color:#1A1714;background:#fff}
+.header{background:#15803D;color:#fff;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:1.1rem;font-weight:700;text-decoration:none;color:#fff}
+.header nav a{color:rgba(255,255,255,.85);text-decoration:none;font-size:14px;margin-left:1.5rem}
+.article-wrap{max-width:740px;margin:0 auto;padding:2.5rem 1.5rem}
+.article-meta{font-size:13px;color:#6B6460;margin-bottom:2rem;display:flex;gap:1rem;flex-wrap:wrap}
+.article-meta span{display:flex;align-items:center;gap:4px}
+h1{font-size:clamp(1.7rem,4vw,2.3rem);font-weight:800;line-height:1.2;color:#1A1714;margin-bottom:1rem}
+h2{font-size:1.45rem;font-weight:700;color:#15803D;margin:2rem 0 .75rem;padding-top:.5rem}
+h3{font-size:1.15rem;font-weight:600;color:#1A1714;margin:1.5rem 0 .5rem}
+p{color:#2C2B29;margin-bottom:1.1rem}
+ul,ol{padding-left:1.5rem;margin-bottom:1.1rem;color:#2C2B29}
+li{margin-bottom:.4rem}
+.formula-box{background:#F6F3ED;border:2px solid #15803D;border-radius:10px;padding:1.25rem 1.5rem;font-family:monospace;font-size:15px;margin:1.25rem 0;line-height:1.8}
+.formula-box strong{color:#15803D}
+.example-box{background:#DCFCE7;border-left:4px solid #15803D;border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:1.25rem 0}
+.example-box h4{font-size:15px;font-weight:700;color:#15803D;margin-bottom:.5rem}
+.cta-box{background:linear-gradient(135deg,#15803D,#166534);color:#fff;border-radius:12px;padding:1.75rem;margin:2rem 0;text-align:center}
+.cta-box h3{color:#fff;margin-bottom:.5rem;font-size:1.2rem}
+.cta-box p{color:rgba(255,255,255,.88);font-size:15px;margin-bottom:1rem}
+.cta-btn{display:inline-block;background:#fff;color:#15803D;font-weight:700;padding:11px 26px;border-radius:30px;text-decoration:none;font-size:15px}
+.cta-btn:hover{opacity:.9}
+.data-table{width:100%;border-collapse:collapse;margin:1.25rem 0;font-size:15px}
+.data-table th{background:#15803D;color:#fff;padding:10px 14px;text-align:left}
+.data-table td{padding:10px 14px;border-bottom:1px solid #DDD8CE;color:#1A1714}
+.data-table tr:nth-child(even) td{background:#F6F3ED}
+.tip-box{background:#FEF3C7;border-left:4px solid #D97706;border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin:1.25rem 0;font-size:15px}
+.tip-box strong{color:#D97706}
+.breadcrumb{font-size:13px;color:#6B6460;margin-bottom:1.5rem}
+.breadcrumb a{color:#15803D;text-decoration:none}
+.related-posts{margin-top:3rem;padding-top:2rem;border-top:1px solid #DDD8CE}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1rem}
+.related-card{background:#F6F3ED;border-radius:8px;padding:1rem;text-decoration:none;color:#1A1714;border:1px solid #DDD8CE;display:block}
+.related-card:hover{border-color:#15803D;background:#DCFCE7}
+.related-card-title{font-weight:600;font-size:14px;color:#15803D;margin-bottom:.25rem}
+.related-card-desc{font-size:13px;color:#6B6460}
+footer{background:#1A1714;color:rgba(255,255,255,.7);text-align:center;padding:2rem;font-size:13px;margin-top:3rem}
+footer a{color:rgba(255,255,255,.7);text-decoration:none;margin:0 .5rem}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a href="https://loancalchub.net/" class="logo">🧮 LoanCalcHub</a>
+  <nav>
+    <a href="https://loancalchub.net/">Calculator</a>
+    <a href="https://loancalchub.net/blog/">Blog</a>
+  </nav>
+</header>
+
+<div class="article-wrap">
+  <nav class="breadcrumb">
+    <a href="https://loancalchub.net/">LoanCalcHub</a> ›
+    <a href="https://loancalchub.net/blog/">Blog</a> ›
+    <span>How to Calculate Loan Interest</span>
+  </nav>
+
+  <h1>How to Calculate Loan Interest: Formula, Examples & Free Calculator</h1>
+  <div class="article-meta">
+    <span>📅 May 7, 2025</span>
+    <span>⏱ 8 min read</span>
+    <span>🏦 Personal Finance</span>
+  </div>
+
+  <p>Understanding how loan interest is calculated can save you thousands of dollars over the life of a loan. Whether you're comparing offers from different lenders, deciding between a 3-year and 5-year term, or evaluating whether to pay off debt early — the math behind loan interest is simpler than most people think.</p>
+
+  <p>This guide walks through exactly how lenders calculate your monthly payment and the total interest you'll pay, with concrete examples and a free calculator to verify everything instantly.</p>
+
+  <div class="cta-box">
+    <h3>Skip the math — use the free calculator</h3>
+    <p>Enter your loan amount, rate and term for instant payment and amortization schedule.</p>
+    <a href="https://loancalchub.net/" class="cta-btn">Calculate my loan →</a>
+  </div>
+
+  <h2>The Two Types of Loan Interest</h2>
+
+  <p>Before getting into the formula, it helps to understand that there are two fundamentally different ways interest can be calculated on a loan:</p>
+
+  <h3>1. Simple interest</h3>
+  <p>Simple interest is calculated only on the original principal, not on accumulated interest. It's used for some short-term loans and car loans. Formula: <strong>Interest = Principal × Rate × Time</strong>. If you borrow $5,000 at 8% for 3 years: Interest = $5,000 × 0.08 × 3 = $1,200.</p>
+
+  <h3>2. Compound / amortizing interest</h3>
+  <p>This is what most personal loans, mortgages, and car loans use. Interest is recalculated on the remaining balance every month. As you pay down the principal, the interest portion of each payment decreases — but your total monthly payment stays the same. This is called an <strong>amortizing loan</strong>.</p>
+
+  <h2>The Loan Payment Formula (Amortization)</h2>
+
+  <div class="formula-box">
+<strong>M = P × [r(1+r)ⁿ] / [(1+r)ⁿ − 1]</strong>
+
+Where:
+  M = Monthly payment
+  P = Principal (loan amount)
+  r = Monthly interest rate = Annual rate ÷ 12
+  n = Total number of payments = Years × 12
+  </div>
+
+  <p>This formula gives you the fixed monthly payment for an amortizing loan. The same payment is made every month, but the split between principal and interest changes over time.</p>
+
+  <h2>Step-by-Step Example</h2>
+
+  <div class="example-box">
+    <h4>Example: $15,000 personal loan at 9% for 4 years</h4>
+    <p><strong>Step 1:</strong> Convert annual rate to monthly: r = 9% ÷ 12 = 0.75% = 0.0075</p>
+    <p><strong>Step 2:</strong> Calculate total payments: n = 4 × 12 = 48</p>
+    <p><strong>Step 3:</strong> Apply the formula:<br/>
+    M = 15,000 × [0.0075 × (1.0075)⁴⁸] / [(1.0075)⁴⁸ − 1]<br/>
+    M = 15,000 × [0.0075 × 1.4314] / [1.4314 − 1]<br/>
+    M = 15,000 × 0.010736 / 0.4314<br/>
+    <strong>M = $373.28/month</strong></p>
+    <p><strong>Total repaid:</strong> $373.28 × 48 = $17,917<br/>
+    <strong>Total interest:</strong> $17,917 − $15,000 = <strong>$2,917</strong></p>
+  </div>
+
+  <h2>How Interest Changes Over Time</h2>
+
+  <p>With an amortizing loan, you pay the same amount every month — but the breakdown between principal and interest changes dramatically. In the early months, most of your payment goes to interest. By the end, most goes to principal.</p>
+
+  <p>Here are the first 6 months of the $15,000 loan above:</p>
+
+  <table class="data-table">
+    <thead><tr><th>Month</th><th>Payment</th><th>Interest</th><th>Principal</th><th>Balance</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>$373.28</td><td>$112.50</td><td>$260.78</td><td>$14,739.22</td></tr>
+      <tr><td>2</td><td>$373.28</td><td>$110.54</td><td>$262.74</td><td>$14,476.48</td></tr>
+      <tr><td>3</td><td>$373.28</td><td>$108.57</td><td>$264.71</td><td>$14,211.77</td></tr>
+      <tr><td>4</td><td>$373.28</td><td>$106.59</td><td>$266.69</td><td>$13,945.08</td></tr>
+      <tr><td>5</td><td>$373.28</td><td>$104.59</td><td>$268.69</td><td>$13,676.39</td></tr>
+      <tr><td>6</td><td>$373.28</td><td>$102.57</td><td>$270.71</td><td>$13,405.68</td></tr>
+    </tbody>
+  </table>
+
+  <p>This table is called an <strong>amortization schedule</strong>. LoanCalcHub generates a full amortization schedule for any loan — all 48 months in this case — and lets you export it to CSV.</p>
+
+  <h2>How Loan Term Affects Total Interest</h2>
+
+  <p>One of the most important decisions when taking a loan is the repayment term. A longer term means lower monthly payments but dramatically more interest paid over time.</p>
+
+  <table class="data-table">
+    <thead><tr><th>Loan</th><th>Term</th><th>Monthly payment</th><th>Total interest</th></tr></thead>
+    <tbody>
+      <tr><td>$15,000 at 9%</td><td>2 years</td><td>$685.36</td><td>$1,449</td></tr>
+      <tr><td>$15,000 at 9%</td><td>3 years</td><td>$477.00</td><td>$2,172</td></tr>
+      <tr><td>$15,000 at 9%</td><td>4 years</td><td>$373.28</td><td>$2,917</td></tr>
+      <tr><td>$15,000 at 9%</td><td>5 years</td><td>$311.38</td><td>$3,683</td></tr>
+    </tbody>
+  </table>
+
+  <p>Going from a 2-year to a 5-year term saves $374/month — but costs an extra $2,234 in interest. Whether that tradeoff makes sense depends on your cash flow situation.</p>
+
+  <div class="tip-box">
+    <strong>💡 Tip:</strong> If you can afford the higher payment, choose the shorter term. The interest savings are significant. If you need cash flow flexibility, choose the longer term but make extra payments when possible.
+  </div>
+
+  <h2>How Interest Rate Affects Total Cost</h2>
+
+  <table class="data-table">
+    <thead><tr><th>Rate</th><th>Monthly payment</th><th>Total interest</th><th>vs 8% rate</th></tr></thead>
+    <tbody>
+      <tr><td>6%</td><td>$290.00</td><td>$2,399</td><td>−$1,043</td></tr>
+      <tr><td>8%</td><td>$304.15</td><td>$3,249</td><td>baseline</td></tr>
+      <tr><td>10%</td><td>$318.71</td><td>$4,123</td><td>+$874</td></tr>
+      <tr><td>14%</td><td>$349.13</td><td>$5,948</td><td>+$2,699</td></tr>
+      <tr><td>20%</td><td>$396.62</td><td>$8,797</td><td>+$5,548</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:13px;color:#6B6460">$15,000 loan, 5-year term</p>
+
+  <p>A 2% difference in interest rate on a $15,000 loan over 5 years costs nearly $1,000 extra. On a $200,000 mortgage, that same 2% difference costs over $80,000 over 30 years. This is why comparing lenders matters enormously.</p>
+
+  <h2>APR vs Interest Rate — Which to Compare</h2>
+
+  <p>When comparing loans, always compare <strong>APR (Annual Percentage Rate)</strong>, not just the interest rate. The interest rate only reflects the cost of borrowing the principal. APR includes:</p>
+  <ul>
+    <li>The base interest rate</li>
+    <li>Origination fees (typically 1–6% of the loan)</li>
+    <li>Processing fees</li>
+    <li>Any other mandatory charges</li>
+  </ul>
+  <p>Two loans with identical interest rates but different fees will have different APRs. The one with the lower APR is cheaper overall. In Europe, this is called RPMN (Slovak/Czech), RRSO (Polish), or THM (Hungarian).</p>
+
+  <h2>Early Payoff: How Extra Payments Reduce Interest</h2>
+
+  <p>Making extra payments directly toward the principal is one of the most effective ways to reduce total interest. On the $15,000 loan at 9% for 4 years:</p>
+
+  <table class="data-table">
+    <thead><tr><th>Extra payment</th><th>Paid off in</th><th>Interest saved</th></tr></thead>
+    <tbody>
+      <tr><td>$0 extra</td><td>48 months</td><td>—</td></tr>
+      <tr><td>$50/month extra</td><td>41 months</td><td>$431</td></tr>
+      <tr><td>$100/month extra</td><td>36 months</td><td>$743</td></tr>
+      <tr><td>$200/month extra</td><td>28 months</td><td>$1,129</td></tr>
+    </tbody>
+  </table>
+
+  <p>An extra $100/month saves $743 in interest and pays off the loan a full year earlier. Use the early payoff calculator on LoanCalcHub to model your exact scenario.</p>
+
+  <div class="cta-box">
+    <h3>Try the early payoff calculator</h3>
+    <p>Enter your loan details and any extra monthly payment to see exactly how much you save.</p>
+    <a href="https://loancalchub.net/" class="cta-btn">Calculate early payoff savings →</a>
+  </div>
+
+  <h2>Key Takeaways</h2>
+  <ul>
+    <li>Most loans use the amortization formula: <strong>M = P × [r(1+r)ⁿ] / [(1+r)ⁿ − 1]</strong></li>
+    <li>Your payment is fixed, but the interest/principal split changes each month</li>
+    <li>Shorter terms save more interest but require higher monthly payments</li>
+    <li>A 2% rate difference can cost thousands of dollars over a loan's life</li>
+    <li>Always compare APR, not just interest rate, when shopping for loans</li>
+    <li>Extra payments toward principal significantly reduce total interest and loan duration</li>
+  </ul>
+
+  <div class="related-posts">
+    <h2 style="font-size:1.2rem">Related Articles</h2>
+    <div class="related-grid">
+      <a href="https://loancalchub.net/blog/what-is-debt-to-income-ratio" class="related-card">
+        <div class="related-card-title">What is Debt-to-Income Ratio?</div>
+        <div class="related-card-desc">How lenders use DTI to evaluate your loan application</div>
+      </a>
+      <a href="https://loancalchub.net/blog/when-to-refinance-mortgage" class="related-card">
+        <div class="related-card-title">When to Refinance Your Mortgage</div>
+        <div class="related-card-desc">The break-even rule and when refinancing makes sense</div>
+      </a>
+      <a href="https://loancalchub.net/blog/personal-loan-vs-credit-card" class="related-card">
+        <div class="related-card-title">Personal Loan vs Credit Card</div>
+        <div class="related-card-desc">Which is cheaper for consolidating debt?</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 LoanCalcHub — For informational purposes only. Not financial advice.</p>
+  <p style="margin-top:.5rem"><a href="https://loancalchub.net/">Calculator</a><a href="https://loancalchub.net/blog/">Blog</a><a href="https://loancalchub.net/loan-calculator">Loan Guide</a></p>
+</footer>
+</body>
+</html>
