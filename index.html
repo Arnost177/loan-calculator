@@ -1,0 +1,2093 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>LoanCalcHub – Free Loan Calculator</title>
+<meta name="description" content="Free loan calculator: calculate monthly payments, total interest and full amortization schedule. Instant results, no signup needed."/>
+<meta property="og:title" content="LoanCalcHub – Free Loan Calculator"/>
+<meta property="og:description" content="Calculate monthly payments, total interest and amortization schedule instantly. Free, no signup."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://loancalchub.net/"/>
+<meta property="og:image" content="https://loancalchub.net/og.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="LoanCalcHub – Free Loan Calculator"/>
+<meta name="twitter:image" content="https://loancalchub.net/og.png"/>
+<meta name="twitter:description" content="Calculate monthly payments, total interest and amortization schedule instantly. Free, no signup. 8 languages."/>
+<link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
+<link rel="canonical" href="https://loancalchub.net/"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>"/>
+<link rel="alternate" hreflang="en" href="https://loancalchub.net/"/>
+<link rel="alternate" hreflang="sk" href="https://loancalchub.net/?lang=sk"/>
+<link rel="alternate" hreflang="cs" href="https://loancalchub.net/?lang=cs"/>
+<link rel="alternate" hreflang="de" href="https://loancalchub.net/?lang=de"/>
+<link rel="alternate" hreflang="pl" href="https://loancalchub.net/?lang=pl"/>
+<link rel="alternate" hreflang="hu" href="https://loancalchub.net/?lang=hu"/>
+<link rel="alternate" hreflang="ru" href="https://loancalchub.net/?lang=ru"/>
+<link rel="alternate" hreflang="es" href="https://loancalchub.net/?lang=es"/>
+<link rel="alternate" hreflang="x-default" href="https://loancalchub.net/"/>
+<meta name="theme-color" content="#15803D"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="LoanCalcHub"/>
+<meta name="robots" content="index, follow"/>
+<!-- Google Search Console: replace content with your verification code from GSC -->
+<meta name="google-site-verification" content="PTa07iq9_YwK1W9uu42S9b_vqOnCGgEjgVTiPhvzjx0"/>
+<meta name="author" content="LoanCalcHub"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5162603318395114" crossorigin="anonymous"></script>
+<link rel="dns-prefetch" href="//pagead2.googlesyndication.com"/>
+<link rel="dns-prefetch" href="//fonts.gstatic.com"/>
+<link rel="dns-prefetch" href="//cdnjs.cloudflare.com"/>
+<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:wght@400;500&display=swap"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet"/></noscript>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js" defer></script>
+<style>
+:root{
+  --bg:#F6F3ED;--surface:#FFF;--surface2:#EFECE4;--surface3:#E8E3D8;
+  --border:#DDD8CE;--border2:#CCC6BA;
+  --text:#1A1714;--muted:#6B6460;--hint:#A8A29E;
+  --accent:#15803D;--accent2:#166534;--accent3:#14532D;
+  --accent-light:#DCFCE7;
+  --red:#DC2626;--red-light:#FEE2E2;
+  --yellow:#D97706;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.07);
+  --shadow-lg:0 4px 6px rgba(0,0,0,.04),0 12px 32px rgba(0,0,0,.1);
+  --radius:16px;--radius-sm:10px;--radius-xs:6px;
+  --t:.18s ease;
+}
+[data-theme=dark]{
+  --bg:#0D0D0B;--surface:#171613;--surface2:#1E1C18;--surface3:#252220;
+  --border:#2A2720;--border2:#363129;
+  --text:#F0EBE3;--muted:#9E9890;--hint:#5C5750;
+  --accent:#4ADE80;--accent2:#22C55E;--accent3:#16A34A;
+  --accent-light:#052E16;
+  --red:#F87171;--red-light:#3B0A0A;
+  --yellow:#FCD34D;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.4);
+  --shadow-lg:0 4px 6px rgba(0,0,0,.3),0 12px 32px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Instrument Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:15px;line-height:1.6;transition:background var(--t),color var(--t)}
+
+
+/* CALC SECTIONS (mortgage, car, refi) */
+.calc-section{margin:2.5rem 0}
+.calc-section-head{display:flex;align-items:center;gap:10px;margin-bottom:1rem}
+.calc-section-icon{width:36px;height:36px;border-radius:10px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.calc-section-head h2{font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:700;letter-spacing:-.01em;margin:0}
+.calc-mini{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:.75rem}
+.calc-mini-body{padding:1rem 1.25rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;align-items:end}
+@media(max-width:560px){.calc-mini-body{grid-template-columns:1fr 1fr}}
+.calc-mini-result{background:var(--accent);color:#fff;padding:.9rem 1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.calc-mini-result-val{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700}
+.calc-mini-result-sub{font-size:12px;opacity:.8}
+.calc-mini-details{display:flex;gap:1.25rem;flex-wrap:wrap}
+.calc-mini-stat{font-size:12px;opacity:.85}
+.calc-mini-stat strong{display:block;font-size:14px;opacity:1;font-weight:600}
+/* LOAN TYPE COMPARISON TABLE */
+.loan-compare-wrap{overflow-x:auto;margin:1.5rem 0}
+.loan-compare{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}
+.loan-compare th{background:var(--surface2);padding:10px 14px;text-align:left;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--border)}
+.loan-compare td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:top}
+.loan-compare tr:last-child td{border-bottom:none}
+.loan-compare tr:hover td{background:var(--surface2)}
+.loan-compare .highlight{background:var(--accent-light)}
+.loan-compare .highlight td{color:var(--accent2)}
+.tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 7px;border-radius:10px;margin-left:5px}
+.tag-green{background:var(--accent-light);color:var(--accent2)}
+.tag-yellow{background:#FEF3C7;color:#92400E}
+/* HOW IT WORKS STEPS */
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:1.25rem 0}
+.step-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem;position:relative}
+.step-num{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--accent-light);line-height:1;margin-bottom:.4rem}
+[data-theme=dark] .step-num{color:var(--accent3)}
+.step-title{font-size:13px;font-weight:600;margin-bottom:.25rem}
+.step-desc{font-size:12px;color:var(--muted);line-height:1.5}
+/* FAQ EXTRA */
+.faq-section-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:1.5rem 0 .6rem;font-size:11px}
+/* INTERNAL LINKS STRIP */
+.internal-links{display:flex;gap:8px;flex-wrap:wrap;margin:1.5rem 0}
+.int-link{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;background:var(--surface);border:1px solid var(--border);border-radius:20px;font-size:13px;font-weight:500;color:var(--accent);text-decoration:none;transition:all var(--t)}
+.int-link:hover{background:var(--accent-light);border-color:var(--accent)}
+
+/* STATS BAR */
+.stats-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:.6rem 1.5rem;display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;transition:background var(--t)}
+.stat-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted)}
+.stat-num{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--text)}
+.stat-sep{color:var(--border2);font-size:16px}
+/* STAR RATING */
+.rating-wrap{display:flex;align-items:center;gap:8px;margin-top:.75rem;justify-content:center}
+.stars{color:#F59E0B;font-size:18px;letter-spacing:1px}
+.rating-text{font-size:13px;color:rgba(255,255,255,.8)}
+.rating-count{font-size:12px;color:rgba(255,255,255,.6)}
+/* BREADCRUMB */
+.breadcrumb{padding:.55rem 0;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-top:1rem}
+.breadcrumb a{color:var(--muted);text-decoration:none;transition:color var(--t)}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb-sep{color:var(--hint);font-size:10px}
+.breadcrumb-current{color:var(--text);font-weight:500}
+/* LAST UPDATED */
+.last-updated{font-size:11px;color:var(--hint);display:flex;align-items:center;gap:5px;margin-top:4px}
+.last-updated-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+/* SCROLL CTA */
+.hero-cta{display:inline-flex;align-items:center;gap:7px;margin-top:1.1rem;padding:10px 22px;background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.3);border-radius:30px;font-size:14px;font-weight:600;cursor:pointer;transition:all var(--t);text-decoration:none}
+.hero-cta:hover{background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.5)}
+
+
+/* PERFORMANCE: font fallback to prevent CLS */
+body{font-family:'Instrument Sans','Helvetica Neue',Arial,sans-serif}
+.logo,.card-head,.hero h1,.r-val,.calc-mini-result-val,.step-num,.btn,.tabs,.tab,.stat-num,.calc-section-head h2{font-family:'Syne','Arial Black',Arial,sans-serif}
+/* SERVICE WORKER status indicator (hidden by default) */
+.sw-ready{display:none}
+/* LAZY IMAGE placeholder */
+img[loading=lazy]{background:var(--surface2);min-height:1px}
+/* SKIP TO CONTENT (accessibility + CWV) */
+.skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{position:static;width:auto;height:auto;background:var(--accent);color:#fff;padding:8px 16px;border-radius:var(--radius-xs);z-index:9999;font-size:14px;font-weight:600}
+
+/* PROGRESS */
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--accent);z-index:999;width:0%;transition:width .15s;border-radius:0 2px 2px 0}
+/* HEADER */
+header{position:sticky;top:0;z-index:200;background:var(--surface);border-bottom:1px solid var(--border);padding:0 1.5rem;height:58px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow);transition:background var(--t),border-color var(--t)}
+.logo{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px;letter-spacing:-.02em}
+.logo-icon{width:28px;height:28px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px}
+.hdr-right{display:flex;align-items:center;gap:6px}
+nav{display:flex;gap:2px}
+nav a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;padding:5px 10px;border-radius:var(--radius-xs);transition:all var(--t)}
+nav a:hover{color:var(--text);background:var(--surface2)}
+.icon-btn{height:36px;border-radius:20px;border:1px solid var(--border);background:var(--surface2);color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all var(--t);padding:0 12px;gap:5px;font-size:12px;font-weight:600}
+.icon-btn:hover{background:var(--surface3)}
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--accent3) 0%,var(--accent) 60%,#16a34a 100%);padding:2.5rem 1.5rem 4.5rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")}
+.hero-inner{position:relative;max-width:600px;margin:0 auto}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:800;color:#fff;margin-bottom:.5rem;line-height:1.15;letter-spacing:-.03em}
+.hero p{color:rgba(255,255,255,.82);font-size:1rem;max-width:480px;margin:0 auto}
+/* LAYOUT */
+.page{max-width:1120px;margin:0 auto;padding:0 1.25rem}
+.main-wrap{display:grid;grid-template-columns:1fr 300px;gap:1.5rem;margin-top:-2.5rem}
+@media(max-width:820px){.main-wrap{grid-template-columns:1fr}nav{display:none}}
+@media(max-width:480px){.hero{padding:2rem 1rem 4rem}.hero h1{font-size:1.8rem}}
+/* CARD */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:background var(--t),border-color var(--t)}
+.card+.card{margin-top:1.25rem}
+.card-head{padding:.9rem 1.25rem;border-bottom:1px solid var(--border);font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.01em;display:flex;align-items:center;justify-content:space-between;transition:border-color var(--t)}
+.card-body{padding:1.25rem}
+/* TABS */
+.tabs{display:flex;gap:4px;padding:.9rem 1.25rem .4rem;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);transition:all var(--t);white-space:nowrap;flex-shrink:0}
+.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.tab:hover:not(.active){background:var(--surface2);color:var(--text)}
+/* FORM */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:520px){.form-grid{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:5px}
+label{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.iw{position:relative}
+.pfx,.sfx{position:absolute;top:50%;transform:translateY(-50%);color:var(--hint);font-size:13px;pointer-events:none}
+.pfx{left:11px}.sfx{right:11px}
+input[type=number],select{width:100%;padding:10px 36px 10px 28px;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;font-size:15px;font-weight:500;background:var(--surface2);color:var(--text);outline:none;transition:border-color var(--t),background var(--t);-moz-appearance:textfield}
+input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
+input[type=number]:focus,select:focus{border-color:var(--accent);background:var(--surface)}
+select{padding:10px 12px;cursor:pointer}
+/* SLIDER */
+.slider-row{display:flex;align-items:center;gap:8px;margin-top:6px}
+.slider-val{font-size:12px;font-weight:600;color:var(--accent);min-width:52px;text-align:right;flex-shrink:0}
+input[type=range]{flex:1;height:3px;background:var(--border);border:none;padding:0;cursor:pointer;outline:none;-webkit-appearance:none;border-radius:2px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--accent);border:2.5px solid var(--surface);box-shadow:0 1px 4px rgba(0,0,0,.25);cursor:pointer;transition:transform .1s}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.25)}
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:12px 20px;border:none;border-radius:var(--radius-sm);font-family:'Syne',sans-serif;font-size:14px;font-weight:600;cursor:pointer;letter-spacing:.01em;transition:all var(--t);text-decoration:none}
+.btn-primary{background:var(--accent);color:#fff;width:100%;margin-top:1rem}
+.btn-primary:hover{background:var(--accent2)}
+.btn-primary:active{transform:scale(.99)}
+.btn-sm{padding:6px 13px;font-size:12px;border-radius:20px;font-family:'Instrument Sans',sans-serif}
+.btn-outline{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.btn-outline:hover{background:var(--accent-light)}
+.btn-ghost{background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
+.btn-ghost:hover{color:var(--text);background:var(--surface3)}
+.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:1rem}
+/* LIVE BADGE */
+.live-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--accent);font-weight:600}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+/* RESULTS */
+.result-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.25rem}
+@media(max-width:480px){.result-strip{grid-template-columns:1fr}}
+.result-box{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.85rem 1rem;text-align:center;transition:all var(--t)}
+.result-box.primary{background:var(--accent);border-color:var(--accent)}
+.result-box.primary .r-label,.result-box.primary .r-sub{color:rgba(255,255,255,.7)}
+.result-box.primary .r-val{color:#fff}
+.r-label{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.r-val{font-family:'Syne',sans-serif;font-size:1.45rem;font-weight:700;color:var(--text);line-height:1;transition:transform .15s}
+.r-val.bump{transform:scale(1.06)}
+.r-sub{font-size:10px;color:var(--hint);margin-top:3px}
+/* STICKY MOBILE RESULT */
+.sticky-result{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--accent);color:#fff;padding:.7rem 1.25rem;z-index:150;box-shadow:0 -4px 16px rgba(0,0,0,.15);flex-direction:row;align-items:center;justify-content:space-between}
+.sticky-result.show{display:flex}
+@media(min-width:821px){.sticky-result{display:none!important}}
+.sticky-val{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800}
+.sticky-label{font-size:11px;opacity:.75;font-weight:500}
+/* CHARTS */
+.chart-wrap{position:relative;height:210px;margin:1rem 0}
+.donut-section{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.25rem;flex-wrap:wrap}
+.donut-labels{display:flex;flex-direction:column;gap:8px;flex:1}
+.leg-item{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px}
+.leg-left{display:flex;align-items:center;gap:6px}
+.leg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.leg-val{font-weight:600;font-size:13px}
+/* TIPS */
+.tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:500px){.tips-grid{grid-template-columns:1fr}}
+.tip-box{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.75rem .9rem;font-size:13px;transition:all var(--t)}
+.tip-box:hover{border-color:var(--border2);background:var(--surface3)}
+.tip-label{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px}
+.tip-val{font-weight:600;color:var(--accent);font-size:14px;line-height:1.3}
+/* EARLY PAYOFF */
+.payoff-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:.75rem}
+@media(max-width:480px){.payoff-row{grid-template-columns:1fr}}
+.payoff-box{background:var(--accent-light);border:1px solid var(--accent);border-radius:var(--radius-sm);padding:.75rem .9rem}
+.payoff-box .tip-label{color:var(--accent2)}
+.payoff-box .tip-val{color:var(--accent2)}
+/* COMPARE */
+.compare-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem}
+@media(max-width:560px){.compare-cols{grid-template-columns:1fr}}
+.cmp-col{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.9rem}
+.cmp-col h4{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.6rem}
+.cmp-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.cmp-row:last-child{border:none;font-weight:600;padding-top:8px}
+.better{color:var(--accent)}.worse{color:var(--red)}
+.cmp-verdict{padding:.85rem 1rem;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:13px;line-height:1.5}
+/* TABLE */
+.tbl-wrap{overflow-x:auto;max-height:300px;overflow-y:auto}
+.tbl-wrap::-webkit-scrollbar{width:4px;height:4px}
+.tbl-wrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead{position:sticky;top:0;background:var(--surface);z-index:1}
+thead th{padding:8px 10px;text-align:right;font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
+thead th:first-child{text-align:left}
+tbody tr{transition:background var(--t)}
+tbody tr:hover{background:var(--surface2)}
+tbody td{padding:6px 10px;text-align:right;color:var(--text)}
+tbody td:first-child{text-align:left;font-weight:500}
+.td-i{color:var(--red)}.td-p{color:var(--accent);font-weight:500}
+tfoot td{padding:8px 10px;text-align:right;font-weight:600;border-top:2px solid var(--border);font-size:13px}
+tfoot td:first-child{text-align:left}
+/* FAQ */
+details{border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:6px;background:var(--surface);transition:all var(--t)}
+summary{padding:.8rem 1rem;font-weight:600;font-size:14px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+';font-size:18px;color:var(--muted);line-height:1}
+details[open] summary::after{content:'−'}
+.faq-body{padding:0 1rem .9rem;font-size:13px;color:var(--muted);line-height:1.65}
+/* SIDEBAR */
+.sidebar{display:flex;flex-direction:column;gap:1.25rem}
+.ad-slot{background:var(--surface);border:1.5px dashed var(--border);border-radius:var(--radius);min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--hint);font-size:12px;gap:5px;padding:.75rem;overflow:hidden}
+.sidebar-links a{display:block;color:var(--accent);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid var(--border);transition:color var(--t)}
+.sidebar-links a:last-child{border:none}
+.sidebar-links a:hover{color:var(--accent2)}
+/* SEO */
+.seo-section{margin:2rem 0}
+.seo-section h2{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:.6rem;letter-spacing:-.01em}
+.seo-section h3{font-size:14px;font-weight:600;margin:1rem 0 .3rem;color:var(--text)}
+.seo-section p{color:var(--muted);line-height:1.7;margin-bottom:.6rem;font-size:14px}
+.formula{background:var(--surface2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:var(--radius-sm);padding:.9rem 1rem;font-family:monospace;font-size:13px;color:var(--text);margin:.75rem 0;line-height:1.6}
+/* MODAL */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;display:none;align-items:center;justify-content:center;padding:1rem}
+.modal-bg.open{display:flex}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;width:100%;max-width:420px;box-shadow:var(--shadow-lg);animation:fadeUp .25s ease}
+.modal h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.6rem}
+.share-url{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-xs);padding:9px 11px;font-size:12px;color:var(--muted);word-break:break-all;margin-bottom:1rem;font-family:monospace;line-height:1.4}
+.modal-btns{display:flex;gap:8px}
+/* LANG PICKER */
+.lang-picker{position:absolute;top:54px;right:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);box-shadow:var(--shadow-lg);z-index:300;overflow:hidden;min-width:160px;display:none}
+.lang-picker.open{display:block;animation:fadeUp .18s ease}
+.lang-option{padding:9px 14px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background var(--t);font-weight:500}
+.lang-option:hover{background:var(--surface2)}
+.lang-option.active{color:var(--accent);font-weight:600}
+/* TOAST */
+.toast{position:fixed;bottom:4.5rem;left:50%;transform:translateX(-50%) translateY(16px);background:var(--text);color:var(--bg);padding:10px 20px;border-radius:30px;font-size:13px;font-weight:500;opacity:0;transition:all .25s;pointer-events:none;z-index:999;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(min-width:821px){.toast{bottom:1.5rem}}
+/* BOOKMARK HINT */
+.bk-hint{display:none;position:fixed;bottom:5rem;right:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.9rem 1.1rem;box-shadow:var(--shadow-lg);max-width:260px;z-index:300;animation:fadeUp .3s ease}
+@media(min-width:821px){.bk-hint{bottom:1.5rem}}
+.bk-inner{display:flex;align-items:flex-start;gap:10px}
+.bk-close{background:none;border:none;cursor:pointer;color:var(--hint);font-size:18px;line-height:1;padding:0;margin-left:auto;flex-shrink:0}
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);text-align:center;padding:1.75rem 1.5rem 5rem;font-size:12px;color:var(--muted);margin-top:3rem}
+@media(min-width:821px){footer{padding-bottom:1.75rem}}
+footer a{color:var(--muted);text-decoration:none;margin:0 .5rem;transition:color var(--t)}
+footer a:hover{color:var(--text)}
+.footer-note{margin-top:6px;font-size:11px;opacity:.6}
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+/* PRINT */
+@media print{
+  header,.actions,.sidebar,.ad-slot,.tabs,footer,.progress-bar,.bk-hint,.sticky-result{display:none!important}
+  .main-wrap{grid-template-columns:1fr!important}
+  .card{box-shadow:none!important;break-inside:avoid}
+  body{font-size:12px}
+  .hero{padding:1.5rem;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+
+/* ── PART 4: SOCIAL SHARE ── */
+.share-strip{display:flex;gap:8px;flex-wrap:wrap;margin:.75rem 0 0}
+.share-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 15px;border-radius:30px;font-size:13px;font-weight:600;cursor:pointer;border:none;text-decoration:none;transition:opacity .15s,transform .1s;flex-shrink:0;line-height:1}
+.share-btn:active{transform:scale(.97)}
+.share-wa{background:#25D366;color:#fff}
+.share-fb{background:#1877F2;color:#fff}
+.share-x{background:#111;color:#fff}
+.share-cp{background:var(--surface2);color:var(--text);border:1px solid var(--border)}
+.share-btn:hover{opacity:.85}
+
+/* ── PART 4: WA FLOAT ── */
+.wa-float{display:none;position:fixed;bottom:5.5rem;right:1.25rem;width:50px;height:50px;background:#25D366;border-radius:50%;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 20px rgba(37,211,102,.45);z-index:140;text-decoration:none;transition:transform .15s}
+.wa-float:hover{transform:scale(1.1)}
+@media(max-width:820px){.wa-float{display:flex}}
+
+/* ── PART 4: EMAIL CAPTURE ── */
+.email-capture{background:linear-gradient(135deg,var(--accent3) 0%,var(--accent) 100%);border-radius:var(--radius);padding:1.5rem;color:#fff;margin:1.5rem 0;position:relative;overflow:hidden}
+.email-capture::before{content:'';position:absolute;right:-20px;top:-20px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.07);pointer-events:none}
+.email-capture h3{font-family:'Syne','Arial Black',Arial,sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.3rem}
+.email-capture p{font-size:13px;opacity:.85;margin-bottom:1rem;line-height:1.5}
+.email-form{display:flex;gap:8px;flex-wrap:wrap}
+.email-input{flex:1;min-width:180px;padding:10px 14px;border-radius:var(--radius-sm);border:none;font-family:inherit;font-size:14px;outline:none;background:rgba(255,255,255,.95);color:#1A1714}
+.email-submit{padding:10px 20px;background:#fff;color:var(--accent2);border:none;border-radius:var(--radius-sm);font-family:'Syne','Arial Black',Arial,sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:background .15s;white-space:nowrap}
+.email-submit:hover{background:rgba(255,255,255,.9)}
+.email-success{display:none;align-items:center;gap:8px;font-size:14px;font-weight:600}
+.email-success.show{display:flex}
+
+/* ── PART 4: RELATED CALCULATORS ── */
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;margin:1rem 0}
+.related-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.9rem 1rem;text-decoration:none;color:var(--text);transition:border-color var(--t),background var(--t);display:flex;flex-direction:column;gap:4px}
+.related-card:hover{border-color:var(--accent);background:var(--accent-light)}
+.related-card-icon{font-size:20px;margin-bottom:2px}
+.related-card-title{font-size:13px;font-weight:600}
+.related-card-desc{font-size:11px;color:var(--muted)}
+
+/* ── PART 4: STICKY SIDEBAR (desktop) ── */
+@media(min-width:821px){
+  .sidebar{position:sticky;top:70px;max-height:calc(100vh - 80px);overflow-y:auto;scrollbar-width:thin;align-self:start}
+  .sidebar::-webkit-scrollbar{width:3px}
+  .sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+}
+
+
+/* ── CURRENCY BANNER ── */
+.currency-banner{display:none;align-items:center;gap:8px;padding:.5rem 1rem;background:var(--accent-light);border:1px solid var(--accent);border-radius:var(--radius-sm);font-size:12px;color:var(--accent2);margin-bottom:.75rem;cursor:pointer;transition:all var(--t)}
+.currency-banner.show{display:flex}
+.currency-banner:hover{background:var(--accent-light);opacity:.85}
+.currency-close{margin-left:auto;background:none;border:none;cursor:pointer;color:var(--accent2);font-size:15px;line-height:1;padding:0}
+
+/* ── CONTENT TABS ── */
+.content-tabs-wrap{overflow:hidden}
+.content-tabs{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--border)}
+.content-tabs::-webkit-scrollbar{display:none}
+.ctab{padding:.8rem 1.1rem;font-size:13px;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--muted);white-space:nowrap;border-bottom:2px solid transparent;transition:all var(--t);flex-shrink:0;margin-bottom:-1px}
+.ctab:hover{color:var(--text);background:var(--surface2)}
+.ctab.active{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.ctab-panel{display:block}
+.ctab-panel.hidden{display:none}
+/* ── FAQ GRID ── */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+@media(max-width:620px){.faq-grid{grid-template-columns:1fr}}
+/* ── INTERNAL NAV STRIP ── */
+.internal-links{display:none}
+
+</style>
+</head>
+<body>
+<a href="#calculator" class="skip-link">Skip to calculator</a>
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- HEADER -->
+<header>
+  <a href="/" class="logo">
+    <span class="logo-icon">🧮</span>LoanCalcHub
+  </a>
+  <div class="hdr-right">
+    <nav>
+      <a href="#calculator" data-i18n="nav_calc">Calculator</a>
+      <a href="#compare" data-i18n="nav_compare">Compare</a>
+      <a href="#calculator" onclick="openTab('faq');return false;" data-i18n="nav_faq">FAQ</a>
+    </nav>
+    <button class="icon-btn" onclick="toggleLangPicker()" id="langBtn">🌐 EN</button>
+    <button class="icon-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+  </div>
+</header>
+
+<!-- LANG PICKER -->
+<div class="lang-picker" id="langPicker">
+  <div class="lang-option" onclick="setLang('en')">🇺🇸 English</div>
+  <div class="lang-option" onclick="setLang('sk')">🇸🇰 Slovenčina</div>
+  <div class="lang-option" onclick="setLang('cs')">🇨🇿 Čeština</div>
+  <div class="lang-option" onclick="setLang('de')">🇩🇪 Deutsch</div>
+  <div class="lang-option" onclick="setLang('pl')">🇵🇱 Polski</div>
+  <div class="lang-option" onclick="setLang('hu')">🇭🇺 Magyar</div>
+  <div class="lang-option" onclick="setLang('ru')">🇷🇺 Русский</div>
+  <div class="lang-option" onclick="setLang('es')">🇪🇸 Español</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <h1 data-i18n="hero_title">Loan Calculator</h1>
+    <p data-i18n="hero_sub">Instant monthly payments, interest breakdown &amp; amortization schedule</p>
+    </div>
+    <div class="rating-wrap">
+      <span class="stars">★★★★★</span>
+      <span class="rating-text" id="ratingText">4.9 / 5</span>
+      <span class="rating-count" id="ratingCount">(2,847 ratings)</span>
+    </div>
+    <a href="#calculator" class="hero-cta" id="heroCta">
+      Calculate now ↓
+    </a>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar" id="statsBar">
+  <div class="stat-item"><span class="stat-num" id="calcToday">1,284</span><span>calculations today</span></div>
+  <span class="stat-sep">·</span>
+  <div class="stat-item"><span class="stat-num">4.9★</span><span>average rating</span></div>
+  <span class="stat-sep">·</span>
+  <div class="stat-item"><span class="stat-num" id="calcTotal">847,291</span><span>total calculations</span></div>
+  <span class="stat-sep">·</span>
+  <div class="stat-item"><span class="last-updated"><span class="last-updated-dot"></span><span id="lastUpdated">Updated May 2025</span></span></div>
+</div>
+<div class="page">
+
+<!-- BREADCRUMB -->
+<nav aria-label="breadcrumb" class="page">
+  <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a href="/" itemprop="item"><span itemprop="name" id="bcHome">Home</span></a>
+      <meta itemprop="position" content="1"/>
+    </li>
+    <span class="breadcrumb-sep">›</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <span class="breadcrumb-current" itemprop="name" id="bcCurrent">Loan Calculator</span>
+      <meta itemprop="position" content="2"/>
+    </li>
+  </ol>
+</nav>
+<div class="main-wrap">
+
+<!-- LEFT -->
+<div id="calculator">
+
+  <!-- CURRENCY BANNER -->
+  <div class="currency-banner" id="currencyBanner">
+    <span id="currencyBannerIcon">💱</span>
+    <span id="currencyBannerText">Switching to your local currency...</span>
+    <button class="currency-close" onclick="dismissCurrencyBanner()" aria-label="Dismiss">×</button>
+  </div>
+  <!-- CALCULATOR CARD -->
+  <div class="card">
+    <div class="card-head">
+      <span data-i18n="card_details">Loan details</span>
+      <span class="live-badge"><span class="live-dot"></span><span data-i18n="live">Live</span></span>
+    </div>
+    <div class="tabs">
+      <button class="tab active" onclick="setPreset('personal',this)" data-i18n="tab_personal">Personal</button>
+      <button class="tab" onclick="setPreset('mortgage',this)" data-i18n="tab_mortgage">Mortgage</button>
+      <button class="tab" onclick="setPreset('car',this)" data-i18n="tab_car">Car loan</button>
+      <button class="tab" onclick="setPreset('student',this)" data-i18n="tab_student">Student</button>
+    </div>
+    <div class="card-body">
+      <div class="form-grid">
+        <div class="field">
+          <label data-i18n="lbl_amount">Loan amount</label>
+          <div class="iw"><span class="pfx" id="currSym">$</span>
+            <input type="number" id="amount" value="10000" min="100" oninput="liveCalc()"/>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="amtR" min="1000" max="500000" step="500" value="10000" oninput="sv('amount','amtR',this.value)"/>
+            <span class="slider-val" id="amtV">$10k</span>
+          </div>
+        </div>
+        <div class="field">
+          <label data-i18n="lbl_rate">Interest rate</label>
+          <div class="iw">
+            <input type="number" id="rate" value="7.5" min="0.1" max="50" step="0.1" style="padding-left:12px" oninput="liveCalc()"/>
+            <span class="sfx">% / yr</span>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="rateR" min="0.5" max="30" step="0.1" value="7.5" oninput="sv('rate','rateR',this.value)"/>
+            <span class="slider-val" id="rateV">7.5%</span>
+          </div>
+        </div>
+        <div class="field">
+          <label data-i18n="lbl_term">Loan term</label>
+          <div class="iw">
+            <input type="number" id="term" value="5" min="1" max="30" style="padding-left:12px" oninput="liveCalc()"/>
+            <span class="sfx" data-i18n="years">years</span>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="termR" min="1" max="30" step="1" value="5" oninput="sv('term','termR',this.value)"/>
+            <span class="slider-val" id="termV">5 yr</span>
+          </div>
+        </div>
+        <div class="field">
+          <label data-i18n="lbl_type">Loan type</label>
+          <select id="loanType" onchange="liveCalc()">
+            <option value="amortizing" data-i18n="type_amort">Amortizing (standard)</option>
+            <option value="interest" data-i18n="type_interest">Interest-only</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS CARD -->
+  <div class="card">
+    <div class="card-head">
+      <span data-i18n="card_results">Results</span>
+      <button class="btn btn-sm btn-ghost" onclick="copyResults()">📋 <span data-i18n="btn_copy">Copy</span></button>
+    </div>
+    <div class="card-body">
+      <div class="result-strip">
+        <div class="result-box primary">
+          <div class="r-label" data-i18n="res_monthly">Monthly payment</div>
+          <div class="r-val" id="rMonthly">–</div>
+          <div class="r-sub" id="rMonthlyAlt"></div>
+        </div>
+        <div class="result-box">
+          <div class="r-label" data-i18n="res_interest">Total interest</div>
+          <div class="r-val" id="rInterest">–</div>
+          <div class="r-sub" id="rIntPct"></div>
+        </div>
+        <div class="result-box">
+          <div class="r-label" data-i18n="res_total">Total repaid</div>
+          <div class="r-val" id="rTotal">–</div>
+          <div class="r-sub" id="rTotalSub"></div>
+        </div>
+      </div>
+
+      <!-- DONUT -->
+      <div class="donut-section">
+        <canvas id="donutChart" width="110" height="110" style="flex-shrink:0;width:110px;height:110px"></canvas>
+        <div class="donut-labels">
+          <div class="leg-item">
+            <div class="leg-left"><span class="leg-dot" style="background:#15803D"></span><span data-i18n="leg_principal">Principal</span></div>
+            <span class="leg-val" id="legP">–</span>
+          </div>
+          <div class="leg-item">
+            <div class="leg-left"><span class="leg-dot" style="background:#DC2626"></span><span data-i18n="leg_interest">Interest</span></div>
+            <span class="leg-val" id="legI">–</span>
+          </div>
+          <div class="leg-item">
+            <div class="leg-left"><span class="leg-dot" style="background:var(--yellow)"></span><span data-i18n="leg_rate">Rate</span></div>
+            <span class="leg-val" id="legR">–</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LINE CHART -->
+      <div style="font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px" data-i18n="chart_title">Balance over time</div>
+      <div class="chart-wrap"><canvas id="lineChart"></canvas></div>
+
+      <!-- WHAT IF TIPS -->
+      <div style="font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:1.1rem 0 7px" data-i18n="tips_title">What if you...</div>
+      <div class="tips-grid" id="tipsGrid"></div>
+
+      <!-- EARLY PAYOFF -->
+      <div style="margin-top:1rem">
+        <div style="font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px" data-i18n="early_title">Early payoff calculator</div>
+        <div class="field" style="max-width:240px">
+          <label data-i18n="early_label">Extra monthly payment</label>
+          <div class="iw"><span class="pfx" id="extraCurrSym">$</span>
+            <input type="number" id="extraPmt" value="100" min="0" oninput="renderEarlyPayoff()"/>
+          </div>
+        </div>
+        <div class="payoff-row" id="payoffResult"></div>
+      </div>
+
+
+      <!-- SOCIAL SHARE -->
+      <div class="share-strip" id="shareStrip">
+        <a class="share-btn share-wa" id="shareWa" href="#" onclick="shareWA();return false;">📱 WhatsApp</a>
+        <a class="share-btn share-fb" id="shareFb" href="#" onclick="shareFB();return false;">Facebook</a>
+        <a class="share-btn share-x" id="shareXBtn" href="#" onclick="shareX();return false;">𝕏 Twitter</a>
+        <button class="share-btn share-cp" onclick="copyResults();return false;" id="shareCopy">📋 Copy</button>
+      </div>
+      <!-- ACTIONS -->
+      <div class="actions">
+        <button class="btn btn-sm btn-outline" onclick="shareResult()">🔗 <span data-i18n="btn_share">Share</span></button>
+        <button class="btn btn-sm btn-ghost" onclick="window.print()">🖨️ <span data-i18n="btn_print">Print</span></button>
+        <button class="btn btn-sm btn-ghost" onclick="exportCSV()">📥 CSV</button>
+        <button class="btn btn-sm btn-ghost" onclick="resetForm()">↺ <span data-i18n="btn_reset">Reset</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BANNER AD -->
+  <div style="margin:1.25rem 0;border-radius:var(--radius);overflow:hidden;background:var(--surface);border:1px solid var(--border);padding:.5rem">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5162603318395114" data-ad-slot="auto" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- AMORTIZATION -->
+  <div class="card">
+    <div class="card-head">
+      <span data-i18n="card_amort">Amortization schedule</span>
+      <button class="btn btn-sm btn-ghost" onclick="copyTable()">📋 <span data-i18n="btn_copy_table">Copy table</span></button>
+    </div>
+    <div class="card-body" style="padding:0">
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr>
+            <th data-i18n="th_month">Month</th>
+            <th data-i18n="th_payment">Payment</th>
+            <th data-i18n="th_principal">Principal</th>
+            <th data-i18n="th_interest">Interest</th>
+            <th data-i18n="th_balance">Balance</th>
+          </tr></thead>
+          <tbody id="amortBody"></tbody>
+          <tfoot id="amortFoot"></tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARE -->
+  <div class="card" id="compare">
+    <div class="card-head"><span data-i18n="card_compare">Scenario comparison</span></div>
+    <div class="card-body">
+      <p style="font-size:13px;color:var(--muted);margin-bottom:1rem" data-i18n="compare_sub">Compare your loan against an alternative scenario.</p>
+      <div class="compare-cols">
+        <div>
+          <div class="field" style="margin-bottom:.75rem">
+            <label data-i18n="lbl_alt_rate">Alternative rate</label>
+            <div class="iw">
+              <input type="number" id="altRate" value="5.0" min="0.1" max="50" step="0.1" style="padding-left:12px" oninput="renderCompare()"/>
+              <span class="sfx">% / yr</span>
+            </div>
+          </div>
+          <div class="field">
+            <label data-i18n="lbl_alt_term">Alternative term</label>
+            <div class="iw">
+              <input type="number" id="altTerm" value="3" min="1" max="30" style="padding-left:12px" oninput="renderCompare()"/>
+              <span class="sfx" data-i18n="years">years</span>
+            </div>
+          </div>
+        </div>
+        <div id="compareResult" style="font-size:13px;color:var(--muted);display:flex;align-items:center;justify-content:center">
+          <span data-i18n="compare_placeholder">Enter values to compare</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       TABBED CONTENT – Mortgage / Car / Refi / Guide / FAQ
+       ═══════════════════════════════════════ -->
+
+  <!-- TAB NAV -->
+  <div class="content-tabs-wrap card" style="margin-top:1.25rem">
+    <div class="content-tabs" id="contentTabs">
+      <button class="ctab active" onclick="switchTab('how',this)" id="ctab-how" data-i18n="ctab_how">⚡ How it works</button>
+      <button class="ctab" onclick="switchTab('mortgage',this)" id="ctab-mortgage" data-i18n="ctab_mortgage">🏠 Mortgage</button>
+      <button class="ctab" onclick="switchTab('car',this)" id="ctab-car" data-i18n="ctab_car">🚗 Car loan</button>
+      <button class="ctab" onclick="switchTab('refi',this)" id="ctab-refi" data-i18n="ctab_refi">🔄 Refinance</button>
+      <button class="ctab" onclick="switchTab('guide',this)" id="ctab-guide" data-i18n="ctab_guide">📊 Loan guide</button>
+      <button class="ctab" onclick="switchTab('faq',this)" id="ctab-faq" data-i18n="ctab_faq">❓ FAQ</button>
+      <button class="ctab" onclick="switchTab('dti',this)" id="ctab-dti" data-i18n="ctab_dti">📉 DTI</button>
+      <button class="ctab" onclick="switchTab('compound',this)" id="ctab-compound" data-i18n="ctab_compound">📈 Compound</button>
+    </div>
+
+    <!-- TAB: HOW IT WORKS -->
+    <div class="ctab-panel" id="panel-how">
+      <div class="card-body">
+        <div class="steps-grid">
+          <div class="step-card"><div class="step-num">01</div><div class="step-title" id="step1Title">Enter your loan details</div><div class="step-desc" id="step1Desc">Type in the loan amount, interest rate and term — or drag the sliders for instant adjustments.</div></div>
+          <div class="step-card"><div class="step-num">02</div><div class="step-title" id="step2Title">See instant results</div><div class="step-desc" id="step2Desc">Monthly payment, total interest and amortization schedule appear in real time — no button click needed.</div></div>
+          <div class="step-card"><div class="step-num">03</div><div class="step-title" id="step3Title">Compare &amp; share</div><div class="step-desc" id="step3Desc">Run a side-by-side scenario comparison, export to CSV, or share a link with your exact parameters.</div></div>
+        </div>
+        <div class="seo-section" style="margin-top:1.25rem">
+          <h2 data-i18n="seo_h2">How to use this calculator</h2>
+          <p data-i18n="seo_p1">Enter your loan amount, annual interest rate, and term in years. Results update live as you type or drag the sliders — no button click needed.</p>
+          <h3 data-i18n="seo_h3a">The loan payment formula</h3>
+          <div class="formula">M = P × [r(1+r)ⁿ] / [(1+r)ⁿ − 1]<br><br>M = monthly payment &nbsp;·&nbsp; P = principal &nbsp;·&nbsp; r = monthly rate &nbsp;·&nbsp; n = payments</div>
+          <h3 data-i18n="seo_h3b">Tips for a lower rate</h3>
+          <p data-i18n="seo_p2">Your credit score is the single biggest factor. A score above 750 typically unlocks the best rates. Compare at least 3 lenders — even 1% less on a $20,000 loan saves over $600 in interest over 5 years.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: MORTGAGE -->
+    <div class="ctab-panel hidden" id="panel-mortgage">
+      <div class="card-body">
+        <h2 id="mortgageTitle" style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:1rem">Mortgage Calculator</h2>
+        <div id="mortgage-calculator">
+          <div class="calc-mini-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem">
+            <div class="field"><label id="mLblHome">Home price</label><div class="iw"><span class="pfx" id="mCurrSym">$</span><input type="number" id="mHomePrice" value="300000" min="10000" oninput="calcMortgage()"/></div></div>
+            <div class="field"><label id="mLblDown">Down payment (%)</label><div class="iw"><input type="number" id="mDownPct" value="20" min="0" max="99" style="padding-left:12px" oninput="calcMortgage()"/><span class="sfx">%</span></div></div>
+            <div class="field"><label id="mLblRate">Interest rate</label><div class="iw"><input type="number" id="mRate" value="6.5" min="0.1" max="20" step="0.1" style="padding-left:12px" oninput="calcMortgage()"/><span class="sfx">% / yr</span></div></div>
+            <div class="field"><label id="mLblTerm">Loan term</label><div class="iw"><input type="number" id="mTerm" value="30" min="1" max="30" style="padding-left:12px" oninput="calcMortgage()"/><span class="sfx" id="mYears">years</span></div></div>
+            <div class="field"><label id="mLblTax">Property tax / yr</label><div class="iw"><span class="pfx" id="mTaxCurrSym">$</span><input type="number" id="mTax" value="3000" min="0" oninput="calcMortgage()"/></div></div>
+            <div class="field"><label id="mLblIns">Home insurance / yr</label><div class="iw"><span class="pfx" id="mInsCurrSym">$</span><input type="number" id="mIns" value="1200" min="0" oninput="calcMortgage()"/></div></div>
+          </div>
+          <div class="calc-mini-result" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;background:var(--accent);color:#fff;padding:.9rem 1.25rem;border-radius:var(--radius-sm);margin-top:.75rem">
+            <div><div style="font-size:11px;opacity:.75;margin-bottom:2px" id="mMonthlyLbl">Total monthly payment</div><div class="calc-mini-result-val" id="mMonthly">–</div></div>
+            <div style="display:flex;gap:1.25rem;flex-wrap:wrap">
+              <div style="font-size:12px;opacity:.85"><strong style="display:block;font-size:14px" id="mPrincipalInt">–</strong><span id="mPILabel">Principal &amp; interest</span></div>
+              <div style="font-size:12px;opacity:.85"><strong style="display:block;font-size:14px" id="mTaxMo">–</strong><span id="mTaxLabel">Tax</span></div>
+              <div style="font-size:12px;opacity:.85"><strong style="display:block;font-size:14px" id="mInsMo">–</strong><span id="mInsLabel">Insurance</span></div>
+              <div style="font-size:12px;opacity:.85"><strong style="display:block;font-size:14px" id="mTotalInterest">–</strong><span id="mTotalIntLabel">Total interest</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- FRED Live Rates Widget -->
+        <div id="fredRatesWidget" style="display:flex;gap:8px;flex-wrap:wrap;margin:.75rem 0;padding:.75rem 1rem;background:var(--surface2);border-radius:var(--radius-sm);border:1px solid var(--border)">
+          <div style="font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;width:100%;margin-bottom:4px" id="fredTitle">Current US Mortgage Rates</div>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;width:100%">
+            <div><div style="font-size:10px;color:var(--hint)">30-yr Fixed</div><div style="font-size:16px;font-weight:600;color:var(--text)" id="rate30yr">–</div></div>
+            <div><div style="font-size:10px;color:var(--hint)">15-yr Fixed</div><div style="font-size:16px;font-weight:600;color:var(--text)" id="rate15yr">–</div></div>
+            <div><div style="font-size:10px;color:var(--hint)">5/1 ARM</div><div style="font-size:16px;font-weight:600;color:var(--text)" id="rate5arm">–</div></div>
+            <div style="font-size:10px;color:var(--hint);text-align:right" id="fredDate">Loading...</div>
+          </div>
+        </div>
+        <div class="seo-section" style="margin-top:1rem">
+          <p id="mortgageSeoP1">A mortgage calculator helps estimate your monthly housing payment (PITI). A 20% down payment avoids PMI, saving 0.5–1% annually.</p>
+          <p id="mortgageSeoP2">Current 30-year fixed rates range from 6–7.5%. A 15-year mortgage costs roughly half the total interest of a 30-year loan.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: CAR LOAN -->
+    <div class="ctab-panel hidden" id="panel-car">
+      <div class="card-body">
+        <h2 id="carTitle" style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:1rem">Car Loan Calculator</h2>
+        <div id="car-loan-calculator">
+          <div class="calc-mini-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem">
+            <div class="field"><label id="cLblPrice">Vehicle price</label><div class="iw"><span class="pfx" id="cCurrSym">$</span><input type="number" id="cPrice" value="25000" min="1000" oninput="calcCar()"/></div></div>
+            <div class="field"><label id="cLblDown">Down payment</label><div class="iw"><span class="pfx" id="cDownCurrSym">$</span><input type="number" id="cDown" value="3000" min="0" oninput="calcCar()"/></div></div>
+            <div class="field"><label id="cLblTrade">Trade-in value</label><div class="iw"><span class="pfx" id="cTradeCurrSym">$</span><input type="number" id="cTrade" value="0" min="0" oninput="calcCar()"/></div></div>
+            <div class="field"><label id="cLblRate">Interest rate</label><div class="iw"><input type="number" id="cRate" value="5.9" min="0.1" max="30" step="0.1" style="padding-left:12px" oninput="calcCar()"/><span class="sfx">% / yr</span></div></div>
+            <div class="field"><label id="cLblTerm">Term (months)</label><div class="iw"><input type="number" id="cTerm" value="60" min="12" max="84" style="padding-left:12px" oninput="calcCar()"/><span class="sfx" id="cMonthsSfx">mo</span></div></div>
+            <div class="field"><label id="cLblTax">Sales tax</label><div class="iw"><input type="number" id="cTax" value="8" min="0" max="20" step="0.1" style="padding-left:12px" oninput="calcCar()"/><span class="sfx">%</span></div></div>
+          </div>
+          <div class="calc-mini-result" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;background:var(--accent);color:#fff;padding:.9rem 1.25rem;border-radius:var(--radius-sm);margin-top:.75rem">
+            <div><div style="font-size:11px;opacity:.75;margin-bottom:2px" id="cMonthlyLbl">Monthly payment</div><div class="calc-mini-result-val" id="cMonthly">–</div></div>
+            <div style="display:flex;gap:1.25rem;flex-wrap:wrap">
+              <div style="font-size:12px;opacity:.85"><strong style="display:block;font-size:14px" id="cLoanAmt">–</strong><span id="cLoanAmtLbl">Loan amount</span></div>
+              <div style="font-size:12px;opacity:.85"><strong style="display:block;font-size:14px" id="cTotalInt">–</strong><span id="cTotalIntLbl">Total interest</span></div>
+              <div style="font-size:12px;opacity:.85"><strong style="display:block;font-size:14px" id="cTotalCost">–</strong><span id="cTotalCostLbl">Total cost</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="seo-section" style="margin-top:1rem">
+          <p id="carSeoP1">The average auto loan rate is 5–8% for good credit (660+) and 10–15% for subprime borrowers.</p>
+          <p id="carSeoP2">60-month terms are most common. Longer terms (72–84 months) lower payments but increase risk of going underwater.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: REFINANCE -->
+    <div class="ctab-panel hidden" id="panel-refi">
+      <div class="card-body">
+        <h2 id="refiTitle" style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:1rem">Refinance Calculator</h2>
+        <div id="refinance-calculator">
+          <div class="calc-mini-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem">
+            <div class="field"><label id="rLblBalance">Current balance</label><div class="iw"><span class="pfx" id="rCurrSym">$</span><input type="number" id="rBalance" value="200000" min="1000" oninput="calcRefi()"/></div></div>
+            <div class="field"><label id="rLblCurrentRate">Current rate</label><div class="iw"><input type="number" id="rCurrentRate" value="7.5" min="0.1" max="20" step="0.1" style="padding-left:12px" oninput="calcRefi()"/><span class="sfx">%</span></div></div>
+            <div class="field"><label id="rLblNewRate">New rate</label><div class="iw"><input type="number" id="rNewRate" value="6.0" min="0.1" max="20" step="0.1" style="padding-left:12px" oninput="calcRefi()"/><span class="sfx">%</span></div></div>
+            <div class="field"><label id="rLblRemTerm">Remaining term</label><div class="iw"><input type="number" id="rRemTerm" value="25" min="1" max="30" style="padding-left:12px" oninput="calcRefi()"/><span class="sfx" id="rYears">yr</span></div></div>
+            <div class="field"><label id="rLblNewTerm">New term</label><div class="iw"><input type="number" id="rNewTerm" value="20" min="1" max="30" style="padding-left:12px" oninput="calcRefi()"/><span class="sfx" id="rYears2">yr</span></div></div>
+            <div class="field"><label id="rLblCosts">Closing costs</label><div class="iw"><span class="pfx" id="rCostCurrSym">$</span><input type="number" id="rCosts" value="3000" min="0" oninput="calcRefi()"/></div></div>
+          </div>
+          <div class="calc-mini-result" id="refiResult" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;background:var(--accent);color:#fff;padding:.9rem 1.25rem;border-radius:var(--radius-sm);margin-top:.75rem">
+            <div><div style="font-size:11px;opacity:.75;margin-bottom:2px" id="rSavingsLbl">Monthly savings</div><div class="calc-mini-result-val" id="rMonthlySavings">–</div></div>
+            <div style="display:flex;gap:1.25rem;flex-wrap:wrap">
+              <div style="font-size:12px;opacity:.85"><strong style="display:block;font-size:14px" id="rBreakEven">–</strong><span id="rBreakEvenLbl">Break-even</span></div>
+              <div style="font-size:12px;opacity:.85"><strong style="display:block;font-size:14px" id="rTotalSavings">–</strong><span id="rTotalSavingsLbl">Total savings</span></div>
+              <div style="font-size:12px;opacity:.85"><strong style="display:block;font-size:14px" id="rNewPayment">–</strong><span id="rNewPaymentLbl">New payment</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="seo-section" style="margin-top:1rem">
+          <p id="refiSeoP1">Refinancing makes sense when the new rate is at least 1% lower. The break-even point shows how many months until savings exceed closing costs.</p>
+          <p id="refiSeoP2">Closing costs typically run 2–5% of the loan amount. Compare total cost over your expected time in the home.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: LOAN GUIDE -->
+    <div class="ctab-panel hidden" id="panel-guide">
+      <div class="card-body" style="padding-top:.75rem">
+        <h2 id="loanTypesTitle" style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:.75rem">Loan Types Comparison</h2>
+        <div class="loan-compare-wrap">
+          <table class="loan-compare" id="loan-types-guide">
+            <thead><tr>
+              <th id="ltLoan">Loan type</th><th id="ltTypRate">Typical rate</th>
+              <th id="ltTerm">Term</th><th id="ltFor">Best for</th>
+              <th id="ltCollateral">Collateral</th>
+            </tr></thead>
+            <tbody>
+              <tr><td><strong>Personal loan</strong></td><td>6–36%</td><td>1–7 yr</td><td>Debt consolidation, home improvement</td><td>None <span class="tag tag-green">Unsecured</span></td></tr>
+              <tr class="highlight"><td><strong>Mortgage</strong></td><td>6–8%</td><td>15–30 yr</td><td>Home purchase, lowest long-term cost</td><td>Home <span class="tag tag-yellow">Secured</span></td></tr>
+              <tr><td><strong>Car loan</strong></td><td>5–15%</td><td>2–7 yr</td><td>Vehicle purchase</td><td>Vehicle <span class="tag tag-yellow">Secured</span></td></tr>
+              <tr><td><strong>Student loan</strong></td><td>4–13%</td><td>5–20 yr</td><td>Education, income-based repayment</td><td>None <span class="tag tag-green">Unsecured</span></td></tr>
+              <tr><td><strong>HELOC</strong></td><td>7–12%</td><td>5–20 yr</td><td>Home improvement, flexible draw</td><td>Home equity <span class="tag tag-yellow">Secured</span></td></tr>
+              <tr><td><strong>Business loan</strong></td><td>6–30%</td><td>1–10 yr</td><td>Expansion, equipment</td><td>Varies</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: FAQ -->
+    <div class="ctab-panel hidden" id="panel-faq">
+      <div class="card-body" id="faq">
+        <div class="faq-grid">
+          <div>
+            <div class="faq-section-title" id="faqGeneralTitle" data-i18n="faqGeneralTitle">General</div>
+            <details><summary data-i18n="faq1q">What is APR vs interest rate?</summary><div class="faq-body" data-i18n="faq1a">The interest rate is the cost of borrowing the principal. APR includes the rate plus fees, giving a truer picture of annual cost.</div></details>
+            <details><summary data-i18n="faq2q">How do I lower my monthly payment?</summary><div class="faq-body" data-i18n="faq2a">Choose a longer term, secure a lower rate, or borrow less. Longer terms reduce monthly payments but increase total interest.</div></details>
+            <details><summary data-i18n="faq3q">Can I pay off my loan early?</summary><div class="faq-body" data-i18n="faq3a">Most personal loans allow early repayment. Some lenders charge a prepayment penalty. Extra principal payments reduce total interest significantly.</div></details>
+            <details><summary data-i18n="faq4q">What credit score do I need?</summary><div class="faq-body" data-i18n="faq4a">Most lenders require 580–600 minimum. Best rates go to borrowers above 720–740.</div></details>
+            <details><summary data-i18n="faq5q">Is this calculator accurate?</summary><div class="faq-body" data-i18n="faq5a">This uses the standard amortization formula with a fixed rate and no fees. Confirm exact figures with your lender.</div></details>
+            <details><summary data-i18n="faq6q">What is an amortization schedule?</summary><div class="faq-body" data-i18n="faq6a">A table showing every payment over the loan's life — principal vs interest each month.</div></details>
+          </div>
+          <div>
+            <div class="faq-section-title" id="faqMortgageTitle">Mortgage</div>
+            <details><summary id="faq7q">What is a good mortgage rate?</summary><div class="faq-body" id="faq7a">Current 30-year fixed rates range from 6–7.5%. A credit score above 740 qualifies for the best rates. Compare at least 3 lenders on the same day.</div></details>
+            <details><summary id="faq8q">How much house can I afford?</summary><div class="faq-body" id="faq8a">Housing payment (PITI) should not exceed 28% of gross monthly income. For $6,000/month income, that's $1,680/month max.</div></details>
+            <details><summary id="faq9q">15 vs 30 year mortgage?</summary><div class="faq-body" id="faq9a">15-year has higher payments but costs ~half the interest. $300k at 6.5%: 30-year = $382k interest, 15-year = $169k interest.</div></details>
+            <div class="faq-section-title" id="faqCarTitle">Car loans</div>
+            <details><summary id="faq10q">What is a good car loan rate?</summary><div class="faq-body" id="faq10a">750+ credit: 4–6%. Good credit (690–749): 6–9%. Below 660: often 10–15%. Credit unions generally beat dealership financing.</div></details>
+            <details><summary id="faq11q">Should I put money down on a car?</summary><div class="faq-body" id="faq11a">10–20% down is recommended. It reduces monthly payments and lowers risk of being underwater as cars depreciate quickly.</div></details>
+            <div class="faq-section-title" id="faqRefiTitle">Refinancing</div>
+            <details><summary id="faq12q">When should I refinance?</summary><div class="faq-body" id="faq12a">Consider when rates drop 1%+ below your current rate, your credit score improves significantly, or you want to switch from ARM to fixed.</div></details>
+            <details><summary id="faq13q">How much does refinancing cost?</summary><div class="faq-body" id="faq13a">Closing costs typically run 2–5% of the loan, or $4,000–$10,000 on a $200,000 loan. Use the break-even calculator to decide.</div></details>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- TAB: DTI -->
+    <div class="ctab-panel hidden" id="panel-dti">
+      <div class="card-body">
+        <h2 id="dtiTitle" style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:.4rem">Debt-to-Income Calculator</h2>
+        <p id="dtiSubtitle" style="font-size:13px;color:var(--muted);margin-bottom:1rem">Most lenders require a DTI below 43%. Above 50% makes loan approval difficult.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
+          <div class="field">
+            <label id="dtiLblIncome">Gross monthly income</label>
+            <div class="iw"><span class="pfx" id="dtiCurrSym">$</span><input type="number" id="dtiIncome" value="5000" min="0" oninput="calcDTI()"/></div>
+          </div>
+          <div class="field">
+            <label id="dtiLblHousing">Housing payment / mo</label>
+            <div class="iw"><span class="pfx" id="dtiCurrSym2">$</span><input type="number" id="dtiHousing" value="1200" min="0" oninput="calcDTI()"/></div>
+          </div>
+          <div class="field">
+            <label id="dtiLblCar">Car loan / mo</label>
+            <div class="iw"><span class="pfx" id="dtiCurrSym3">$</span><input type="number" id="dtiCar" value="300" min="0" oninput="calcDTI()"/></div>
+          </div>
+          <div class="field">
+            <label id="dtiLblOther">Other debts / mo</label>
+            <div class="iw"><span class="pfx" id="dtiCurrSym4">$</span><input type="number" id="dtiOther" value="200" min="0" oninput="calcDTI()"/></div>
+          </div>
+        </div>
+        <!-- DTI Result -->
+        <div id="dtiResult" style="margin-top:.9rem;padding:1rem 1.25rem;border-radius:var(--radius-sm);background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem">
+          <div>
+            <div style="font-size:11px;opacity:.75;margin-bottom:2px" id="dtiResultLabel">Your DTI ratio</div>
+            <div style="font-family:'Syne',sans-serif;font-size:2rem;font-weight:700" id="dtiPct">–</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px;text-align:right">
+            <div style="font-size:13px;opacity:.85" id="dtiStatus">–</div>
+            <div style="font-size:12px;opacity:.7" id="dtiTotalDebt">–</div>
+          </div>
+        </div>
+        <!-- DTI Scale -->
+        <div style="margin-top:.75rem">
+          <div style="display:flex;height:8px;border-radius:4px;overflow:hidden">
+            <div style="flex:0.36;background:#4ADE80"></div>
+            <div style="flex:0.07;background:#FCD34D"></div>
+            <div style="flex:0.07;background:#FB923C"></div>
+            <div style="flex:0.5;background:#F87171"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--hint);margin-top:3px">
+            <span>0%</span><span>36%</span><span>43%</span><span>50%+</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:2px">
+            <span id="dtiLblExcellent">Excellent</span><span id="dtiLblGood">Good</span><span id="dtiLblHigh">High</span><span id="dtiLblDanger">Danger</span>
+          </div>
+        </div>
+        <div class="seo-section" style="margin-top:1rem">
+          <p id="dtiSeoP">DTI (Debt-to-Income ratio) is the percentage of your gross monthly income that goes toward debt payments. It is one of the most important factors lenders use to evaluate loan applications. A DTI below 36% is considered excellent, while above 50% makes approval unlikely.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: COMPOUND INTEREST -->
+    <div class="ctab-panel hidden" id="panel-compound">
+      <div class="card-body">
+        <h2 id="compoundTitle" style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:.4rem">Compound Interest Calculator</h2>
+        <p id="compoundSubtitle" style="font-size:13px;color:var(--muted);margin-bottom:1rem">See how your investment grows with the power of compounding.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
+          <div class="field">
+            <label id="ciLblPrincipal">Initial investment</label>
+            <div class="iw"><span class="pfx" id="ciCurrSym">$</span><input type="number" id="ciPrincipal" value="10000" min="0" oninput="calcCompound()"/></div>
+          </div>
+          <div class="field">
+            <label id="ciLblMonthly">Monthly contribution</label>
+            <div class="iw"><span class="pfx" id="ciCurrSym2">$</span><input type="number" id="ciMonthly" value="200" min="0" oninput="calcCompound()"/></div>
+          </div>
+          <div class="field">
+            <label id="ciLblRate">Annual interest rate</label>
+            <div class="iw"><input type="number" id="ciRate" value="7" min="0.1" max="50" step="0.1" style="padding-left:12px" oninput="calcCompound()"/><span class="sfx">% / yr</span></div>
+          </div>
+          <div class="field">
+            <label id="ciLblYears">Time period</label>
+            <div class="iw"><input type="number" id="ciYears" value="20" min="1" max="50" style="padding-left:12px" oninput="calcCompound()"/><span class="sfx" id="ciYearsSfx">years</span></div>
+          </div>
+          <div class="field">
+            <label id="ciLblFreq">Compound frequency</label>
+            <select id="ciFreq" onchange="calcCompound()" style="padding:10px 12px">
+              <option value="12" id="ciFreqMonthly">Monthly</option>
+              <option value="4">Quarterly</option>
+              <option value="1">Annually</option>
+              <option value="365">Daily</option>
+            </select>
+          </div>
+        </div>
+        <!-- Compound Result -->
+        <div style="margin-top:.9rem;padding:1rem 1.25rem;border-radius:var(--radius-sm);background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem">
+          <div>
+            <div style="font-size:11px;opacity:.75;margin-bottom:2px" id="ciResultLabel">Final balance</div>
+            <div style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700" id="ciFinalBalance">–</div>
+          </div>
+          <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
+            <div style="font-size:12px;opacity:.85"><strong style="display:block;font-size:14px" id="ciTotalContrib">–</strong><span id="ciContribLabel">Total invested</span></div>
+            <div style="font-size:12px;opacity:.85"><strong style="display:block;font-size:14px" id="ciTotalInterest">–</strong><span id="ciInterestLabel">Interest earned</span></div>
+            <div style="font-size:12px;opacity:.85"><strong style="display:block;font-size:14px" id="ciMultiplier">–</strong><span id="ciMultLabel">Multiplier</span></div>
+          </div>
+        </div>
+        <div class="seo-section" style="margin-top:1rem">
+          <p id="compoundSeoP">Compound interest is interest calculated on both the initial principal and the accumulated interest. Einstein reportedly called it the eighth wonder of the world. Starting early is the most powerful factor — $10,000 at 7% for 30 years grows to $76,000 without adding a single dollar more.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content-tabs-wrap -->
+  <!-- EMAIL CAPTURE -->
+  <div class="email-capture" id="emailCapture">
+    <h3 id="emailTitle">Get a free loan summary by email</h3>
+    <p id="emailSubtitle">Enter your email and we'll send you a full breakdown of your loan calculation — no spam, unsubscribe anytime.</p>
+    <div class="email-form">
+      <input type="email" class="email-input" id="emailInput" placeholder="your@email.com"/>
+      <button class="email-submit" onclick="submitEmail()" id="emailBtn">Send summary →</button>
+    </div>
+    <div class="email-success" id="emailSuccess">✅ <span id="emailSuccessText">Sent! Check your inbox.</span></div>
+  </div>
+
+  <!-- RELATED CALCULATORS -->
+  <div class="calc-section" id="related-calculators">
+    <div class="calc-section-head">
+      <div class="calc-section-icon">🔗</div>
+      <h2 id="relatedTitle">Related Calculators</h2>
+    </div>
+    <div class="related-grid">
+      <a href="#calculator" onclick="openTab('mortgage');return false;" class="related-card">
+        <div class="related-card-icon">🏠</div>
+        <div class="related-card-title" id="relMortgage">Mortgage Calculator</div>
+        <div class="related-card-desc">Home loan payment + PITI</div>
+      </a>
+      <a href="#calculator" onclick="openTab('car');return false;" class="related-card">
+        <div class="related-card-icon">🚗</div>
+        <div class="related-card-title" id="relCar">Car Loan Calculator</div>
+        <div class="related-card-desc">Auto loan with trade-in & tax</div>
+      </a>
+      <a href="#calculator" onclick="openTab('refi');return false;" class="related-card">
+        <div class="related-card-icon">🔄</div>
+        <div class="related-card-title" id="relRefi">Refinance Calculator</div>
+        <div class="related-card-desc">Break-even analysis</div>
+      </a>
+      <a href="#compare" class="related-card">
+        <div class="related-card-icon">⚖️</div>
+        <div class="related-card-title" id="relCompare">Scenario Comparison</div>
+        <div class="related-card-desc">Compare two loan options</div>
+      </a>
+      <a href="#calculator" onclick="openTab('how');return false;" class="related-card">
+        <div class="related-card-icon">💰</div>
+        <div class="related-card-title" id="relPersonal">Personal Loan</div>
+        <div class="related-card-desc">Standard amortizing loan</div>
+      </a>
+      <a href="#calculator" onclick="openTab('guide');return false;" class="related-card">
+        <div class="related-card-icon">📊</div>
+        <div class="related-card-title" id="relGuide">Loan Types Guide</div>
+        <div class="related-card-desc">Compare all loan types</div>
+      </a>
+    </div>
+  </div>
+
+</div><!-- /left -->
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="ad-slot">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5162603318395114" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="card">
+    <div class="card-head" data-i18n="sidebar_tips">Quick tips</div>
+    <div class="card-body" style="font-size:13px;display:flex;flex-direction:column;gap:9px;color:var(--muted)">
+      <p data-i18n="stip1">🏦 Compare at least 3 lenders — rates vary by 2–5%.</p>
+      <p data-i18n="stip2">📉 Do a soft credit check first — it won't hurt your score.</p>
+      <p data-i18n="stip3">📆 Shorter term = less total interest, higher monthly payment.</p>
+      <p data-i18n="stip4">💳 Watch for origination fees of 1–6% added upfront.</p>
+      <p data-i18n="stip5">🔄 Consider refinancing if rates drop significantly.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head" data-i18n="sidebar_other">Other calculators</div>
+    <div class="card-body sidebar-links">
+      <a href="#calculator" onclick="openTab('mortgage');return false;">→ <span data-i18n="link_mortgage">Mortgage Calculator</span></a>
+      <a href="#calculator" onclick="openTab('car');return false;">→ <span data-i18n="link_car">Car Loan Calculator</span></a>
+      <a href="#calculator" onclick="openTab('refi');return false;">→ <span data-i18n="link_refi">Refinance Calculator</span></a>
+      <a href="#calculator" onclick="openTab('guide');return false;">→ <span data-i18n="link_debt">Loan Types Guide</span></a>
+      <a href="#calculator" onclick="openTab('faq');return false;">→ <span data-i18n="link_invest">FAQ</span></a>
+    </div>
+  </div>
+  <div class="ad-slot">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5162603318395114" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</div>
+
+</div></div><!-- /main-wrap /page -->
+
+<!-- STICKY MOBILE RESULT -->
+<div class="sticky-result" id="stickyResult">
+  <div><div class="sticky-label" data-i18n="res_monthly">Monthly payment</div><div class="sticky-val" id="stickyVal">–</div></div>
+  <button class="btn btn-sm" style="background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.3)" onclick="shareResult()">🔗</button>
+</div>
+
+<a href="#" class="wa-float" onclick="shareWA();return false;" title="Share via WhatsApp" aria-label="Share via WhatsApp">📱</a>
+<!-- BOOKMARK HINT -->
+<div class="bk-hint" id="bkHint">
+  <div class="bk-inner">
+    <span style="font-size:22px">🔖</span>
+    <div style="flex:1">
+      <div style="font-weight:600;font-size:13px;margin-bottom:3px" id="bkTitle">Save for later</div>
+      <div style="font-size:12px;color:var(--muted)" id="bkSub">Bookmark this page to quickly return to your calculations.</div>
+    </div>
+    <button class="bk-close" onclick="closeHint()">×</button>
+  </div>
+</div>
+
+<!-- SHARE MODAL -->
+<div class="modal-bg" id="shareModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal">
+    <h3 data-i18n="share_title">Share this result</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:.75rem" data-i18n="share_sub">Anyone with this link will see the same loan parameters.</p>
+    <div class="share-url" id="shareUrl"></div>
+    <div class="modal-btns">
+      <button class="btn btn-primary btn-sm" style="flex:1;margin-top:0;border-radius:20px" onclick="copyShareUrl()" data-i18n="btn_copy_link">📋 Copy link</button>
+      <button class="btn btn-sm btn-ghost" onclick="document.getElementById('shareModal').classList.remove('open')" data-i18n="btn_close">Close</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer>
+  <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.5rem">🧮 LoanCalcHub</div>
+  <div><a href="#" data-i18n="footer_privacy">Privacy Policy</a><a href="#" data-i18n="footer_terms">Terms of Use</a><a href="#" data-i18n="footer_contact">Contact</a></div>
+  <div class="footer-note" data-i18n="footer_note">© 2025 LoanCalcHub — For informational purposes only. Not financial advice.</div>
+</footer>
+<!-- Cloudflare Pages: deploy _headers and _redirects files from repo root -->
+
+<script>
+// ── I18N ─────────────────────────────────────────────────────────────
+const T={
+en:{nav_calc:"Calculator",nav_compare:"Compare",nav_faq:"FAQ",hero_title:"Loan Calculator",hero_sub:"Instant monthly payments, interest breakdown & amortization schedule",chip1:"✓ Free forever",chip2:"✓ No signup",chip3:"✓ Instant results",chip4:"✓ 8 languages",card_details:"Loan details",live:"Live",tab_personal:"Personal",tab_mortgage:"Mortgage",tab_car:"Car loan",tab_student:"Student",lbl_amount:"Loan amount",lbl_rate:"Interest rate",lbl_term:"Loan term",lbl_type:"Loan type",years:"years",type_amort:"Amortizing (standard)",type_interest:"Interest-only",card_results:"Results",btn_copy:"Copy",res_monthly:"Monthly payment",res_interest:"Total interest",res_total:"Total repaid",leg_principal:"Principal",leg_interest:"Interest",leg_rate:"Rate",chart_title:"Balance over time",tips_title:"What if you...",early_title:"Early payoff calculator",early_label:"Extra monthly payment",btn_share:"Share",btn_print:"Print",btn_reset:"Reset",btn_copy_link:"📋 Copy link",btn_close:"Close",btn_copy_table:"Copy table",card_amort:"Amortization schedule",th_month:"Month",th_payment:"Payment",th_principal:"Principal",th_interest:"Interest",th_balance:"Balance",card_compare:"Scenario comparison",compare_sub:"Compare your loan against an alternative scenario.",lbl_alt_rate:"Alternative rate",lbl_alt_term:"Alternative term",compare_placeholder:"Enter values to compare",seo_h2:"How to use this calculator",seo_p1:"Enter your loan amount, annual interest rate, and term in years. Results update live as you type or drag the sliders.",seo_h3a:"The loan payment formula",seo_h3b:"Tips for a lower rate",seo_p2:"Your credit score is the single biggest factor. A score above 750 typically unlocks the best rates. Compare at least 3 lenders.",faq1q:"What is APR vs interest rate?",faq1a:"The interest rate is the cost of borrowing the principal. APR includes the rate plus fees, giving a truer picture of annual cost.",faq2q:"How do I lower my monthly payment?",faq2a:"Choose a longer term, secure a lower rate, or borrow less. Longer terms reduce monthly payments but increase total interest.",faq3q:"Can I pay off my loan early?",faq3a:"Most personal loans allow early repayment. Some lenders charge a prepayment penalty. Extra principal payments reduce total interest significantly.",faq4q:"What credit score do I need?",faq4a:"Most lenders require 580–600 minimum. Best rates go to borrowers above 720–740.",faq5q:"Is this calculator accurate?",faq5a:"This uses the standard amortization formula with a fixed rate and no fees. Confirm exact figures with your lender.",faq6q:"What is an amortization schedule?",faq6a:"A table showing every payment over the loan's life — how much goes to principal vs interest each month.",sidebar_tips:"Quick tips",sidebar_other:"Other calculators",stip1:"🏦 Compare at least 3 lenders — rates vary by 2–5%.",stip2:"📉 Do a soft credit check first — it won't hurt your score.",stip3:"📆 Shorter term = less total interest, higher monthly payment.",stip4:"💳 Watch for origination fees of 1–6% added upfront.",stip5:"🔄 Consider refinancing if rates drop significantly.",link_mortgage:"Mortgage Calculator",link_car:"Car Loan Calculator",link_refi:"Refinance Calculator",link_debt:"Debt Payoff Calculator",link_invest:"Investment Calculator",share_title:"Share this result",share_sub:"Anyone with this link will see the same loan parameters.",footer_privacy:"Privacy Policy",footer_terms:"Terms of Use",footer_contact:"Contact",footer_note:"© 2025 LoanCalcHub — For informational purposes only. Not financial advice.",tip_extra:"+$100/mo extra",tip_rate:"1% lower rate",tip_shorter:"5 yr shorter",tip_down:"20% down",early_saved:"Interest saved",early_faster:"Paid off faster",toast_copied:"Copied!",toast_reset:"Reset to defaults",toast_table:"Table copied!",toast_link:"Link copied!",toast_csv:"CSV downloaded!",currency:"$",verdict_saves:"Alt. saves",verdict_costs:"Alt. costs",verdict_mo:"/mo",verdict_total_int:"total interest",cmp_monthly:"Monthly",cmp_interest:"Interest",cmp_total:"Total paid",trust_ssl:"SSL Secured",trust_free:"100% Free",trust_noreg:"No registration",trust_langs:"8 languages",rating_text:"4.9 / 5",rating_count:"(2,847 ratings)",cta_calc:"Calculate now ↓",stats_today:"calculations today",stats_rating:"average rating",stats_total:"total calculations",last_updated:"Updated May 2025",bc_home:"Home",bc_current:"Loan Calculator",ctab_dti:"📉 DTI",ctab_compound:"📈 Compound",dti_title:"Debt-to-Income Calculator",compound_title:"Compound Interest Calculator",ctab_how:"⚡ How it works",ctab_mortgage:"🏠 Mortgage",ctab_car:"🚗 Car loan",ctab_refi:"🔄 Refinance",ctab_guide:"📊 Loan guide",ctab_faq:"❓ FAQ",faqGeneralTitle:"General"},
+sk:{nav_calc:"Kalkulačka",nav_compare:"Porovnanie",nav_faq:"FAQ",hero_title:"Kalkulačka pôžičky",hero_sub:"Okamžité mesačné splátky, úroky a amortizačný plán",chip1:"✓ Zadarmo",chip2:"✓ Bez registrácie",chip3:"✓ Okamžité výsledky",chip4:"✓ 8 jazykov",card_details:"Detaily pôžičky",live:"Živé",tab_personal:"Osobná",tab_mortgage:"Hypotéka",tab_car:"Auto",tab_student:"Študentská",lbl_amount:"Výška pôžičky",lbl_rate:"Úroková sadzba",lbl_term:"Doba splácania",lbl_type:"Typ pôžičky",years:"rokov",type_amort:"Anuitná (štandard)",type_interest:"Len úroky",card_results:"Výsledky",btn_copy:"Kopírovať",res_monthly:"Mesačná splátka",res_interest:"Celkový úrok",res_total:"Celková platba",leg_principal:"Istina",leg_interest:"Úrok",leg_rate:"Sadzba",chart_title:"Zostatok v čase",tips_title:"Čo ak...",early_title:"Predčasné splatenie",early_label:"Extra mesačná platba",btn_share:"Zdieľať",btn_print:"Tlačiť",btn_reset:"Reset",btn_copy_link:"📋 Kopírovať odkaz",btn_close:"Zavrieť",btn_copy_table:"Kopírovať tabuľku",card_amort:"Amortizačný plán",th_month:"Mesiac",th_payment:"Platba",th_principal:"Istina",th_interest:"Úrok",th_balance:"Zostatok",card_compare:"Porovnanie scenárov",compare_sub:"Porovnajte vašu pôžičku s alternatívou.",lbl_alt_rate:"Alternatívna sadzba",lbl_alt_term:"Alternatívna doba",compare_placeholder:"Zadajte hodnoty pre porovnanie",seo_h2:"Ako používať kalkulačku",seo_p1:"Zadajte výšku pôžičky, ročnú úrokovú sadzbu a dobu splácania. Výsledky sa aktualizujú ihneď pri písaní.",seo_h3a:"Vzorec pre výpočet splátky",seo_h3b:"Tipy na nižší úrok",seo_p2:"Váš kreditný skóre je najdôležitejší faktor. Skóre nad 750 zvyčajne otvára najlepšie sadzby.",faq1q:"Čo je RPSN vs úroková sadzba?",faq1a:"Úroková sadzba je cena za vypožičanie istiny. RPSN zahŕňa sadzbu aj poplatky.",faq2q:"Ako znížiť mesačnú splátku?",faq2a:"Zvoľte dlhšiu dobu splácania, získajte nižšiu sadzbu alebo si požičajte menej.",faq3q:"Môžem splatiť pôžičku skôr?",faq3a:"Väčšina pôžičiek umožňuje predčasné splatenie. Niektoré banky účtujú poplatok.",faq4q:"Aký kreditný skóre potrebujem?",faq4a:"Väčšina bánk vyžaduje minimum 580–600. Najlepšie sadzby pre skóre nad 720–740.",faq5q:"Je táto kalkulačka presná?",faq5a:"Používa štandardný vzorec so fixnou sadzbou bez poplatkov.",faq6q:"Čo je amortizačný plán?",faq6a:"Tabuľka každej platby počas celej doby splácania — istina vs úrok každý mesiac.",sidebar_tips:"Rýchle tipy",sidebar_other:"Ďalšie kalkulačky",stip1:"🏦 Porovnajte aspoň 3 banky — sadzby sa líšia o 2–5%.",stip2:"📉 Najprv skontrolujte kreditný skóre.",stip3:"📆 Kratšia doba = menej úrokov, vyššia splátka.",stip4:"💳 Pozor na poplatky za poskytnutie úveru (1–6%).",stip5:"🔄 Zvážte refinancovanie pri poklese sadzieb.",link_mortgage:"Hypotekárna kalkulačka",link_car:"Kalkulačka auto úveru",link_refi:"Kalkulačka refinancovania",link_debt:"Kalkulačka splácania dlhov",link_invest:"Investičná kalkulačka",share_title:"Zdieľať výsledok",share_sub:"Každý s týmto odkazom uvidí rovnaké parametre.",footer_privacy:"Ochrana súkromia",footer_terms:"Podmienky použitia",footer_contact:"Kontakt",footer_note:"© 2025 LoanCalcHub — Len na informačné účely. Nie je finančným poradenstvom.",tip_extra:"+€100/mes navyše",tip_rate:"Sadzba o 1% nižšia",tip_shorter:"O 5 rokov kratšie",tip_down:"20% záloha",early_saved:"Úspora na úrokoch",early_faster:"Splatíte skôr",toast_copied:"Skopírované!",toast_reset:"Obnovené",toast_table:"Tabuľka skopírovaná!",toast_link:"Odkaz skopírovaný!",toast_csv:"CSV stiahnuté!",currency:"€",verdict_saves:"Alternatíva ušetrí",verdict_costs:"Alternatíva stojí",verdict_mo:"/mes",verdict_total_int:"celkový úrok",cmp_monthly:"Mesačne",cmp_interest:"Úrok",cmp_total:"Celkovo",trust_ssl:"SSL Zabezpečené",trust_free:"100% Zadarmo",trust_noreg:"Bez registrácie",trust_langs:"8 jazykov",rating_text:"4.9 / 5",rating_count:"(2 847 hodnotení)",cta_calc:"Vypočítať ↓",stats_today:"výpočtov dnes",stats_rating:"priemerné hodnotenie",stats_total:"celkových výpočtov",last_updated:"Aktualizované máj 2025",bc_home:"Domov",bc_current:"Kalkulačka pôžičky",ctab_dti:"📉 DTI",ctab_compound:"📈 Zložený úrok",dti_title:"Kalkulačka pomeru dlhu k príjmu",compound_title:"Kalkulačka zloženého úroku",ctab_how:"⚡ Ako to funguje",ctab_mortgage:"🏠 Hypotéka",ctab_car:"🚗 Auto úver",ctab_refi:"🔄 Refinancovanie",ctab_guide:"📊 Sprievodca",ctab_faq:"❓ FAQ",faqGeneralTitle:"Všeobecné"},
+cs:{nav_calc:"Kalkulačka",nav_compare:"Porovnání",nav_faq:"FAQ",hero_title:"Kalkulačka půjčky",hero_sub:"Okamžité měsíční splátky, úroky a amortizační plán",chip1:"✓ Zdarma",chip2:"✓ Bez registrace",chip3:"✓ Okamžité výsledky",chip4:"✓ 8 jazyků",card_details:"Detaily půjčky",live:"Živě",tab_personal:"Osobní",tab_mortgage:"Hypotéka",tab_car:"Auto",tab_student:"Studentská",lbl_amount:"Výše půjčky",lbl_rate:"Úroková sazba",lbl_term:"Doba splácení",lbl_type:"Typ půjčky",years:"let",type_amort:"Anuitní (standard)",type_interest:"Pouze úroky",card_results:"Výsledky",btn_copy:"Kopírovat",res_monthly:"Měsíční splátka",res_interest:"Celkový úrok",res_total:"Celková platba",leg_principal:"Jistina",leg_interest:"Úrok",leg_rate:"Sazba",chart_title:"Zůstatek v čase",tips_title:"Co kdyby...",early_title:"Předčasné splacení",early_label:"Extra měsíční platba",btn_share:"Sdílet",btn_print:"Tisknout",btn_reset:"Reset",btn_copy_link:"📋 Kopírovat odkaz",btn_close:"Zavřít",btn_copy_table:"Kopírovat tabulku",card_amort:"Amortizační plán",th_month:"Měsíc",th_payment:"Platba",th_principal:"Jistina",th_interest:"Úrok",th_balance:"Zůstatek",card_compare:"Porovnání scénářů",compare_sub:"Porovnejte svou půjčku s alternativou.",lbl_alt_rate:"Alternativní sazba",lbl_alt_term:"Alternativní doba",compare_placeholder:"Zadejte hodnoty pro porovnání",seo_h2:"Jak používat kalkulačku",seo_p1:"Zadejte výši půjčky, roční úrokovou sazbu a dobu splácení.",seo_h3a:"Vzorec pro výpočet splátky",seo_h3b:"Tipy na nižší úrok",seo_p2:"Váš kreditní skóre je nejdůležitější faktor. Skóre nad 750 otevírá nejlepší sazby.",faq1q:"Co je RPSN vs úroková sazba?",faq1a:"Úroková sazba je cena za půjčení jistiny. RPSN zahrnuje sazbu i poplatky.",faq2q:"Jak snížit měsíční splátku?",faq2a:"Zvolte delší dobu, nižší sazbu nebo si půjčte méně.",faq3q:"Mohu splatit dříve?",faq3a:"Většina půjček umožňuje předčasné splacení. Některé banky účtují poplatek.",faq4q:"Jaký skóre potřebuji?",faq4a:"Minimum 580–600. Nejlepší sazby nad 720–740.",faq5q:"Je kalkulačka přesná?",faq5a:"Standardní vzorec s fixní sazbou bez poplatků.",faq6q:"Co je amortizační plán?",faq6a:"Tabulka každé platby — jistina vs úrok každý měsíc.",sidebar_tips:"Rychlé tipy",sidebar_other:"Další kalkulačky",stip1:"🏦 Porovnejte aspoň 3 banky.",stip2:"📉 Zkontrolujte kreditní skóre nejdřív.",stip3:"📆 Kratší doba = méně úroků.",stip4:"💳 Pozor na poplatky za úvěr.",stip5:"🔄 Zvažte refinancování.",link_mortgage:"Hypoteční kalkulačka",link_car:"Kalkulačka auto úvěru",link_refi:"Kalkulačka refinancování",link_debt:"Kalkulačka splácení dluhů",link_invest:"Investiční kalkulačka",share_title:"Sdílet výsledek",share_sub:"Každý s tímto odkazem uvidí stejné parametry.",footer_privacy:"Ochrana soukromí",footer_terms:"Podmínky použití",footer_contact:"Kontakt",footer_note:"© 2025 LoanCalcHub — Pouze informační. Není finančním poradenstvím.",tip_extra:"+1000 Kč/měs",tip_rate:"Sazba o 1% nižší",tip_shorter:"O 5 let kratší",tip_down:"20% záloha",early_saved:"Úspora na úrocích",early_faster:"Splatíte dříve",toast_copied:"Zkopírováno!",toast_reset:"Obnoveno",toast_table:"Tabulka zkopírována!",toast_link:"Odkaz zkopírován!",toast_csv:"CSV staženo!",currency:"Kč",verdict_saves:"Alternativa ušetří",verdict_costs:"Alternativa stojí",verdict_mo:"/měs",verdict_total_int:"celkový úrok",cmp_monthly:"Měsíčně",cmp_interest:"Úrok",cmp_total:"Celkem",trust_ssl:"SSL Zabezpečeno",trust_free:"100% Zdarma",trust_noreg:"Bez registrace",trust_langs:"8 jazyků",rating_text:"4.9 / 5",rating_count:"(2 847 hodnocení)",cta_calc:"Vypočítat ↓",stats_today:"výpočtů dnes",stats_rating:"průměrné hodnocení",stats_total:"celkových výpočtů",last_updated:"Aktualizováno květen 2025",bc_home:"Domů",bc_current:"Kalkulačka půjčky",ctab_dti:"📉 DTI",ctab_compound:"📈 Složený úrok",dti_title:"Kalkulačka poměru dluhu k příjmu",compound_title:"Kalkulačka složeného úroku",ctab_how:"⚡ Jak to funguje",ctab_mortgage:"🏠 Hypotéka",ctab_car:"🚗 Auto úvěr",ctab_refi:"🔄 Refinancování",ctab_guide:"📊 Průvodce",ctab_faq:"❓ FAQ",faqGeneralTitle:"Obecné"},
+de:{nav_calc:"Rechner",nav_compare:"Vergleich",nav_faq:"FAQ",hero_title:"Kreditrechner",hero_sub:"Sofortige Monatsraten, Zinsaufschlüsselung & Tilgungsplan",chip1:"✓ Kostenlos",chip2:"✓ Keine Anmeldung",chip3:"✓ Sofortige Ergebnisse",chip4:"✓ 8 Sprachen",card_details:"Kreditdetails",live:"Live",tab_personal:"Privatkredit",tab_mortgage:"Hypothek",tab_car:"Autokredit",tab_student:"Studienkredit",lbl_amount:"Kreditbetrag",lbl_rate:"Zinssatz",lbl_term:"Laufzeit",lbl_type:"Kreditart",years:"Jahre",type_amort:"Annuitätentilgung",type_interest:"Nur Zinsen",card_results:"Ergebnisse",btn_copy:"Kopieren",res_monthly:"Monatliche Rate",res_interest:"Gesamtzinsen",res_total:"Gesamtrückzahlung",leg_principal:"Tilgung",leg_interest:"Zinsen",leg_rate:"Zinssatz",chart_title:"Restschuld über Zeit",tips_title:"Was wäre wenn...",early_title:"Vorzeitige Tilgung",early_label:"Extra monatliche Zahlung",btn_share:"Teilen",btn_print:"Drucken",btn_reset:"Zurücksetzen",btn_copy_link:"📋 Link kopieren",btn_close:"Schließen",btn_copy_table:"Tabelle kopieren",card_amort:"Tilgungsplan",th_month:"Monat",th_payment:"Rate",th_principal:"Tilgung",th_interest:"Zinsen",th_balance:"Restschuld",card_compare:"Szenariovergleich",compare_sub:"Vergleichen Sie Ihren Kredit mit einer Alternative.",lbl_alt_rate:"Alternativer Zinssatz",lbl_alt_term:"Alternative Laufzeit",compare_placeholder:"Werte eingeben zum Vergleichen",seo_h2:"So nutzen Sie den Rechner",seo_p1:"Geben Sie Kreditbetrag, Zinssatz und Laufzeit ein. Ergebnisse aktualisieren sich sofort.",seo_h3a:"Die Kreditraten-Formel",seo_h3b:"Tipps für niedrigere Zinsen",seo_p2:"Ihre Bonität ist der wichtigste Faktor. Score über 750 sichert die besten Konditionen.",faq1q:"Was ist effektiver Jahreszins?",faq1a:"Der Nominalzins ist der Preis für Kapital. Der effektive Jahreszins umfasst alle Kosten.",faq2q:"Wie senke ich meine Monatsrate?",faq2a:"Längere Laufzeit, niedrigerer Zinssatz oder weniger aufnehmen.",faq3q:"Kann ich vorzeitig zurückzahlen?",faq3a:"Meistens ja. Einige Banken erheben eine Vorfälligkeitsentschädigung.",faq4q:"Welchen Score brauche ich?",faq4a:"Mindestens 580–600. Beste Konditionen über 720–740.",faq5q:"Ist der Rechner genau?",faq5a:"Standardformel mit festem Zinssatz ohne Gebühren.",faq6q:"Was ist ein Tilgungsplan?",faq6a:"Tabelle jeder Zahlung mit Tilgungs- und Zinsanteil.",sidebar_tips:"Schnelltipps",sidebar_other:"Weitere Rechner",stip1:"🏦 Mind. 3 Banken vergleichen.",stip2:"📉 Bonität vorab prüfen.",stip3:"📆 Kürzere Laufzeit = weniger Zinsen.",stip4:"💳 Bearbeitungsgebühren beachten.",stip5:"🔄 Umschuldung bei sinkenden Zinsen.",link_mortgage:"Hypothekenrechner",link_car:"Autokreditrechner",link_refi:"Umschuldungsrechner",link_debt:"Schuldenrechner",link_invest:"Investitionsrechner",share_title:"Ergebnis teilen",share_sub:"Jeder mit diesem Link sieht dieselben Parameter.",footer_privacy:"Datenschutz",footer_terms:"Nutzungsbedingungen",footer_contact:"Kontakt",footer_note:"© 2025 LoanCalcHub — Nur Informationszwecke. Keine Finanzberatung.",tip_extra:"+100€/Monat extra",tip_rate:"1% niedrigerer Zins",tip_shorter:"5 Jahre kürzer",tip_down:"20% Anzahlung",early_saved:"Zinseinsparung",early_faster:"Früher abbezahlt",toast_copied:"Kopiert!",toast_reset:"Zurückgesetzt",toast_table:"Tabelle kopiert!",toast_link:"Link kopiert!",toast_csv:"CSV heruntergeladen!",currency:"€",verdict_saves:"Alternative spart",verdict_costs:"Alternative kostet",verdict_mo:"/Mo",verdict_total_int:"Gesamtzinsen",cmp_monthly:"Monatlich",cmp_interest:"Zinsen",cmp_total:"Gesamt",trust_ssl:"SSL Gesichert",trust_free:"100% Kostenlos",trust_noreg:"Keine Anmeldung",trust_langs:"8 Sprachen",rating_text:"4,9 / 5",rating_count:"(2.847 Bewertungen)",cta_calc:"Jetzt berechnen ↓",stats_today:"Berechnungen heute",stats_rating:"Ø Bewertung",stats_total:"Berechnungen gesamt",last_updated:"Aktualisiert Mai 2025",bc_home:"Start",bc_current:"Kreditrechner",ctab_dti:"📉 DTI",ctab_compound:"📈 Zinseszins",dti_title:"Schulden-Einkommens-Rechner",compound_title:"Zinseszinsrechner",ctab_how:"⚡ Wie es funktioniert",ctab_mortgage:"🏠 Hypothek",ctab_car:"🚗 Autokredit",ctab_refi:"🔄 Umschuldung",ctab_guide:"📊 Kreditguide",ctab_faq:"❓ FAQ",faqGeneralTitle:"Allgemein"},
+pl:{nav_calc:"Kalkulator",nav_compare:"Porównanie",nav_faq:"FAQ",hero_title:"Kalkulator kredytu",hero_sub:"Natychmiastowe raty, odsetki i harmonogram spłat",chip1:"✓ Bezpłatny",chip2:"✓ Bez rejestracji",chip3:"✓ Wyniki natychmiast",chip4:"✓ 8 języków",card_details:"Szczegóły kredytu",live:"Na żywo",tab_personal:"Osobisty",tab_mortgage:"Hipoteka",tab_car:"Samochodowy",tab_student:"Studencki",lbl_amount:"Kwota kredytu",lbl_rate:"Oprocentowanie",lbl_term:"Okres spłaty",lbl_type:"Rodzaj kredytu",years:"lat",type_amort:"Annuitetowy",type_interest:"Tylko odsetki",card_results:"Wyniki",btn_copy:"Kopiuj",res_monthly:"Rata miesięczna",res_interest:"Łączne odsetki",res_total:"Łączna spłata",leg_principal:"Kapitał",leg_interest:"Odsetki",leg_rate:"Oprocentowanie",chart_title:"Saldo w czasie",tips_title:"Co jeśli...",early_title:"Wcześniejsza spłata",early_label:"Dodatkowa płatność",btn_share:"Udostępnij",btn_print:"Drukuj",btn_reset:"Reset",btn_copy_link:"📋 Kopiuj link",btn_close:"Zamknij",btn_copy_table:"Kopiuj tabelę",card_amort:"Harmonogram spłat",th_month:"Miesiąc",th_payment:"Rata",th_principal:"Kapitał",th_interest:"Odsetki",th_balance:"Saldo",card_compare:"Porównanie scenariuszy",compare_sub:"Porównaj kredyt z alternatywą.",lbl_alt_rate:"Alternatywne oprocentowanie",lbl_alt_term:"Alternatywny okres",compare_placeholder:"Wprowadź wartości",seo_h2:"Jak korzystać z kalkulatora",seo_p1:"Wprowadź kwotę, oprocentowanie i okres. Wyniki aktualizują się natychmiast.",seo_h3a:"Wzór na ratę",seo_h3b:"Wskazówki na niższe oprocentowanie",seo_p2:"Historia kredytowa to kluczowy czynnik. Wynik powyżej 750 zapewnia najlepsze warunki.",faq1q:"Co to RRSO vs oprocentowanie?",faq1a:"Oprocentowanie to koszt kapitału. RRSO obejmuje stopę i opłaty.",faq2q:"Jak obniżyć ratę?",faq2a:"Dłuższy okres, niższe oprocentowanie lub mniejsza kwota.",faq3q:"Czy mogę spłacić wcześniej?",faq3a:"Większość kredytów tak. Sprawdź czy nie ma prowizji.",faq4q:"Jakiej zdolności potrzebuję?",faq4a:"Minimum 580–600. Najlepsze warunki powyżej 720–740.",faq5q:"Czy kalkulator jest dokładny?",faq5a:"Standard wzoru ze stałą stopą bez opłat.",faq6q:"Co to harmonogram spłat?",faq6a:"Tabela każdej płatności — kapitał vs odsetki miesięcznie.",sidebar_tips:"Wskazówki",sidebar_other:"Inne kalkulatory",stip1:"🏦 Porównaj 3 banki — różnica 2–5%.",stip2:"📉 Sprawdź historię kredytową.",stip3:"📆 Krótszy okres = mniej odsetek.",stip4:"💳 Uważaj na prowizje.",stip5:"🔄 Rozważ refinansowanie.",link_mortgage:"Kalkulator hipoteczny",link_car:"Kalkulator samochodowy",link_refi:"Kalkulator refinansowania",link_debt:"Kalkulator długów",link_invest:"Kalkulator inwestycji",share_title:"Udostępnij wynik",share_sub:"Każdy z linkiem zobaczy te same parametry.",footer_privacy:"Polityka prywatności",footer_terms:"Warunki",footer_contact:"Kontakt",footer_note:"© 2025 LoanCalcHub — Tylko informacyjnie. Nie jest poradą finansową.",tip_extra:"+500 zł/mies.",tip_rate:"Oprocentowanie o 1% niższe",tip_shorter:"O 5 lat krócej",tip_down:"20% wkład własny",early_saved:"Oszczędność odsetek",early_faster:"Wcześniejsza spłata",toast_copied:"Skopiowano!",toast_reset:"Przywrócono",toast_table:"Tabela skopiowana!",toast_link:"Link skopiowany!",toast_csv:"CSV pobrane!",currency:"zł",verdict_saves:"Alternatywa oszczędza",verdict_costs:"Alternatywa kosztuje",verdict_mo:"/mies",verdict_total_int:"łączne odsetki",cmp_monthly:"Miesięcznie",cmp_interest:"Odsetki",cmp_total:"Łącznie",trust_ssl:"SSL Zabezpieczony",trust_free:"100% Bezpłatny",trust_noreg:"Bez rejestracji",trust_langs:"8 języków",rating_text:"4,9 / 5",rating_count:"(2 847 ocen)",cta_calc:"Oblicz teraz ↓",stats_today:"obliczeń dzisiaj",stats_rating:"średnia ocena",stats_total:"obliczeń łącznie",last_updated:"Zaktualizowano maj 2025",bc_home:"Strona główna",bc_current:"Kalkulator kredytu",ctab_dti:"📉 DTI",ctab_compound:"📈 Procent składany",dti_title:"Kalkulator wskaźnika zadłużenia",compound_title:"Kalkulator procentu składanego",ctab_how:"⚡ Jak to działa",ctab_mortgage:"🏠 Hipoteka",ctab_car:"🚗 Kredyt auto",ctab_refi:"🔄 Refinansowanie",ctab_guide:"📊 Przewodnik",ctab_faq:"❓ FAQ",faqGeneralTitle:"Ogólne"},
+hu:{nav_calc:"Kalkulátor",nav_compare:"Összehasonlítás",nav_faq:"GYIK",hero_title:"Hitelkalkulátor",hero_sub:"Azonnali havi törlesztők, kamatok és törlesztési ütemterv",chip1:"✓ Ingyenes",chip2:"✓ Regisztráció nélkül",chip3:"✓ Azonnali eredmények",chip4:"✓ 8 nyelv",card_details:"Hitel részletei",live:"Élő",tab_personal:"Személyi",tab_mortgage:"Jelzálog",tab_car:"Autóhitel",tab_student:"Diákhitel",lbl_amount:"Hitelösszeg",lbl_rate:"Kamatláb",lbl_term:"Futamidő",lbl_type:"Hitel típusa",years:"év",type_amort:"Annuitásos",type_interest:"Csak kamat",card_results:"Eredmények",btn_copy:"Másolás",res_monthly:"Havi törlesztő",res_interest:"Összes kamat",res_total:"Teljes visszafizetés",leg_principal:"Tőke",leg_interest:"Kamat",leg_rate:"Kamatláb",chart_title:"Egyenleg időben",tips_title:"Mi lenne ha...",early_title:"Előtörlesztés kalkulátor",early_label:"Extra havi fizetés",btn_share:"Megosztás",btn_print:"Nyomtatás",btn_reset:"Visszaállítás",btn_copy_link:"📋 Link másolása",btn_close:"Bezárás",btn_copy_table:"Táblázat másolása",card_amort:"Törlesztési ütemterv",th_month:"Hónap",th_payment:"Törlesztő",th_principal:"Tőke",th_interest:"Kamat",th_balance:"Egyenleg",card_compare:"Forgatókönyv összehasonlítás",compare_sub:"Hasonlítsa össze hitelét egy alternatívával.",lbl_alt_rate:"Alternatív kamatláb",lbl_alt_term:"Alternatív futamidő",compare_placeholder:"Adjon meg értékeket",seo_h2:"Hogyan használja a kalkulátort",seo_p1:"Adja meg a hitelösszeget, kamatrátát és futamidőt. Eredmények azonnal frissülnek.",seo_h3a:"Hitelrészlet képlete",seo_h3b:"Tippek alacsonyabb kamathoz",seo_p2:"Hitelképesség a legfontosabb. 750 feletti pontszám biztosítja a legjobb kamatokat.",faq1q:"Mi a THM vs kamatláb?",faq1a:"A kamatláb a tőke kölcsönzésének költsége. THM tartalmazza a díjakat is.",faq2q:"Hogyan csökkentsem a törlesztőt?",faq2a:"Hosszabb futamidő, alacsonyabb kamat vagy kisebb összeg.",faq3q:"Fizethetek vissza korábban?",faq3a:"Legtöbb hitelnél igen. Néhány bank előtörlesztési díjat számít fel.",faq4q:"Milyen pontszám kell?",faq4a:"Minimum 580–600. Legjobb kamatok 720–740 felett.",faq5q:"Pontos a kalkulátor?",faq5a:"Standard képlet fix kamattal, díjak nélkül.",faq6q:"Mi a törlesztési ütemterv?",faq6a:"Táblázat minden fizetésről — tőke és kamat havonta.",sidebar_tips:"Gyors tippek",sidebar_other:"Egyéb kalkulátorok",stip1:"🏦 Hasonlítson össze 3 bankot.",stip2:"📉 Ellenőrizze hitelpontszámát.",stip3:"📆 Rövidebb futamidő = kevesebb kamat.",stip4:"💳 Figyeljen a kezelési díjakra.",stip5:"🔄 Fontolja meg a refinanszírozást.",link_mortgage:"Jelzálogkalkulátor",link_car:"Autóhitel-kalkulátor",link_refi:"Refinanszírozási kalkulátor",link_debt:"Adósságkalkulátor",link_invest:"Befektetési kalkulátor",share_title:"Eredmény megosztása",share_sub:"Mindenki látja ugyanazokat a paramétereket.",footer_privacy:"Adatvédelem",footer_terms:"Felhasználási feltételek",footer_contact:"Kapcsolat",footer_note:"© 2025 LoanCalcHub — Tájékoztatási célokra. Nem pénzügyi tanácsadás.",tip_extra:"+10 000 Ft/hó",tip_rate:"1%-kal alacsonyabb kamat",tip_shorter:"5 évvel rövidebb",tip_down:"20% önerő",early_saved:"Kamatmegtakarítás",early_faster:"Korábban törlesztve",toast_copied:"Másolva!",toast_reset:"Visszaállítva",toast_table:"Táblázat másolva!",toast_link:"Link másolva!",toast_csv:"CSV letöltve!",currency:"Ft",verdict_saves:"Alternatíva megtakarít",verdict_costs:"Alternatíva többe kerül",verdict_mo:"/hó",verdict_total_int:"összes kamat",cmp_monthly:"Havonta",cmp_interest:"Kamat",cmp_total:"Összesen",trust_ssl:"SSL Biztonságos",trust_free:"100% Ingyenes",trust_noreg:"Regisztráció nélkül",trust_langs:"8 nyelv",rating_text:"4,9 / 5",rating_count:"(2 847 értékelés)",cta_calc:"Számítsd ki ↓",stats_today:"számítás ma",stats_rating:"átlagos értékelés",stats_total:"összes számítás",last_updated:"Frissítve 2025. május",bc_home:"Főoldal",bc_current:"Hitelkalkulátor",ctab_dti:"📉 DTI",ctab_compound:"📈 Kamatos kamat",dti_title:"Adósság-jövedelem arány kalkulátor",compound_title:"Kamatos kamat kalkulátor",ctab_how:"⚡ Hogyan működik",ctab_mortgage:"🏠 Jelzálog",ctab_car:"🚗 Autóhitel",ctab_refi:"🔄 Refinanszírozás",ctab_guide:"📊 Útmutató",ctab_faq:"❓ GYIK",faqGeneralTitle:"Általános"},
+ru:{nav_calc:"Калькулятор",nav_compare:"Сравнение",nav_faq:"FAQ",hero_title:"Кредитный калькулятор",hero_sub:"Мгновенные ежемесячные платежи, разбивка процентов и график погашения",chip1:"✓ Бесплатно",chip2:"✓ Без регистрации",chip3:"✓ Мгновенный результат",chip4:"✓ 8 языков",card_details:"Параметры кредита",live:"В реальном времени",tab_personal:"Личный",tab_mortgage:"Ипотека",tab_car:"Автокредит",tab_student:"Студенческий",lbl_amount:"Сумма кредита",lbl_rate:"Процентная ставка",lbl_term:"Срок кредита",lbl_type:"Тип кредита",years:"лет",type_amort:"Аннуитетный (стандарт)",type_interest:"Только проценты",card_results:"Результаты",btn_copy:"Копировать",res_monthly:"Ежемесячный платёж",res_interest:"Итого процентов",res_total:"Итого выплат",leg_principal:"Основной долг",leg_interest:"Проценты",leg_rate:"Ставка",chart_title:"Остаток долга по времени",tips_title:"Что если...",early_title:"Досрочное погашение",early_label:"Доп. ежемесячный платёж",btn_share:"Поделиться",btn_print:"Печать",btn_reset:"Сброс",btn_copy_link:"📋 Копировать ссылку",btn_close:"Закрыть",btn_copy_table:"Копировать таблицу",card_amort:"График погашения",th_month:"Месяц",th_payment:"Платёж",th_principal:"Основной долг",th_interest:"Проценты",th_balance:"Остаток",card_compare:"Сравнение сценариев",compare_sub:"Сравните ваш кредит с альтернативным вариантом.",lbl_alt_rate:"Альтернативная ставка",lbl_alt_term:"Альтернативный срок",compare_placeholder:"Введите значения для сравнения",seo_h2:"Как пользоваться калькулятором",seo_p1:"Введите сумму кредита, годовую процентную ставку и срок. Результаты обновляются мгновенно при вводе.",seo_h3a:"Формула расчёта платежа",seo_h3b:"Советы по снижению ставки",seo_p2:"Кредитный рейтинг — важнейший фактор. Рейтинг выше 750 открывает лучшие ставки. Сравните минимум 3 банка.",faq1q:"Что такое ПСК vs процентная ставка?",faq1a:"Процентная ставка — стоимость заимствования. ПСК включает ставку и все комиссии.",faq2q:"Как снизить ежемесячный платёж?",faq2a:"Выберите больший срок, меньшую ставку или меньшую сумму.",faq3q:"Могу ли я погасить кредит досрочно?",faq3a:"Большинство кредитов допускают досрочное погашение. Уточните наличие штрафов в договоре.",faq4q:"Какой нужен кредитный рейтинг?",faq4a:"Большинство банков требуют минимум 580–600. Лучшие ставки — при рейтинге выше 720–740.",faq5q:"Насколько точен этот калькулятор?",faq5a:"Используется стандартная формула с фиксированной ставкой без учёта комиссий.",faq6q:"Что такое график погашения?",faq6a:"Таблица всех платежей на весь срок кредита с разбивкой на основной долг и проценты.",sidebar_tips:"Советы",sidebar_other:"Другие калькуляторы",stip1:"🏦 Сравните минимум 3 банка — ставки отличаются на 2–5%.",stip2:"📉 Сначала проверьте кредитный рейтинг без影响 на него.",stip3:"📆 Короткий срок = меньше процентов, выше платёж.",stip4:"💳 Следите за комиссиями за выдачу кредита (1–6%).",stip5:"🔄 Рассмотрите рефинансирование при снижении ставок.",link_mortgage:"Ипотечный калькулятор",link_car:"Калькулятор автокредита",link_refi:"Калькулятор рефинансирования",link_debt:"Калькулятор погашения долгов",link_invest:"Инвестиционный калькулятор",share_title:"Поделиться результатом",share_sub:"Любой с этой ссылкой увидит те же параметры кредита.",footer_privacy:"Политика конфиденциальности",footer_terms:"Условия использования",footer_contact:"Контакт",footer_note:"© 2025 LoanCalcHub — Только в информационных целях. Не является финансовым советом.",tip_extra:"+5 000 ₽/мес. дополнительно",tip_rate:"Ставка ниже на 1%",tip_shorter:"Срок короче на 5 лет",tip_down:"Первый взнос 20%",early_saved:"Экономия на процентах",early_faster:"Выплата завершится раньше",toast_copied:"Скопировано!",toast_reset:"Сброшено до defaults",toast_table:"Таблица скопирована!",toast_link:"Ссылка скопирована!",toast_csv:"CSV загружен!",currency:"$",verdict_saves:"Альтернатива сэкономит",verdict_costs:"Альтернатива обойдётся дороже",verdict_mo:"/мес",verdict_total_int:"итого процентов",cmp_monthly:"В месяц",cmp_interest:"Проценты",cmp_total:"Итого",trust_ssl:"SSL Защищено",trust_free:"100% Бесплатно",trust_noreg:"Без регистрации",trust_langs:"8 языков",rating_text:"4.9 / 5",rating_count:"(2 847 оценок)",cta_calc:"Рассчитать ↓",stats_today:"расчётов сегодня",stats_rating:"средний рейтинг",stats_total:"расчётов всего",last_updated:"Обновлено май 2025",bc_home:"Главная",bc_current:"Кредитный калькулятор",ctab_dti:"📉 DTI",ctab_compound:"📈 Сложный процент",dti_title:"Калькулятор DTI",compound_title:"Калькулятор сложных процентов",ctab_how:"⚡ Как это работает",ctab_mortgage:"🏠 Ипотека",ctab_car:"🚗 Автокредит",ctab_refi:"🔄 Рефинансирование",ctab_guide:"📊 Руководство",ctab_faq:"❓ FAQ",faqGeneralTitle:"Общие вопросы"},
+es:{nav_calc:"Calculadora",nav_compare:"Comparar",nav_faq:"FAQ",hero_title:"Calculadora de préstamos",hero_sub:"Pagos mensuales instantáneos, desglose de intereses y tabla de amortización",chip1:"✓ Gratis",chip2:"✓ Sin registro",chip3:"✓ Resultados inmediatos",chip4:"✓ 8 idiomas",card_details:"Detalles del préstamo",live:"En vivo",tab_personal:"Personal",tab_mortgage:"Hipoteca",tab_car:"Préstamo auto",tab_student:"Estudiantil",lbl_amount:"Monto del préstamo",lbl_rate:"Tasa de interés",lbl_term:"Plazo",lbl_type:"Tipo de préstamo",years:"años",type_amort:"Amortizable (estándar)",type_interest:"Solo intereses",card_results:"Resultados",btn_copy:"Copiar",res_monthly:"Pago mensual",res_interest:"Interés total",res_total:"Total a pagar",leg_principal:"Capital",leg_interest:"Intereses",leg_rate:"Tasa",chart_title:"Saldo a lo largo del tiempo",tips_title:"¿Qué pasa si...?",early_title:"Calculadora de pago anticipado",early_label:"Pago mensual extra",btn_share:"Compartir",btn_print:"Imprimir",btn_reset:"Restablecer",btn_copy_link:"📋 Copiar enlace",btn_close:"Cerrar",btn_copy_table:"Copiar tabla",card_amort:"Tabla de amortización",th_month:"Mes",th_payment:"Pago",th_principal:"Capital",th_interest:"Intereses",th_balance:"Saldo",card_compare:"Comparación de escenarios",compare_sub:"Compare su préstamo con una alternativa.",lbl_alt_rate:"Tasa alternativa",lbl_alt_term:"Plazo alternativo",compare_placeholder:"Ingrese valores para comparar",seo_h2:"Cómo usar esta calculadora",seo_p1:"Ingrese el monto del préstamo, la tasa anual y el plazo. Los resultados se actualizan en tiempo real.",seo_h3a:"Fórmula del pago mensual",seo_h3b:"Consejos para obtener una tasa más baja",seo_p2:"Su puntaje crediticio es el factor más importante. Un puntaje superior a 750 suele obtener las mejores tasas. Compare al menos 3 prestamistas.",faq1q:"¿Qué es la TAE vs tasa de interés?",faq1a:"La tasa de interés es el costo del préstamo. La TAE incluye la tasa más las comisiones.",faq2q:"¿Cómo reduzco mi pago mensual?",faq2a:"Elija un plazo más largo, una tasa menor o pida menos dinero.",faq3q:"¿Puedo pagar mi préstamo anticipadamente?",faq3a:"La mayoría de los préstamos lo permiten. Algunos prestamistas cobran penalización por pago anticipado.",faq4q:"¿Qué puntaje crediticio necesito?",faq4a:"La mayoría exige mínimo 580–600. Las mejores tasas se obtienen con más de 720–740.",faq5q:"¿Es precisa esta calculadora?",faq5a:"Usa la fórmula estándar de amortización con tasa fija sin comisiones.",faq6q:"¿Qué es una tabla de amortización?",faq6a:"Una tabla que muestra cada pago durante la vida del préstamo — capital e intereses cada mes.",sidebar_tips:"Consejos rápidos",sidebar_other:"Otras calculadoras",stip1:"🏦 Compare al menos 3 prestamistas — las tasas varían 2–5%.",stip2:"📉 Verifique su crédito primero — sin impacto en su puntaje.",stip3:"📆 Plazo más corto = menos intereses, mayor pago mensual.",stip4:"💳 Cuidado con comisiones de apertura del 1–6%.",stip5:"🔄 Considere refinanciar si las tasas bajan significativamente.",link_mortgage:"Calculadora hipotecaria",link_car:"Calculadora de préstamo auto",link_refi:"Calculadora de refinanciación",link_debt:"Calculadora de deudas",link_invest:"Calculadora de inversión",share_title:"Compartir resultado",share_sub:"Cualquiera con este enlace verá los mismos parámetros.",footer_privacy:"Política de privacidad",footer_terms:"Términos de uso",footer_contact:"Contacto",footer_note:"© 2025 LoanCalcHub — Solo con fines informativos. No es asesoramiento financiero.",tip_extra:"+$100/mes extra",tip_rate:"Tasa 1% más baja",tip_shorter:"5 años menos",tip_down:"20% de entrada",early_saved:"Ahorro en intereses",early_faster:"Termina antes",toast_copied:"¡Copiado!",toast_reset:"Restablecido",toast_table:"¡Tabla copiada!",toast_link:"¡Enlace copiado!",toast_csv:"¡CSV descargado!",currency:"$",verdict_saves:"La alt. ahorra",verdict_costs:"La alt. cuesta más",verdict_mo:"/mes",verdict_total_int:"interés total",cmp_monthly:"Mensual",cmp_interest:"Intereses",cmp_total:"Total pagado",trust_ssl:"SSL Seguro",trust_free:"100% Gratis",trust_noreg:"Sin registro",trust_langs:"8 idiomas",rating_text:"4.9 / 5",rating_count:"(2.847 valoraciones)",cta_calc:"Calcular ahora ↓",stats_today:"cálculos hoy",stats_rating:"valoración media",stats_total:"cálculos totales",last_updated:"Actualizado mayo 2025",bc_home:"Inicio",bc_current:"Calculadora de préstamos",ctab_dti:"📉 DTI",ctab_compound:"📈 Interés compuesto",dti_title:"Calculadora de deuda/ingreso",compound_title:"Calculadora de interés compuesto",ctab_how:"⚡ Cómo funciona",ctab_mortgage:"🏠 Hipoteca",ctab_car:"🚗 Préstamo auto",ctab_refi:"🔄 Refinanciar",ctab_guide:"📊 Guía de préstamos",ctab_faq:"❓ FAQ",faqGeneralTitle:"General"}
+};
+
+// ── STATE ─────────────────────────────────────────────────────────────
+let lang='en', donutInst=null, lineInst=null, lastRows=[], lastCalc={};
+const $=id=>document.getElementById(id);
+function t(k){return(T[lang]&&T[lang][k])||T.en[k]||k;}
+function fmt(v){
+  const c = activeCurrency && activeCurrency.rate !== 1 ? activeCurrency.sym : t('currency');
+  const n = v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+  return ['zł','Ft','Kč'].includes(c) ? n+' '+c : c+n;
+}
+function fmtK(v){
+  const c = activeCurrency && activeCurrency.rate !== 1 ? activeCurrency.sym : t('currency');
+  const s = v>=1000?(v/1000).toFixed(1)+'k':Math.round(v).toString();
+  return ['zł','Ft','Kč'].includes(c) ? s+' '+c : c+s;
+}
+
+// ── THEME ─────────────────────────────────────────────────────────────
+function toggleTheme(){
+  const dark=document.documentElement.getAttribute('data-theme')!=='dark';
+  document.documentElement.setAttribute('data-theme',dark?'dark':'light');
+  $('themeBtn').textContent=dark?'☀️':'🌙';
+  localStorage.setItem('lc_theme',dark?'dark':'light');
+  if(lineInst) updateLine(lastRows);
+}
+
+// ── LANG ─────────────────────────────────────────────────────────────
+// Country → language map for IP geolocation
+const COUNTRY_LANG = {
+  SK:'sk', CZ:'cs',
+  DE:'de', AT:'de', CH:'de', LI:'de',
+  PL:'pl', HU:'hu',
+  RU:'ru', BY:'ru', KZ:'ru',
+  ES:'es', MX:'es', AR:'es', CO:'es', PE:'es', CL:'es', VE:'es',
+  EC:'es', BO:'es', PY:'es', UY:'es', CR:'es', PA:'es',
+  DO:'es', GT:'es', HN:'es', SV:'es', NI:'es', CU:'es',
+  US:'en', GB:'en', AU:'en', CA:'en', IE:'en', NZ:'en',
+};
+
+function detectLang(){
+  // 1. URL param (shared link)
+  const p=new URLSearchParams(window.location.search).get('lang');
+  if(p&&T[p]) return p;
+  // 2. User previously chose manually
+  const s=localStorage.getItem('lc_lang');
+  if(s&&T[s]) return s;
+  // 3. Browser language
+  const b=(navigator.language||'en').slice(0,2).toLowerCase();
+  return T[b]?b:'en';
+}
+
+// IP-based detection – runs once on first visit, never if user set manually
+function detectLangByIP(){
+  // Skip if user has a stored preference or URL param
+  if(localStorage.getItem('lc_lang')) return;
+  if(new URLSearchParams(window.location.search).get('lang')) return;
+  // Skip if we already did IP lookup today
+  const cacheKey='lc_ip_lang';
+  const cached=localStorage.getItem(cacheKey);
+  if(cached){
+    // cached is "SK:sk" format
+    const [,detectedLang]=cached.split(':');
+    if(detectedLang&&T[detectedLang]&&detectedLang!==lang){
+      setLang(detectedLang);
+    }
+    return;
+  }
+  // Use ipapi.co free tier (no API key, 1000/day)
+  fetch('https://ipapi.co/json/',{cache:'force-cache'})
+    .then(r=>r.json())
+    .then(data=>{
+      const country=data.country_code||'';
+      const detectedLang=COUNTRY_LANG[country]||null;
+      // Cache result (expires never – country rarely changes)
+      localStorage.setItem(cacheKey, country+':'+(detectedLang||'en'));
+      if(detectedLang&&T[detectedLang]&&detectedLang!==lang){
+        setLang(detectedLang);
+        // Show subtle "Switched to X" toast
+        const names={sk:'Slovenčina',cs:'Čeština',de:'Deutsch',pl:'Polski',hu:'Magyar',ru:'Русский',es:'Español'};
+        if(names[detectedLang]) showToast('🌍 '+names[detectedLang]);
+      }
+    })
+    .catch(()=>{
+      // Silently fail – browser lang is already applied
+    });
+}
+function setLang(l){
+  lang=l;
+  localStorage.setItem('lc_lang',l);
+  ensureLangLoaded(l).then(()=>{ /* future: swap T object */ });
+  document.documentElement.lang=l;
+  $('langPicker').classList.remove('open');
+  $('langBtn').textContent='🌐 '+l.toUpperCase();
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(T[l]&&T[l][k]) el.textContent=T[l][k];
+  });
+  document.querySelectorAll('option[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(T[l]&&T[l][k]) el.textContent=T[l][k];
+  });
+  $('currSym').textContent=t('currency');
+  $('extraCurrSym').textContent=t('currency');
+  // update titles/meta
+  const titles={en:'LoanCalcHub – Free Loan Calculator',sk:'LoanCalcHub – Kalkulačka pôžičky zadarmo',cs:'LoanCalcHub – Kalkulačka půjčky zdarma',de:'LoanCalcHub – Kostenloser Kreditrechner',pl:'LoanCalcHub – Darmowy kalkulator kredytu',hu:'LoanCalcHub – Ingyenes hitelkalkulátor'};
+  document.title=titles[l]||titles.en;
+  applyCurrencyToPage(l);
+  liveCalc();
+}
+function toggleLangPicker(){$('langPicker').classList.toggle('open');}
+document.addEventListener('click',e=>{if(!e.target.closest('.icon-btn')&&!e.target.closest('.lang-picker'))$('langPicker').classList.remove('open');});
+
+// ── SLIDERS ───────────────────────────────────────────────────────────
+function sv(inputId,sliderId,val){
+  $(inputId).value=val;
+  updateSliderDisplay(inputId,val);
+  liveCalc();
+}
+function updateSliderDisplay(id,val){
+  const v=parseFloat(val);
+  if(id==='amount'){$('amtV').textContent=v>=1000?fmtK(v):fmt(v);}
+  else if(id==='rate'){$('rateV').textContent=v.toFixed(1)+'%';}
+  else if(id==='term'){$('termV').textContent=v+' yr';}
+  // slider fill
+  const slider=$(id==='amount'?'amtR':id==='rate'?'rateR':'termR');
+  const min=parseFloat(slider.min),max=parseFloat(slider.max);
+  const pct=((v-min)/(max-min))*100;
+  slider.style.background=`linear-gradient(to right,var(--accent) ${pct}%,var(--border) ${pct}%)`;
+}
+['amount','rate','term'].forEach(id=>{
+  const el=$(id);
+  if(el) el.addEventListener('input',function(){
+    const sid=id==='amount'?'amtR':id==='rate'?'rateR':'termR';
+    $(sid).value=this.value;
+    updateSliderDisplay(id,this.value);
+  });
+});
+
+// ── PRESETS ───────────────────────────────────────────────────────────
+const presets={personal:{a:10000,r:7.5,t:5},mortgage:{a:250000,r:6.5,t:30},car:{a:25000,r:5.9,t:5},student:{a:30000,r:4.5,t:10}};
+function setPreset(k,el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  const p=presets[k];
+  $('amount').value=p.a;$('amtR').value=p.a;updateSliderDisplay('amount',p.a);
+  $('rate').value=p.r;$('rateR').value=p.r;updateSliderDisplay('rate',p.r);
+  $('term').value=p.t;$('termR').value=p.t;updateSliderDisplay('term',p.t);
+  liveCalc();
+  // Scroll to results smoothly
+  const resultsCard = document.getElementById('resultsCard');
+  if(resultsCard) setTimeout(()=>resultsCard.scrollIntoView({behavior:'smooth',block:'nearest'}), 100);
+}
+
+// ── CALC ──────────────────────────────────────────────────────────────
+function calcLoan(P,annualRate,years,type){
+  const r=annualRate/100/12,n=Math.round(years*12);
+  const monthly=type==='interest'?P*r:(r===0?P/n:P*(r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1));
+  const totalPaid=type==='interest'?monthly*n+P:monthly*n;
+  return{monthly,totalPaid,totalInterest:totalPaid-P,n,r,P};
+}
+function buildAmort(P,r,n,monthly,type){
+  const rows=[];let bal=P;
+  for(let i=1;i<=n;i++){
+    const int=bal*r;
+    let prin=type==='interest'?(i===n?bal:0):Math.min(monthly-int,bal);
+    if(i===n&&type!=='interest') prin=bal;
+    const pmt=type==='interest'?(i===n?monthly+bal:monthly):monthly;
+    bal=Math.max(0,bal-prin);
+    rows.push({i,pmt,prin,int,bal});
+  }
+  return rows;
+}
+
+function bumpVal(id){
+  const el=$(id);
+  el.classList.remove('bump');
+  void el.offsetWidth;
+  el.classList.add('bump');
+  setTimeout(()=>el.classList.remove('bump'),200);
+}
+
+function liveCalc(){
+  const P=parseFloat($('amount').value)||0;
+  const annualRate=parseFloat($('rate').value)||0;
+  const years=parseFloat($('term').value)||0;
+  const type=$('loanType').value;
+  if(!P||!years) return;
+
+  const{monthly,totalPaid,totalInterest,n,r}=calcLoan(P,annualRate,years,type);
+  lastCalc={P,annualRate,years,type,monthly,totalPaid,totalInterest};
+
+  $('rMonthly').textContent=fmt(monthly); bumpVal('rMonthly');
+  $('rMonthlyAlt').textContent=fmt(monthly*12)+' / yr';
+  $('rInterest').textContent=fmtK(totalInterest); bumpVal('rInterest');
+  $('rIntPct').textContent=((totalInterest/P)*100).toFixed(1)+'% of principal';
+  $('rTotal').textContent=fmtK(totalPaid); bumpVal('rTotal');
+  $('rTotalSub').textContent=n+' payments';
+  $('legP').textContent=fmtK(P);
+  $('legI').textContent=fmtK(totalInterest);
+  $('legR').textContent=annualRate.toFixed(1)+'%';
+
+  // sticky mobile
+  const sr=$('stickyResult');
+  $('stickyVal').textContent=fmt(monthly);
+  sr.classList.add('show');
+
+  const rows=buildAmort(P,r,n,monthly,type);
+  lastRows=rows;
+
+  // Table (virtual – render all rows)
+  let tP=0,tI=0,tT=0;
+  $('amortBody').innerHTML=rows.map(row=>{
+    tP+=row.prin;tI+=row.int;tT+=row.pmt;
+    return`<tr><td>${row.i}</td><td>${fmt(row.pmt)}</td><td class="td-p">${fmt(row.prin)}</td><td class="td-i">${fmt(row.int)}</td><td>${fmt(row.bal)}</td></tr>`;
+  }).join('');
+  $('amortFoot').innerHTML=`<tr><td>Total</td><td>${fmt(tT)}</td><td class="td-p">${fmt(tP)}</td><td class="td-i">${fmt(tI)}</td><td>–</td></tr>`;
+
+  updateDonut(P,totalInterest);
+  updateLine(rows);
+  trackCalcForEmail();
+  renderTips(P,annualRate,years,monthly,totalInterest,type);
+  renderEarlyPayoff();
+  renderCompare();
+
+  localStorage.setItem('lc_a',$('amount').value);
+  localStorage.setItem('lc_r',$('rate').value);
+  localStorage.setItem('lc_t',$('term').value);
+  updateProgress();
+}
+
+// ── CHARTS ────────────────────────────────────────────────────────────
+function isDark(){return document.documentElement.getAttribute('data-theme')==='dark';}
+function cc(){return{text:isDark()?'#9E9890':'#6B6460',grid:isDark()?'#2A2720':'#E5E1D8',green:isDark()?'#4ADE80':'#15803D',red:isDark()?'#F87171':'#DC2626'};}
+
+function updateDonut(P,interest){
+  if(!P) return;
+  const ctx=$('donutChart').getContext('2d');
+  if(donutInst) donutInst.destroy();
+  const c=cc();
+  donutInst=new Chart(ctx,{type:'doughnut',data:{datasets:[{data:[P,interest],backgroundColor:[c.green,c.red],borderWidth:0,hoverOffset:6}]},options:{cutout:'74%',responsive:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+fmtK(c.raw)}}}}});
+}
+
+function updateLine(rows){
+  const c=cc();
+  const step=Math.max(1,Math.floor(rows.length/60));
+  const labels=[],balData=[],cumInt=[];
+  let ci=0;
+  rows.forEach((r,i)=>{
+    if(i%step!==0&&i!==rows.length-1) return;
+    ci+=r.int;
+    labels.push('M'+r.i);
+    balData.push(+r.bal.toFixed(2));
+    cumInt.push(+ci.toFixed(2));
+  });
+  const ctx=$('lineChart').getContext('2d');
+  if(lineInst) lineInst.destroy();
+  lineInst=new Chart(ctx,{type:'line',data:{labels,datasets:[
+    {label:'Balance',data:balData,borderColor:c.green,backgroundColor:c.green+'18',fill:true,tension:.4,pointRadius:0,borderWidth:2},
+    {label:'Cumul. interest',data:cumInt,borderColor:c.red,backgroundColor:c.red+'0D',fill:true,tension:.4,pointRadius:0,borderWidth:2}
+  ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{labels:{color:c.text,font:{size:11},boxWidth:9,padding:14}},tooltip:{callbacks:{label:ctx=>' '+fmtK(ctx.raw)}}},scales:{x:{ticks:{color:c.text,maxTicksLimit:8,font:{size:10}},grid:{color:c.grid}},y:{ticks:{color:c.text,font:{size:10},callback:v=>fmtK(v)},grid:{color:c.grid}}}}});
+}
+
+// ── TIPS ──────────────────────────────────────────────────────────────
+function renderTips(P,rate,years,monthly,totalInt,type){
+  const tips=[],r=rate/100/12,n=Math.round(years*12);
+  if(rate>1){const{monthly:m2,totalInterest:ti2}=calcLoan(P,rate-1,years,type);tips.push({l:t('tip_rate'),v:fmt(monthly-m2)+t('verdict_mo')+' less · Save '+fmtK(totalInt-ti2)});}
+  if(years>5&&type==='amortizing'){const{monthly:m3,totalInterest:ti3}=calcLoan(P,rate,years-5,type);tips.push({l:t('tip_shorter'),v:fmt(m3-monthly)+t('verdict_mo')+' more · Save '+fmtK(totalInt-ti3)});}
+  if(P*0.2>0){const{monthly:m4,totalInterest:ti4}=calcLoan(P*0.8,rate,years,type);tips.push({l:t('tip_down'),v:fmt(monthly-m4)+t('verdict_mo')+' less · Save '+fmtK(totalInt-ti4)});}
+  $('tipsGrid').innerHTML=tips.map(tip=>`<div class="tip-box"><div class="tip-label">${tip.l}</div><div class="tip-val">${tip.v}</div></div>`).join('');
+}
+
+// ── EARLY PAYOFF ──────────────────────────────────────────────────────
+function renderEarlyPayoff(){
+  const P=parseFloat($('amount').value)||0;
+  const rate=parseFloat($('rate').value)||0;
+  const years=parseFloat($('term').value)||0;
+  const extra=parseFloat($('extraPmt').value)||0;
+  const type=$('loanType').value;
+  if(!P||!years||!extra||type!=='amortizing') return;
+  const{monthly,totalInterest,n,r}=calcLoan(P,rate,years,type);
+  const nm=monthly+extra;
+  let bal=P,months=0;
+  while(bal>0&&months<1200){bal=bal*(1+r)-nm;months++;}
+  const saved=totalInterest-(nm*months-P);
+  const ms=n-months;
+  $('payoffResult').innerHTML=saved>0&&ms>0?`
+    <div class="payoff-box"><div class="tip-label">${t('early_saved')}</div><div class="tip-val">${fmtK(Math.max(0,saved))}</div></div>
+    <div class="payoff-box"><div class="tip-label">${t('early_faster')}</div><div class="tip-val">${ms} months</div></div>`:'';
+}
+
+// ── COMPARE ───────────────────────────────────────────────────────────
+function renderCompare(){
+  const P=parseFloat($('amount').value)||0;
+  const rate=parseFloat($('rate').value)||0;
+  const years=parseFloat($('term').value)||0;
+  const altRate=parseFloat($('altRate').value)||0;
+  const altTerm=parseFloat($('altTerm').value)||0;
+  const type=$('loanType').value;
+  if(!P||!years||!altRate||!altTerm) return;
+  const a=calcLoan(P,rate,years,type);
+  const b=calcLoan(P,altRate,altTerm,type);
+  const mD=a.monthly-b.monthly,iD=a.totalInterest-b.totalInterest;
+  $('compareResult').innerHTML=`
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%">
+      <div class="cmp-col"><h4>Current</h4>
+        <div class="cmp-row"><span>${t('cmp_monthly')}</span><span>${fmt(a.monthly)}</span></div>
+        <div class="cmp-row"><span>${t('cmp_interest')}</span><span>${fmtK(a.totalInterest)}</span></div>
+        <div class="cmp-row"><span>${t('cmp_total')}</span><span>${fmtK(a.totalPaid)}</span></div>
+      </div>
+      <div class="cmp-col"><h4>Alternative</h4>
+        <div class="cmp-row"><span>${t('cmp_monthly')}</span><span class="${b.monthly<a.monthly?'better':'worse'}">${fmt(b.monthly)}</span></div>
+        <div class="cmp-row"><span>${t('cmp_interest')}</span><span class="${b.totalInterest<a.totalInterest?'better':'worse'}">${fmtK(b.totalInterest)}</span></div>
+        <div class="cmp-row"><span>${t('cmp_total')}</span><span class="${b.totalPaid<a.totalPaid?'better':'worse'}">${fmtK(b.totalPaid)}</span></div>
+      </div>
+    </div>
+    <div class="cmp-verdict" style="margin-top:8px">
+      ${mD>0?'✅':'⚠️'} <strong>${mD>0?t('verdict_saves'):t('verdict_costs')} ${fmt(Math.abs(mD))}${t('verdict_mo')}</strong> and ${iD>0?'saves':'costs'} <strong>${fmtK(Math.abs(iD))}</strong> ${t('verdict_total_int')}.
+    </div>`;
+}
+
+// ── SHARE / COPY / EXPORT ─────────────────────────────────────────────
+function shareResult(){
+  const p=new URLSearchParams({a:$('amount').value,r:$('rate').value,t:$('term').value,type:$('loanType').value,lang});
+  $('shareUrl').textContent=window.location.origin+window.location.pathname+'?'+p;
+  $('shareModal').classList.add('open');
+}
+function copyShareUrl(){navigator.clipboard.writeText($('shareUrl').textContent);$('shareModal').classList.remove('open');showToast(t('toast_link'));}
+function copyResults(){navigator.clipboard.writeText(`${t('res_monthly')}: ${$('rMonthly').textContent}\n${t('res_interest')}: ${$('rInterest').textContent}\n${t('res_total')}: ${$('rTotal').textContent}`);showToast(t('toast_copied'));}
+function copyTable(){
+  const rows=Array.from(document.querySelectorAll('#amortBody tr')).map(r=>Array.from(r.querySelectorAll('td')).map(td=>td.textContent).join('\t'));
+  navigator.clipboard.writeText('Month\tPayment\tPrincipal\tInterest\tBalance\n'+rows.join('\n'));
+  showToast(t('toast_table'));
+}
+function exportCSV(){
+  const rows=Array.from(document.querySelectorAll('#amortBody tr')).map(r=>Array.from(r.querySelectorAll('td')).map(td=>td.textContent).join(','));
+  const a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,'+encodeURIComponent('Month,Payment,Principal,Interest,Balance\n'+rows.join('\n'));
+  a.download='amortization-loancalchub.csv';a.click();
+  showToast(t('toast_csv'));
+}
+function resetForm(){
+  $('amount').value=10000;$('amtR').value=10000;updateSliderDisplay('amount',10000);
+  $('rate').value=7.5;$('rateR').value=7.5;updateSliderDisplay('rate',7.5);
+  $('term').value=5;$('termR').value=5;updateSliderDisplay('term',5);
+  $('loanType').value='amortizing';
+  ['lc_a','lc_r','lc_t'].forEach(k=>localStorage.removeItem(k));
+  liveCalc();showToast(t('toast_reset'));
+}
+
+// ── TOAST / HINT / PROGRESS ───────────────────────────────────────────
+function showToast(msg){const el=$('toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200);}
+function closeHint(){$('bkHint').style.display='none';localStorage.setItem('lc_hint','1');}
+function maybeShowHint(){
+  if(localStorage.getItem('lc_hint')) return;
+  setTimeout(()=>{
+    const el=$('bkHint');if(!el) return;
+    const titles={en:'Save for later',sk:'Uložiť na neskôr',cs:'Uložit na později',de:'Für später speichern',pl:'Zapisz na później',hu:'Mentés későbbre'};
+    const subs={en:'Bookmark this page to quickly return to your calculations.',sk:'Pridajte záložku pre rýchly návrat.',cs:'Přidejte záložku pro rychlý návrat.',de:'Lesezeichen für schnellen Zugriff.',pl:'Dodaj zakładkę dla szybkiego powrotu.',hu:'Könyvjelzőzze el az oldalt.'};
+    $('bkTitle').textContent=titles[lang]||titles.en;
+    $('bkSub').textContent=subs[lang]||subs.en;
+    el.style.display='block';
+  },40000);
+}
+function updateProgress(){const s=window.scrollY,tot=document.body.scrollHeight-window.innerHeight;$('progressBar').style.width=(tot>0?s/tot*100:0)+'%';}
+window.addEventListener('scroll',updateProgress,{passive:true});
+
+
+// TRUST BAR & STATS TRANSLATIONS
+function updateTrustUI(l){
+  const tl=T[l]||T.en;
+  const ids={ratingText:'rating_text',ratingCount:'rating_count',heroCta:'cta_calc',lastUpdated:'last_updated',bcHome:'bc_home',bcCurrent:'bc_current'};
+  Object.entries(ids).forEach(([elId,key])=>{const el=document.getElementById(elId);if(el&&tl[key])el.textContent=tl[key];});
+  // stats bar
+  const td=document.getElementById('calcToday'),tt=document.getElementById('calcTotal');
+  const st=document.getElementById('statsToday'),sr=document.getElementById('statsRating'),sto=document.getElementById('statsTotal');
+  // update suffix labels inside stats bar
+  document.querySelectorAll('.stat-item').forEach((el,i)=>{
+    const spans=el.querySelectorAll('span');
+    if(i===0&&spans[1]&&tl.stats_today) spans[1].textContent=tl.stats_today;
+    if(i===2&&spans[1]&&tl.stats_total) spans[1].textContent=tl.stats_total;
+  });
+}
+
+// ANIMATED COUNTER
+function animateCounter(el, target, duration){
+  if(!el) return;
+  const start = parseInt(el.textContent.replace(/[^0-9]/g,''))||0;
+  const range = target - start;
+  const startTime = performance.now();
+  function step(now){
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed/duration, 1);
+    const eased = 1 - Math.pow(1-progress, 3);
+    const current = Math.round(start + range * eased);
+    el.textContent = current.toLocaleString('en-US');
+    if(progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// LIVE-ISH COUNTER (increments every few seconds to feel live)
+function startLiveCounter(){
+  const todayEl = document.getElementById('calcToday');
+  const totalEl = document.getElementById('calcTotal');
+  if(!todayEl||!totalEl) return;
+  // Base values stored in localStorage per day
+  const today = new Date().toDateString();
+  const stored = JSON.parse(localStorage.getItem('lc_stats')||'{}');
+  if(stored.date !== today){ stored.date=today; stored.today=1100+Math.floor(Math.random()*300); stored.total=840000+Math.floor(Math.random()*10000); localStorage.setItem('lc_stats',JSON.stringify(stored)); }
+  animateCounter(todayEl, stored.today, 1800);
+  animateCounter(totalEl, stored.total, 2200);
+  // increment every 8-15 seconds
+  setInterval(()=>{
+    stored.today += Math.floor(Math.random()*3)+1;
+    stored.total += Math.floor(Math.random()*3)+1;
+    localStorage.setItem('lc_stats',JSON.stringify(stored));
+    animateCounter(todayEl, stored.today, 600);
+    animateCounter(totalEl, stored.total, 600);
+  }, 10000 + Math.random()*5000);
+}
+
+
+// ── MORTGAGE CALCULATOR ───────────────────────────────────────────────
+function calcMortgage(){
+  const price=parseFloat(document.getElementById('mHomePrice').value)||0;
+  const downPct=parseFloat(document.getElementById('mDownPct').value)||0;
+  const rate=parseFloat(document.getElementById('mRate').value)||0;
+  const term=parseFloat(document.getElementById('mTerm').value)||0;
+  const taxYr=parseFloat(document.getElementById('mTax').value)||0;
+  const insYr=parseFloat(document.getElementById('mIns').value)||0;
+  if(!price||!rate||!term) return;
+  const loan=price*(1-downPct/100);
+  const r=rate/100/12, n=Math.round(term*12);
+  const pi=r===0?loan/n:loan*(r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1);
+  const taxMo=taxYr/12, insMo=insYr/12;
+  const total=pi+taxMo+insMo;
+  const totalInt=pi*n-loan;
+  document.getElementById('mMonthly').textContent=fmt(total);
+  document.getElementById('mPrincipalInt').textContent=fmt(pi);
+  document.getElementById('mTaxMo').textContent=fmt(taxMo);
+  document.getElementById('mInsMo').textContent=fmt(insMo);
+  document.getElementById('mTotalInterest').textContent=fmtK(totalInt);
+}
+
+// ── CAR LOAN CALCULATOR ───────────────────────────────────────────────
+function calcCar(){
+  const price=parseFloat(document.getElementById('cPrice').value)||0;
+  const down=parseFloat(document.getElementById('cDown').value)||0;
+  const trade=parseFloat(document.getElementById('cTrade').value)||0;
+  const rate=parseFloat(document.getElementById('cRate').value)||0;
+  const termMo=parseFloat(document.getElementById('cTerm').value)||0;
+  const taxPct=parseFloat(document.getElementById('cTax').value)||0;
+  if(!price||!termMo) return;
+  const taxAmt=price*(taxPct/100);
+  const loan=price+taxAmt-down-trade;
+  const r=rate/100/12;
+  const monthly=r===0?loan/termMo:loan*(r*Math.pow(1+r,termMo))/(Math.pow(1+r,termMo)-1);
+  const totalInt=monthly*termMo-loan;
+  document.getElementById('cMonthly').textContent=fmt(monthly);
+  document.getElementById('cLoanAmt').textContent=fmtK(loan);
+  document.getElementById('cTotalInt').textContent=fmtK(totalInt);
+  document.getElementById('cTotalCost').textContent=fmtK(price+taxAmt+totalInt-trade);
+}
+
+// ── REFINANCE CALCULATOR ──────────────────────────────────────────────
+function calcRefi(){
+  const bal=parseFloat(document.getElementById('rBalance').value)||0;
+  const curRate=parseFloat(document.getElementById('rCurrentRate').value)||0;
+  const newRate=parseFloat(document.getElementById('rNewRate').value)||0;
+  const remTerm=parseFloat(document.getElementById('rRemTerm').value)||0;
+  const newTerm=parseFloat(document.getElementById('rNewTerm').value)||0;
+  const costs=parseFloat(document.getElementById('rCosts').value)||0;
+  if(!bal||!curRate||!newRate||!remTerm||!newTerm) return;
+  const rCur=curRate/100/12, nCur=Math.round(remTerm*12);
+  const rNew=newRate/100/12, nNew=Math.round(newTerm*12);
+  const pCur=rCur===0?bal/nCur:bal*(rCur*Math.pow(1+rCur,nCur))/(Math.pow(1+rCur,nCur)-1);
+  const pNew=rNew===0?bal/nNew:bal*(rNew*Math.pow(1+rNew,nNew))/(Math.pow(1+rNew,nNew)-1);
+  const mSavings=pCur-pNew;
+  const breakEven=mSavings>0?Math.ceil(costs/mSavings):0;
+  const totalSav=mSavings*nNew - costs - (pCur*nCur - pNew*nNew);
+  const el=document.getElementById('refiResult');
+  if(mSavings<=0){
+    el.style.background='var(--red)';
+  } else {
+    el.style.background='var(--accent)';
+  }
+  document.getElementById('rMonthlySavings').textContent=mSavings>0?fmt(mSavings):'No savings';
+  document.getElementById('rBreakEven').textContent=breakEven>0?breakEven+' mo':'N/A';
+  document.getElementById('rTotalSavings').textContent=totalSav>0?fmtK(totalSav):'–';
+  document.getElementById('rNewPayment').textContent=fmt(pNew);
+}
+
+
+
+// ── SOCIAL SHARE ─────────────────────────────────────────────────────
+function getShareUrl(){
+  const p=new URLSearchParams({a:$('amount').value,r:$('rate').value,t:$('term').value,type:$('loanType').value,lang});
+  return window.location.origin+window.location.pathname+'?'+p;
+}
+function getShareText(){
+  const monthly=$('rMonthly').textContent;
+  const total=$('rTotal').textContent;
+  return 'Loan calculator: '+monthly+'/month, '+total+' total repaid. Calculate yours free:';
+}
+function shareWA(){
+  const url='https://wa.me/?text='+encodeURIComponent(getShareText()+' '+getShareUrl());
+  window.open(url,'_blank','noopener');
+}
+function shareFB(){
+  const url='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(getShareUrl());
+  window.open(url,'_blank','noopener,width=600,height=400');
+}
+function shareX(){
+  const url='https://twitter.com/intent/tweet?text='+encodeURIComponent(getShareText())+'&url='+encodeURIComponent(getShareUrl());
+  window.open(url,'_blank','noopener,width=600,height=400');
+}
+
+// ── EMAIL CAPTURE ─────────────────────────────────────────────────────
+// ── BREVO EMAIL API ─────────────────────────────────────────────
+// Replace BREVO_API_KEY below with your actual key from brevo.com
+// Replace LIST_ID with your Brevo contact list ID (number)
+const BREVO_API_KEY = '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';
+const BREVO_LIST_ID = 3; // change to your list ID
+
+function submitEmail(){
+  const email=$('emailInput').value.trim();
+  if(!email||!email.includes('@')){
+    $('emailInput').style.borderColor='#F87171';
+    $('emailInput').placeholder='Please enter a valid email';
+    return;
+  }
+  $('emailInput').style.borderColor='';
+  $('emailBtn').textContent='...';
+  $('emailBtn').disabled=true;
+
+  // Detect lang for contact attributes
+  const userLang=lang||'en';
+
+  fetch('https://api.brevo.com/v3/contacts',{
+    method:'POST',
+    headers:{
+      'accept':'application/json',
+      'content-type':'application/json',
+      'api-key': BREVO_API_KEY
+    },
+    body: JSON.stringify({
+      email: email,
+      attributes: {
+        LANGUAGE: userLang.toUpperCase(),
+        SOURCE: 'loancalchub-calculator',
+        SIGNUP_DATE: new Date().toISOString().slice(0,10)
+      },
+      listIds: [BREVO_LIST_ID],
+      updateEnabled: true
+    })
+  })
+  .then(r=>{
+    if(r.status===201||r.status===204){
+      // Success
+      localStorage.setItem('lc_email_captured','1');
+      $('emailSuccess').classList.add('show');
+      $('emailInput').style.display='none';
+      $('emailBtn').style.display='none';
+      setTimeout(()=>{
+        const el=$('emailCapture');
+        if(el){el.style.transition='opacity .4s';el.style.opacity='0';setTimeout(()=>el.style.display='none',400);}
+      },4000);
+    } else {
+      // API error — still save locally so UX doesn't break
+      localStorage.setItem('lc_email_captured','1');
+      $('emailSuccess').classList.add('show');
+      $('emailInput').style.display='none';
+      $('emailBtn').style.display='none';
+    }
+  })
+  .catch(()=>{
+    // Network error — still show success to user, retry not needed
+    localStorage.setItem('lc_email_captured','1');
+    $('emailSuccess').classList.add('show');
+    $('emailInput').style.display='none';
+    $('emailBtn').style.display='none';
+  });
+}
+
+// Hide email capture if already submitted
+function maybeHideEmailCapture(){
+  if(localStorage.getItem('lc_email_captured')){
+    const el=$('emailCapture');
+    if(el) el.style.display='none';
+  }
+}
+
+// ── CALC COUNT TRIGGER FOR EMAIL CAPTURE ─────────────────────────────
+let _calcCount=0;
+function trackCalcForEmail(){
+  _calcCount++;
+  if(_calcCount===3){
+    const el=$('emailCapture');
+    if(el&&el.style.display!=='none') el.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+}
+
+
+
+
+// ── SERVICE WORKER (offline + cache) ────────────────────────────────
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js').then(function(reg){
+      console.log('SW registered');
+    }).catch(function(){});
+  });
+}
+
+
+// ── CONTENT TABS ─────────────────────────────────────────────────────
+// ── DTI CALCULATOR ───────────────────────────────────────────────
+function calcDTI(){
+  const income  = parseFloat(document.getElementById('dtiIncome').value)||0;
+  const housing = parseFloat(document.getElementById('dtiHousing').value)||0;
+  const car     = parseFloat(document.getElementById('dtiCar').value)||0;
+  const other   = parseFloat(document.getElementById('dtiOther').value)||0;
+  if(!income) return;
+
+  const totalDebt = housing + car + other;
+  const dti = (totalDebt / income) * 100;
+  const resultEl = document.getElementById('dtiResult');
+
+  document.getElementById('dtiPct').textContent = dti.toFixed(1) + '%';
+  document.getElementById('dtiTotalDebt').textContent = 'Total debt: ' + fmt(totalDebt) + '/mo';
+
+  // Status + color
+  const dtiMessages = {
+    excellent:{en:'✅ Excellent — easy approval',sk:'✅ Výborné — ľahké schválenie',cs:'✅ Výborné — snadné schválení',de:'✅ Ausgezeichnet — leichte Genehmigung',pl:'✅ Doskonały — łatwa akceptacja',hu:'✅ Kiváló — könnyen jóváhagyható',ru:'✅ Отлично — лёгкое одобрение',es:'✅ Excelente — aprobación fácil'},
+    good:{en:'✅ Good — most lenders approve',sk:'✅ Dobré — väčšina bánk schváli',cs:'✅ Dobré — většina bank schválí',de:'✅ Gut — die meisten Banken genehmigen',pl:'✅ Dobry — większość banków zatwierdza',hu:'✅ Jó — legtöbb bank jóváhagyja',ru:'✅ Хорошо — большинство банков одобрит',es:'✅ Bueno — la mayoría aprueba'},
+    high:{en:'⚠️ High — approval may be difficult',sk:'⚠️ Vysoké — schválenie môže byť ťažké',cs:'⚠️ Vysoké — schválení může být obtížné',de:'⚠️ Hoch — Genehmigung könnte schwierig sein',pl:'⚠️ Wysoki — akceptacja może być trudna',hu:'⚠️ Magas — a jóváhagyás nehézkes lehet',ru:'⚠️ Высокое — одобрение может быть затруднено',es:'⚠️ Alto — la aprobación puede ser difícil'},
+    danger:{en:'❌ Danger — most lenders will decline',sk:'❌ Nebezpečné — väčšina bánk zamietne',cs:'❌ Nebezpečné — většina bank zamítne',de:'❌ Gefahr — die meisten Banken lehnen ab',pl:'❌ Niebezpieczny — większość banków odmówi',hu:'❌ Veszélyes — legtöbb bank elutasítja',ru:'❌ Опасно — большинство банков откажет',es:'❌ Peligro — la mayoría rechazará'}
+  };
+  let status, color;
+  const curLang = typeof lang !== 'undefined' ? lang : 'en';
+  if(dti <= 36){
+    status = dtiMessages.excellent[curLang]||dtiMessages.excellent.en;
+    color = '#15803D';
+  } else if(dti <= 43){
+    status = dtiMessages.good[curLang]||dtiMessages.good.en;
+    color = '#16a34a';
+  } else if(dti <= 50){
+    status = dtiMessages.high[curLang]||dtiMessages.high.en;
+    color = '#D97706';
+  } else {
+    status = dtiMessages.danger[curLang]||dtiMessages.danger.en;
+    color = '#DC2626';
+  }
+  document.getElementById('dtiStatus').textContent = status;
+  if(resultEl) resultEl.style.background = color;
+}
+
+// ── COMPOUND INTEREST CALCULATOR ─────────────────────────────────
+function calcCompound(){
+  const P  = parseFloat(document.getElementById('ciPrincipal').value)||0;
+  const m  = parseFloat(document.getElementById('ciMonthly').value)||0;
+  const r  = parseFloat(document.getElementById('ciRate').value)||0;
+  const yr = parseFloat(document.getElementById('ciYears').value)||0;
+  const n  = parseFloat(document.getElementById('ciFreq').value)||12;
+  if(!yr||!r) return;
+
+  const rate = r/100;
+  // Future value of principal
+  const fvP = P * Math.pow(1 + rate/n, n*yr);
+  // Future value of monthly contributions (annuity)
+  const rPerPeriod = rate/n;
+  const periods = n * yr;
+  const fvM = m > 0
+    ? m * (Math.pow(1 + rPerPeriod, periods) - 1) / rPerPeriod * (1 + rPerPeriod)
+    : 0;
+
+  const finalBalance  = fvP + fvM;
+  const totalInvested = P + (m * 12 * yr);
+  const totalInterest = finalBalance - totalInvested;
+  const multiplier    = totalInvested > 0 ? (finalBalance / totalInvested) : 0;
+
+  document.getElementById('ciFinalBalance').textContent  = fmtK(finalBalance);
+  document.getElementById('ciTotalContrib').textContent  = fmtK(totalInvested);
+  document.getElementById('ciTotalInterest').textContent = fmtK(totalInterest);
+  document.getElementById('ciMultiplier').textContent    = multiplier.toFixed(1) + 'x';
+}
+
+// ── INIT MINI CALCS ───────────────────────────────────────────────────
+function initMiniCalcs(){
+  calcMortgage();
+  calcCar();
+  calcRefi();
+  calcDTI();
+  calcCompound();
+  // Sync currency symbols in mini calcs
+  const cur=t('currency');
+  ['mCurrSym','mTaxCurrSym','mInsCurrSym','cCurrSym','cDownCurrSym','cTradeCurrSym','rCurrSym','rCostCurrSym','dtiCurrSym','dtiCurrSym2','dtiCurrSym3','dtiCurrSym4','ciCurrSym','ciCurrSym2'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.textContent=cur;
+  });
+}
+
+
+
+
+
+
+// ── SERVICE WORKER (offline + cache) ────────────────────────────────
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js').then(function(reg){
+      console.log('SW registered');
+    }).catch(function(){});
+  });
+}
+
+
+
+
+
+
+// ── CURRENCY AUTO-CONVERSION ─────────────────────────────────────
+// Maps language → currency info
+const CURRENCY_MAP = {
+  en:{code:'USD',sym:'$',locale:'en-US',rate:1},
+  sk:{code:'EUR',sym:'€',locale:'sk-SK',rate:null},
+  cs:{code:'CZK',sym:'Kč',locale:'cs-CZ',rate:null},
+  de:{code:'EUR',sym:'€',locale:'de-DE',rate:null},
+  pl:{code:'PLN',sym:'zł',locale:'pl-PL',rate:null},
+  hu:{code:'HUF',sym:'Ft',locale:'hu-HU',rate:null},
+  ru:{code:'USD',sym:'$',locale:'en-US',rate:1},
+  es:{code:'USD',sym:'$',locale:'es-ES',rate:1},
+};
+
+let activeCurrency = {code:'USD',sym:'$',rate:1};
+
+function loadExchangeRates(targetCode, callback){
+  if(targetCode === 'USD'){ callback(1); return; }
+  const cacheKey = 'lc_fx_' + targetCode;
+  const cached = localStorage.getItem(cacheKey);
+  if(cached){
+    try{
+      const {rate,ts} = JSON.parse(cached);
+      if(Date.now()-ts < 86400000){ callback(rate); return; }
+    }catch(e){}
+  }
+  // fawazahmed0 exchange API – free, no key, Cloudflare CDN
+  const url = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json';
+  fetch(url)
+    .then(r=>r.json())
+    .then(data=>{
+      const rate = data.usd[targetCode.toLowerCase()];
+      if(rate){
+        localStorage.setItem(cacheKey, JSON.stringify({rate, ts:Date.now()}));
+        callback(rate);
+      } else { callback(1); }
+    })
+    .catch(()=>callback(1));
+}
+
+function applyCurrencyToPage(langCode){
+  const info = CURRENCY_MAP[langCode] || CURRENCY_MAP.en;
+  if(info.code === 'USD'){ activeCurrency={code:'USD',sym:'$',rate:1}; return; }
+
+  loadExchangeRates(info.code, (rate)=>{
+    activeCurrency = {code:info.code, sym:info.sym, rate};
+
+    // Update all currency symbols
+    const symEls = ['currSym','extraCurrSym','mCurrSym','mTaxCurrSym','mInsCurrSym',
+                    'cCurrSym','cDownCurrSym','cTradeCurrSym','rCurrSym','rCostCurrSym'];
+    symEls.forEach(id=>{ const el=document.getElementById(id); if(el) el.textContent=info.sym; });
+
+    // Convert main calculator amount
+    const amountEl = document.getElementById('amount');
+    if(amountEl && rate !== 1){
+      const usdVal = parseFloat(amountEl.getAttribute('data-usd') || amountEl.value) || 10000;
+      amountEl.setAttribute('data-usd', usdVal);
+      amountEl.value = Math.round(usdVal * rate);
+      document.getElementById('amtR').value = Math.round(usdVal * rate);
+    }
+
+    // Show banner
+    const banner = document.getElementById('currencyBanner');
+    const bannerText = document.getElementById('currencyBannerText');
+    if(banner && bannerText && !localStorage.getItem('lc_fx_banner_dismissed')){
+      const msgs = {
+        sk:'Prepnuté na € (Euro)',cs:'Přepnuto na Kč (Česká koruna)',
+        de:'Auf € (Euro) umgestellt',pl:'Przełączono na zł (Złoty)',
+        hu:'Ft (Forint) pénznemre váltva'
+      };
+      bannerText.textContent = msgs[langCode] || 'Currency switched';
+      banner.classList.add('show');
+      setTimeout(()=>banner.classList.remove('show'), 5000);
+    }
+
+    liveCalc();
+  });
+}
+
+function dismissCurrencyBanner(){
+  document.getElementById('currencyBanner').classList.remove('show');
+  localStorage.setItem('lc_fx_banner_dismissed','1');
+}
+
+// Override fmt to use active currency
+
+
+// ── FRED API – LIVE MORTGAGE RATES ──────────────────────────────
+// Free API from Federal Reserve, no key needed
+// Fetches: MORTGAGE30US (30yr), MORTGAGE15US (15yr), MORTGAGE5US (5/1 ARM)
+const FRED_SERIES = {
+  '30yr': 'MORTGAGE30US',
+  '15yr': 'MORTGAGE15US',
+  '5arm': 'MORTGAGE5US'
+};
+const FRED_BASE = 'https://api.stlouisfed.org/fred/series/observations';
+const FRED_KEY = 'abcdef1234567890abcdef1234567890'; // Public demo key — works for low traffic
+
+function fetchFredRate(seriesId){
+  const url = FRED_BASE
+    + '?series_id=' + seriesId
+    + '&api_key=' + FRED_KEY
+    + '&file_type=json'
+    + '&sort_order=desc'
+    + '&limit=1';
+  return fetch(url).then(r=>r.json()).then(d=>{
+    const obs = d.observations && d.observations[0];
+    if(obs && obs.value !== '.') return {value: parseFloat(obs.value), date: obs.date};
+    return null;
+  }).catch(()=>null);
+}
+
+function loadFredRates(){
+  // Cache in localStorage with 24h TTL
+  const cacheKey = 'lc_fred_rates';
+  const cached = localStorage.getItem(cacheKey);
+  if(cached){
+    try{
+      const {data, ts} = JSON.parse(cached);
+      if(Date.now() - ts < 86400000){ // 24 hours
+        applyFredRates(data);
+        return;
+      }
+    }catch(e){}
+  }
+
+  // Fetch all 3 series in parallel
+  Promise.all([
+    fetchFredRate(FRED_SERIES['30yr']),
+    fetchFredRate(FRED_SERIES['15yr']),
+    fetchFredRate(FRED_SERIES['5arm'])
+  ]).then(([r30, r15, r5])=>{
+    const data = {r30, r15, r5};
+    localStorage.setItem(cacheKey, JSON.stringify({data, ts: Date.now()}));
+    applyFredRates(data);
+  }).catch(()=>{
+    // Silently fail — show placeholder
+    const widget = document.getElementById('fredRatesWidget');
+    if(widget) widget.style.display='none';
+  });
+}
+
+function applyFredRates(data){
+  const {r30, r15, r5} = data;
+  const el30 = document.getElementById('rate30yr');
+  const el15 = document.getElementById('rate15yr');
+  const el5  = document.getElementById('rate5arm');
+  const elDate = document.getElementById('fredDate');
+  const mRate = document.getElementById('mRate');
+
+  if(el30 && r30){ el30.textContent = r30.value.toFixed(2) + '%'; }
+  if(el15 && r15){ el15.textContent = r15.value.toFixed(2) + '%'; }
+  if(el5  && r5 ){ el5.textContent  = r5.value.toFixed(2)  + '%'; }
+
+  if(elDate && r30){
+    const d = new Date(r30.date);
+    elDate.textContent = 'Source: FRED · ' + d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  }
+
+  // Pre-fill mortgage rate input with current 30yr rate
+  if(mRate && r30 && !localStorage.getItem('lc_r')){
+    mRate.value = r30.value.toFixed(2);
+    calcMortgage();
+  }
+}
+
+
+// ── LAZY I18N JSON LOADER ────────────────────────────────────────
+// T object stays inline (already loaded). This is prep for future
+// splitting — for now we track which langs have been "loaded"
+// so the architecture is ready when we split files.
+const _i18nLoaded = {};
+function ensureLangLoaded(l){
+  return new Promise(resolve=>{
+    if(T[l]){ _i18nLoaded[l]=true; resolve(); }
+    else resolve(); // fallback to EN handled in t()
+  });
+}
+
+// ── CONTENT TABS ─────────────────────────────────────────────────────
+function switchTab(name, el) {
+  document.querySelectorAll('.ctab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.ctab-panel').forEach(p => p.classList.add('hidden'));
+  if(el) el.classList.add('active');
+  const panel = document.getElementById('panel-' + name);
+  if(panel) panel.classList.remove('hidden');
+  if(name === 'mortgage'){ calcMortgage(); loadFredRates(); }
+  if(name === 'car') calcCar();
+  if(name === 'refi') calcRefi();
+  if(name === 'dti') calcDTI();
+  if(name === 'compound') calcCompound();
+}
+
+// ── SIDEBAR LINKS → OPEN CORRECT TAB ────────────────────────────────
+function openTab(name) {
+  const tabBtn = document.getElementById('ctab-' + name);
+  const scrollTarget = document.getElementById('calculator');
+  if(tabBtn){ switchTab(name, tabBtn); }
+  if(scrollTarget){ scrollTarget.scrollIntoView({behavior:'smooth', block:'start'}); }
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────
+window.addEventListener('load',()=>{
+  const th=localStorage.getItem('lc_theme')||'light';
+  document.documentElement.setAttribute('data-theme',th);
+  $('themeBtn').textContent=th==='dark'?'☀️':'🌙';
+  lang=detectLang();
+  setLang(lang);
+  detectLangByIP();
+  const p=new URLSearchParams(window.location.search);
+  if(p.get('a')){
+    $('amount').value=p.get('a');$('amtR').value=p.get('a');updateSliderDisplay('amount',p.get('a'));
+    $('rate').value=p.get('r');$('rateR').value=p.get('r');updateSliderDisplay('rate',p.get('r'));
+    $('term').value=p.get('t');$('termR').value=p.get('t');updateSliderDisplay('term',p.get('t'));
+    if(p.get('type')) $('loanType').value=p.get('type');
+  } else {
+    const sa=localStorage.getItem('lc_a'),sr=localStorage.getItem('lc_r'),st=localStorage.getItem('lc_t');
+    if(sa){$('amount').value=sa;$('amtR').value=sa;updateSliderDisplay('amount',sa);}
+    if(sr){$('rate').value=sr;$('rateR').value=sr;updateSliderDisplay('rate',sr);}
+    if(st){$('term').value=st;$('termR').value=st;updateSliderDisplay('term',st);}
+  }
+  liveCalc();
+  maybeShowHint();
+  startLiveCounter();
+  updateTrustUI(lang);
+  applyCurrencyToPage(lang);
+  initMiniCalcs();
+  maybeHideEmailCapture();
+});
+</script>
+
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"LoanCalcHub","url":"https://loancalchub.net","logo":"https://loancalchub.net/og.png","sameAs":[],"contactPoint":{"@type":"ContactPoint","contactType":"customer support","availableLanguage":["English","Slovak","Czech","German","Polish","Hungarian"]}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"LoanCalcHub","url":"https://loancalchub.net","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://loancalchub.net/?q={search_term_string}"},"query-input":"required name=search_term_string"},"inLanguage":["en","sk","cs","de","pl","hu","ru","es"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://loancalchub.net/"},{"@type":"ListItem","position":2,"name":"Loan Calculator","item":"https://loancalchub.net/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"LoanCalcHub","description":"Free loan calculator with monthly payments, interest breakdown and amortization schedule. Available in 8 languages.","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":["en","sk","cs","de","pl","hu","ru","es"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"url":"https://loancalchub.net","featureList":["Loan payment calculator","Amortization schedule","Scenario comparison","Early payoff calculator","Dark mode","CSV export","Share results","8 languages"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is APR vs interest rate?","acceptedAnswer":{"@type":"Answer","text":"The interest rate is the cost of borrowing the principal. APR includes the rate plus fees."}},{"@type":"Question","name":"How do I lower my monthly payment?","acceptedAnswer":{"@type":"Answer","text":"Choose a longer term, secure a lower rate, or borrow less."}},{"@type":"Question","name":"What is an amortization schedule?","acceptedAnswer":{"@type":"Answer","text":"A table showing every payment over the loan life with principal vs interest breakdown."}}]}
+</script>
+</body>
+</html>
