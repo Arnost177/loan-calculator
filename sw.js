@@ -1,8 +1,5 @@
-const CACHE = 'loancalchub-v1';
-const PRECACHE = [
-  '/',
-  '/index.html',
-];
+const CACHE = 'loancalchub-v4';
+const PRECACHE = ['/'];
 
 self.addEventListener('install', e => {
   e.waitUntil(
@@ -20,10 +17,18 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
-  // Don't cache AdSense, analytics, or cross-origin
   if (url.origin !== self.location.origin) return;
   if (e.request.method !== 'GET') return;
 
+  // CRITICAL: Never cache index.html - always fetch fresh from network
+  if (url.pathname === '/' || url.pathname === '/index.html') {
+    e.respondWith(
+      fetch(e.request).catch(() => caches.match('/'))
+    );
+    return;
+  }
+
+  // Cache-first for all other assets (CSS, JS, fonts, images)
   e.respondWith(
     caches.match(e.request).then(cached => {
       if (cached) return cached;
@@ -32,7 +37,7 @@ self.addEventListener('fetch', e => {
         const clone = response.clone();
         caches.open(CACHE).then(c => c.put(e.request, clone));
         return response;
-      }).catch(() => caches.match('/index.html'));
+      }).catch(() => caches.match('/'));
     })
   );
 });
