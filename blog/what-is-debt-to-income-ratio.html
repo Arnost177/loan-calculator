@@ -25,9 +25,9 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Helvetica Neue',Arial,sans-serif;font-size:17px;line-height:1.75;color:#1A1714;background:#fff}
-.header{background:#15803D;color:#fff;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:1.1rem;font-weight:700;text-decoration:none;color:#fff}
-.header nav a{color:rgba(255,255,255,.85);text-decoration:none;font-size:14px;margin-left:1.5rem}
+
+
+
 .article-wrap{max-width:740px;margin:0 auto;padding:2.5rem 1.5rem}
 .article-meta{font-size:13px;color:#6B6460;margin-bottom:2rem;display:flex;gap:1rem;flex-wrap:wrap}
 h1{font-size:clamp(1.7rem,4vw,2.3rem);font-weight:800;line-height:1.2;margin-bottom:1rem}
@@ -76,9 +76,31 @@ footer a{color:rgba(255,255,255,.7);text-decoration:none;margin:0 .5rem}
 </style>
 </head>
 <body>
-<header class="header">
-  <a href="https://loancalchub.net/" class="logo">🧮 LoanCalcHub</a>
-  <nav><a href="https://loancalchub.net/">Calculator</a><a href="https://loancalchub.net/blog/">Blog</a></nav>
+<style>
+.blog-header{background:#fff;border-bottom:1px solid #E8E5DF;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.blog-header-inner{max-width:860px;margin:0 auto;padding:.75rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.blog-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.blog-logo-icon{width:36px;height:36px;background:#15803D;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.blog-logo-text{font-size:15px;font-weight:700;color:#1A1714}
+.blog-logo-sub{font-size:11px;color:#6B6460;margin-top:-2px}
+.blog-nav{display:flex;align-items:center;gap:1.5rem}
+.blog-nav a{font-size:14px;color:#4B4845;text-decoration:none;font-weight:500}
+.blog-nav a:hover{color:#15803D}
+.blog-cta-btn{background:#15803D;color:#fff!important;padding:7px 16px;border-radius:20px;font-size:13px;font-weight:600;text-decoration:none}
+@media(max-width:600px){.hide-mobile{display:none}}
+</style>
+<header class="blog-header">
+  <div class="blog-header-inner">
+    <a href="https://loancalchub.net/" class="blog-logo">
+      <div class="blog-logo-icon">🧮</div>
+      <div><div class="blog-logo-text">LoanCalcHub</div><div class="blog-logo-sub">Free Loan Calculators</div></div>
+    </a>
+    <nav class="blog-nav">
+      <a href="https://loancalchub.net/blog/" class="hide-mobile">Blog</a>
+      <a href="https://loancalchub.net/loan-calculator" class="hide-mobile">Guides</a>
+      <a href="https://loancalchub.net/" class="blog-cta-btn">Open Calculator →</a>
+    </nav>
+  </div>
 </header>
 
 <div class="article-wrap">
