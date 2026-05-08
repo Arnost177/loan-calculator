@@ -88,7 +88,7 @@
   --shadow-lg:0 4px 6px rgba(0,0,0,.3),0 12px 32px rgba(0,0,0,.5);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;overflow-x:hidden}
+html{scroll-behavior:auto;overflow-x:hidden}
 body{font-family:'Instrument Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:15px;line-height:1.6;transition:background var(--t),color var(--t);overflow-x:hidden;max-width:100vw}
 
 
@@ -1306,6 +1306,10 @@ function setLang(l){
   document.title=titles[l]||titles.en;
   applyCurrencyToPage(l);
   updateEmailPlaceholder();
+  _calcCount = 0; // Reset after init so mobile scroll doesnt trigger on load
+  // Enable smooth scroll only after page is fully initialized
+  window.scrollTo(0,0);
+  setTimeout(()=>{ document.documentElement.style.scrollBehavior='smooth'; }, 300);
   liveCalc();
 }
 function toggleLangPicker(){$('langPicker').classList.toggle('open');}
