@@ -467,9 +467,9 @@ footer a:hover{color:var(--text)}
   </a>
   <div class="hdr-right">
     <nav>
-      <a href="#calculator" data-i18n="nav_calc">Calculator</a>
-      <a href="#compare" data-i18n="nav_compare">Compare</a>
-      <a href="#calculator" onclick="openTab('faq');return false;" data-i18n="nav_faq">FAQ</a>
+      <a href="#" onclick="(function(){var c=document.getElementById('calculator');if(c){var top=c.getBoundingClientRect().top+window.pageYOffset-70;window.scrollTo({top:top,behavior:'smooth'});}return false;})()" data-i18n="nav_calc">Calculator</a>
+      <a href="#" onclick="(function(){var c=document.getElementById('compare');if(c){var top=c.getBoundingClientRect().top+window.pageYOffset-70;window.scrollTo({top:top,behavior:'smooth'});}return false;})()" data-i18n="nav_compare">Compare</a>
+      <a href="#" onclick="openTab('faq');return false;" data-i18n="nav_faq">FAQ</a>
       <a href="/blog/" data-i18n="nav_blog">Blog</a>
     </nav>
     <button class="icon-btn" onclick="toggleLangPicker()" id="langBtn" aria-label="Select language" title="Select language">🌐 EN</button>
@@ -500,7 +500,7 @@ footer a:hover{color:var(--text)}
       <span class="rating-text" id="ratingText" data-i18n="rating_text">4.9 / 5</span>
       <span class="rating-count" id="ratingCount" data-i18n="rating_count">(2,847 ratings)</span>
     </div>
-    <button type="button" class="hero-cta" id="heroCta" data-i18n="cta_calc" onclick="(function(){var c=document.getElementById('calculator');var a=document.getElementById('amount');if(c){c.scrollIntoView({behavior:'smooth',block:'start'});}else if(a){a.scrollIntoView({behavior:'smooth',block:'center'});}setTimeout(function(){if(a){a.focus();a.select();}},600);})()">Calculate now ↓</button>
+    <button type="button" class="hero-cta" id="heroCta" data-i18n="cta_calc" onclick="(function(){var c=document.getElementById('calculator');if(c){var top=c.getBoundingClientRect().top+window.pageYOffset-70;window.scrollTo({top:top,behavior:'smooth'});}setTimeout(function(){var a=document.getElementById('amount');if(a){a.focus();a.select();}},600);})()">Calculate now ↓</button>
   </div>
 </div>
 
@@ -2177,9 +2177,14 @@ function switchTab(name, el) {
 // ── SIDEBAR LINKS → OPEN CORRECT TAB ────────────────────────────────
 function openTab(name) {
   const tabBtn = document.getElementById('ctab-' + name);
-  const scrollTarget = document.getElementById('calculator');
   if(tabBtn){ switchTab(name, tabBtn); }
-  if(scrollTarget){ scrollTarget.scrollIntoView({behavior:'smooth', block:'start'}); }
+  // Scroll to the tabs section so the content is visible
+  const tabsWrap = document.querySelector('.content-tabs-wrap') || document.getElementById('panel-' + name);
+  if(tabsWrap){
+    setTimeout(function(){
+      tabsWrap.scrollIntoView({behavior:'smooth', block:'start'});
+    }, 50);
+  }
 }
 
 
