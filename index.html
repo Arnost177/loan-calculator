@@ -500,7 +500,7 @@ footer a:hover{color:var(--text)}
       <span class="rating-text" id="ratingText" data-i18n="rating_text">4.9 / 5</span>
       <span class="rating-count" id="ratingCount" data-i18n="rating_count">(2,847 ratings)</span>
     </div>
-    <button type="button" class="hero-cta" id="heroCta" data-i18n="cta_calc" onclick="(function(){var c=document.getElementById('calculator');if(c){var top=c.getBoundingClientRect().top+window.pageYOffset-70;window.scrollTo({top:top,behavior:'smooth'});}setTimeout(function(){var a=document.getElementById('amount');if(a){a.focus();a.select();}},600);})()">Calculate now ↓</button>
+    <button type="button" class="hero-cta" id="heroCta" data-i18n="cta_calc" onclick="(function(){var c=document.getElementById('calculator');if(c){var top=c.offsetTop-70;document.documentElement.style.scrollBehavior='auto';window.scrollTo(0,top);setTimeout(function(){document.documentElement.style.scrollBehavior='smooth';var a=document.getElementById('amount');if(a){a.focus();}},100);}})()" >Calculate now ↓</button>
   </div>
 </div>
 
@@ -1075,7 +1075,7 @@ footer a:hover{color:var(--text)}
       <a href="#calculator" onclick="openTab('car');return false;" class="related-card">
         <div class="related-card-icon">🚗</div>
         <div class="related-card-title" id="relCar" data-i18n="relCar">Car Loan Calculator</div>
-        <div class="related-card-desc">Auto loan with trade-in & tax</div>
+        <div class="related-card-desc" data-i18n="relCarDesc">Auto loan with trade-in & tax</div>
       </a>
       <a href="#calculator" onclick="openTab('refi');return false;" class="related-card">
         <div class="related-card-icon">🔄</div>
@@ -1520,7 +1520,7 @@ function renderCompare(){
       </div>
     </div>
     <div class="cmp-verdict" style="margin-top:8px">
-      ${mD>0?'✅':'⚠️'} <strong>${mD>0?t('verdict_saves'):t('verdict_costs')} ${fmt(Math.abs(mD))}${t('verdict_mo')}</strong> and ${iD>0?'saves':'costs'} <strong>${fmtK(Math.abs(iD))}</strong> ${t('verdict_total_int')}.
+      ${mD>0?'✅':'⚠️'} <strong>${mD>0?t('verdict_saves'):t('verdict_costs')} ${fmt(Math.abs(mD))}${t('verdict_mo')}</strong> — <strong>${fmtK(Math.abs(iD))}</strong> ${t('verdict_total_int')}.
     </div>`;
 }
 
