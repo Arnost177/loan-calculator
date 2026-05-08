@@ -1285,6 +1285,8 @@ function detectLangByIP(){
     });
 }
 function setLang(l){
+  window._isInitializing = true;
+  setTimeout(()=>{ window._isInitializing = false; }, 100);
   lang=l;
   localStorage.setItem('lc_lang',l);
   ensureLangLoaded(l).then(()=>{ /* future: swap T object */ });
@@ -1306,11 +1308,11 @@ function setLang(l){
   document.title=titles[l]||titles.en;
   applyCurrencyToPage(l);
   updateEmailPlaceholder();
-  _calcCount = 0; // Reset after init so mobile scroll doesnt trigger on load
-  // Enable smooth scroll only after page is fully initialized
   history.scrollRestoration = "manual";
   window.scrollTo(0,0);
   liveCalc();
+  _calcCount = 0; // Reset AFTER liveCalc so first real user calc triggers scroll
+  window._isInitializing = false; // Allow scroll after init complete
 }
 function toggleLangPicker(){$('langPicker').classList.toggle('open');}
 document.addEventListener('click',e=>{if(!e.target.closest('.icon-btn')&&!e.target.closest('.lang-picker'))$('langPicker').classList.remove('open');});
@@ -2258,6 +2260,7 @@ function applyCurrencySliderLimits(currCode){
 
 // ── MOBILE SCROLL TO RESULTS ─────────────────────────────────
 function maybeScrollToResults(){
+  if(window._isInitializing) return; // Never scroll during page init
   if(window.innerWidth > 820) return;
   _calcCount++;
   if(_calcCount === 1){
